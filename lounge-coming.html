@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>콘텐츠 준비 중 - SimiliBio</title>
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans:['Pretendard', 'sans-serif'] },
+          colors: { brand: { DEFAULT: '#006266', light: '#E4F1F1' } }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#F9F8F3] flex items-center justify-center min-h-screen p-6">
+
+  <div class="max-w-md w-full text-center bg-white p-10 rounded-3xl shadow-xl shadow-brand/5 border border-gray-100">
+    <div class="mb-6 inline-flex items-center justify-center w-20 h-20 bg-brand/5 rounded-full">
+      <span class="text-4xl animate-bounce">💬</span>
+    </div>
+
+    <h1 class="text-2xl font-black text-slate-900 mb-4 tracking-tight">Simili Lounge 준비 중</h1>
+    
+    <div class="space-y-4 mb-8">
+      <p class="text-slate-600 leading-relaxed">
+        SimiliBio 사용자들이 의약품 정보와 인사이트를 <br> 공유할 수 있는
+        <span class="font-bold text-brand">Simili Lounge 커뮤니티</span>를<br> 준비하고 있습니다.
+      </p>
+      <p class="text-sm text-slate-400">
+        곧 새로운 기능과 함께 공개될 예정입니다. <br> 
+        조금만 더 기다려 주세요!
+      </p>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <button onclick="history.back()" class="w-full py-4 bg-brand text-white font-bold rounded-xl hover:bg-brand/90 transition-all shadow-lg shadow-brand/20">
+        이전 페이지로 돌아가기
+      </button>
+      <a href="index.html" class="w-full py-3 text-slate-500 font-medium hover:text-brand transition-colors text-sm">
+        메인 화면으로 이동
+      </a>
+    </div>
+
+    <div class="mt-10 pt-6 border-t border-gray-50">
+      <p class="text-[10px] text-slate-300 uppercase tracking-widest font-bold">SimiliBio Community Platform</p>
+    </div>
+  </div>
+
+</body>
+</html>
