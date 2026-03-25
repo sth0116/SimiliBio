@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>바이오의약품 제조 공정 상세 - SimiliBio</title>
+  
+  <!-- Pretendard 폰트 불러오기 -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  
+  <!-- Tailwind CSS CDN 및 커스텀 설정 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans:['Pretendard', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              DEFAULT: '#006266',
+              dark: '#084d4f',
+              light: '#E4F1F1'
+            },
+            bgbase: '#F9F8F3'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* 로딩 애니메이션 및 페이드인 효과 */
+    .fade-out { opacity: 0; visibility: hidden; transition: opacity 0.6s ease-out, visibility 0.6s ease-out; }
+    .animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* 툴팁 화살표 */
+    .tooltip-arrow::after {
+      content: ""; position: absolute; top: 100%; left: 50%; margin-left: -5px;
+      border-width: 5px; border-style: solid; border-color: #1F2937 transparent transparent transparent;
+    }
+    
+    /* 스크롤바 숨기기 (공정 맵 스와이프 용) */
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-bgbase text-[#2D3436] font-sans selection:bg-brand selection:text-white flex flex-col min-h-screen relative">
+
+  <!-- ========================================== -->
+  <!-- ⏳ 페이지 전환 로딩 오버레이 -->
+  <!-- ========================================== -->
+  <div id="page-loader" class="fixed inset-0 z-[999] bg-white flex flex-col items-center justify-center">
+    <div class="relative flex h-10 w-10 mb-6">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand opacity-60"></span>
+      <span class="relative inline-flex rounded-full h-10 w-10 bg-brand"></span>
+    </div>
+    <h2 class="text-xl md:text-2xl font-bold text-gray-800 tracking-tight animate-pulse">공정 데이터를 로드하는 중입니다...</h2>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 🌟 SimiliBio Top Navigation Bar -->
+  <!-- ========================================== -->
+  <nav class="sticky top-0 w-full bg-bgbase/90 backdrop-blur-md z-50 border-b border-gray-200/50">
+    <div class="max-w-7xl mx-auto px-6 md:px-10 h-20 flex justify-between items-center">
+      
+      <div class="text-2xl font-bold tracking-tight text-brand flex items-center gap-1.5 hover:opacity-80 transition-opacity">
+        <a href="index.html" class="flex items-center gap-1.5">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 20.5l-6-6a4.95 4.95 0 1 1 7-7l6 6a4.95 4.95 0 1 1-7 7Z"></path>
+            <line x1="8.5" y1="8.5" x2="15.5" y2="15.5" stroke-linecap="round"></line>
+          </svg>
+          SimiliBio
+        </a>
+      </div>
+      
+      <div class="hidden md:flex h-full items-center gap-10">
+        <!-- 의약품 지식고 -->
+        <div class="group relative h-full flex items-center cursor-pointer">
+          <span class="text-[0.95rem] font-semibold text-gray-700 group-hover:text-brand transition-colors">의약품 지식고</span>
+          <div class="absolute top-[50px] left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
+            <div class="w-56 bg-white border border-gray-100 rounded-2xl shadow-xl transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 ease-out overflow-hidden">
+              <ul class="py-2 text-sm">
+                <li><a href="chemicallist.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">화학의약품</a></li> 
+                <li><a href="biolist.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">바이오의약품</a></li>              
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 시밀리 라운지 -->
+        <div class="group relative h-full flex items-center cursor-pointer">
+          <span class="text-[0.95rem] font-semibold text-gray-700 group-hover:text-brand transition-colors">시밀리 라운지</span>
+          <div class="absolute top-[50px] left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
+            <div class="w-56 bg-white border border-gray-100 rounded-2xl shadow-xl transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 ease-out overflow-hidden">
+              <ul class="py-2 text-sm">
+                <li><a href="lounge-coming.html" class="flex justify-between items-center px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">전문가 포럼 (인증) <span class="text-xs">🔒</span></a></li>
+                <li><a href="lounge-coming.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">학술 Q&A</a></li>
+                <li><a href="lounge-coming.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">스터디/네트워크</a></li>
+                <li><a href="lounge-coming.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">자유 게시판</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- 인사이트 -->
+        <div class="group relative h-full flex items-center cursor-pointer">
+          <span class="text-[0.95rem] font-semibold text-gray-700 group-hover:text-brand transition-colors">인사이트</span>
+          <div class="absolute top-[50px] left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50">
+            <div class="w-56 bg-white border border-gray-100 rounded-2xl shadow-xl transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300 ease-out overflow-hidden">
+              <ul class="py-2 text-sm">
+                <li><a href="marketlist.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">글로벌 시장 동향</a></li>
+                <li><a href="ra-qc-archive.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">허가 및 규제 정보</a></li>
+                <li><a href="insight-coming.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">학회 하이라이트</a></li>
+                <li><a href="insight-coming.html" class="block px-5 py-3 text-gray-600 hover:bg-brand-light hover:text-brand hover:font-bold transition-all">전문가 칼럼</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hidden md:flex items-center gap-5">
+        <button id="btn-login" class="text-sm font-semibold text-gray-600 hover:text-brand transition focus:outline-none">로그인</button>
+        <button id="btn-signup" class="bg-brand text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-brand-dark transition shadow-sm">회원가입</button>
+      </div>
+
+      <button id="mobile-menu-btn" class="md:hidden text-gray-700 hover:text-brand transition focus:outline-none p-2">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+      </button>
+    </div>
+
+    <!-- 📱 Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white shadow-xl border-b border-gray-200 overflow-hidden max-h-[85vh] overflow-y-auto z-40">
+      <div class="px-6 py-4 space-y-2">
+        <div class="border-b border-gray-100 last:border-0">
+          <button class="w-full flex justify-between items-center py-4 text-left font-bold text-gray-800 focus:outline-none" onclick="toggleAccordion('acc-1', this)">
+            의약품 지식고
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="acc-1" class="hidden px-4 pb-4 space-y-3">
+            <a href="chemicallist.html" class="block text-sm text-gray-500 hover:text-brand">화학의약품</a> 
+            <a href="biolist.html" class="block text-sm text-gray-500 hover:text-brand">바이오의약품</a>          
+          </div>
+        </div>
+        <div class="border-b border-gray-100 last:border-0">
+          <button class="w-full flex justify-between items-center py-4 text-left font-bold text-gray-800 focus:outline-none" onclick="toggleAccordion('acc-2', this)">
+            시밀리 라운지
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="acc-2" class="hidden px-4 pb-4 space-y-3">
+            <a href="lounge-coming.html" class="flex justify-between items-center text-sm text-gray-500 hover:text-brand">전문가 포럼 (인증) <span>🔒</span></a>
+            <a href="lounge-coming.html" class="block text-sm text-gray-500 hover:text-brand">학술 Q&A</a>
+            <a href="lounge-coming.html" class="block text-sm text-gray-500 hover:text-brand">스터디/네트워크</a>
+            <a href="lounge-coming.html" class="block text-sm text-gray-500 hover:text-brand">자유 게시판</a>
+          </div>
+        </div>
+        <div class="border-b border-gray-100 last:border-0">
+          <button class="w-full flex justify-between items-center py-4 text-left font-bold text-gray-800 focus:outline-none" onclick="toggleAccordion('acc-3', this)">
+            인사이트
+            <svg class="w-5 h-5 text-gray-400 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+          <div id="acc-3" class="hidden px-4 pb-4 space-y-3">
+            <a href="marketlist.html" class="block text-sm text-gray-500 hover:text-brand">글로벌 시장 동향</a>
+            <a href="ra-qc-archive.html" class="block text-sm text-gray-500 hover:text-brand">허가 및 규제 정보</a>
+            <a href="insight-coming.html" class="block text-sm text-gray-500 hover:text-brand">학회 하이라이트</a>
+            <a href="insight-coming.html" class="block text-sm text-gray-500 hover:text-brand">전문가 칼럼</a>
+          </div>
+        </div>
+        <div class="flex gap-3 pt-6 pb-2">
+          <button id="btn-login-mobile" class="w-1/2 bg-gray-50 border border-gray-200 text-gray-700 py-3.5 rounded-xl text-sm font-semibold hover:bg-gray-100 transition">로그인</button>
+          <button id="btn-signup-mobile" class="w-1/2 bg-brand text-white py-3.5 rounded-xl text-sm font-semibold hover:bg-brand-dark transition shadow-sm">회원가입</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================== -->
+  <!-- 💊 Main Content: 대화형 공정 대시보드 -->
+  <!-- ========================================== -->
+  <main class="flex-grow w-full max-w-7xl mx-auto px-6 md:px-10 py-10 flex flex-col">
+    
+    <!-- 상단 타이틀 및 돌아가기 버튼 -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-end gap-6 mb-8 animate-fade-in">
+      <div>
+        <span class="inline-block bg-white border border-gray-200 px-3 py-1 rounded-full text-brand text-xs font-bold mb-3 shadow-sm tracking-wider">PROCESS DEVELOPMENT</span>
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight">단클론 항체(mAb) 제조 공정 상세 안내</h1>
+        <p class="text-gray-500 mt-2">단클론 항체(mAb)의 전주기 생산 흐름과 중요공정변수(CPP), 중요품질특성(CQA) 실시간 모니터링 체계를 확인하세요.</p>
+      </div>
+      <button onclick="history.back()" class="flex items-center gap-2 bg-white border border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold hover:bg-gray-50 hover:text-brand hover:border-brand/30 transition-all shadow-sm w-fit shrink-0">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+        목록으로 돌아가기
+      </button>
+    </div>
+
+    <!-- 중앙 캔버스 영역 (넓은 단일 컬럼 유지) -->
+    <div class="w-full bg-white border border-gray-200 rounded-[2rem] shadow-sm min-h-[700px] flex flex-col p-6 md:p-10 relative overflow-hidden animate-fade-in" style="animation-delay: 0.1s;">
+      
+      <!--[상단: 공정 맵 (Step Indicator)] - JS 연동 -->
+      <div class="w-full border-b border-gray-100 pb-8 mb-8 overflow-x-auto scrollbar-hide">
+        <div id="process-map-container" class="flex items-center min-w-[800px] justify-between relative px-4">
+          <!-- 중앙 연결선 -->
+          <div class="absolute top-6 left-10 right-10 h-1 bg-gray-100 -z-10"></div>
+          <!-- 노드들은 JS에서 동적 생성됩니다 -->
+        </div>
+      </div>
+
+      <!-- [하단: 상세 대시보드 뷰포트] -->
+      <div id="detail-content-viewport" class="flex-grow w-full">
+        <!-- JS 렌더링 영역 -->
+      </div>
+
+      <!-- 하단 페이지네이션 및 슬라이드 컨트롤러 -->
+      <div class="mt-10 pt-6 border-t border-gray-100 flex flex-col items-center gap-4 w-full">
+        <div class="flex items-center gap-8">
+          <button id="prev-page" class="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-brand hover:border-brand hover:bg-brand-light transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
+
+          <div class="flex items-center gap-2 font-bold text-lg w-16 justify-center">
+            <span id="current-page-num" class="text-brand">1</span>
+            <span class="text-gray-300">/</span>
+            <span id="total-page-num" class="text-gray-400">8</span>
+          </div>
+
+          <button id="next-page" class="p-3 rounded-full border border-gray-200 text-gray-400 hover:text-brand hover:border-brand hover:bg-brand-light transition-all disabled:opacity-30 disabled:cursor-not-allowed">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+        
+        <div id="page-dots-container" class="flex gap-2">
+          <!-- 도트는 JS에서 동적으로 생성됩니다 -->
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- 🌟 공통 푸터 -->
+  <!-- ========================================== -->
+  <footer class="bg-gray-50 border-t border-gray-200 py-10 px-6 mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+      <div class="flex items-center gap-3">
+        <div class="text-xl font-bold text-gray-400 flex items-center gap-1.5">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20.5l-6-6a4.95 4.95 0 1 1 7-7l6 6a4.95 4.95 0 1 1-7 7Z"></path><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"></line></svg>
+          SimiliBio
+        </div>
+        <span class="text-gray-300 hidden md:block">|</span>
+        <p class="text-sm text-gray-400">© 2026 SimiliBio. All rights reserved.</p>
+      </div>
+      
+      <div class="flex flex-wrap justify-center gap-6 text-sm font-semibold text-gray-500">
+        <button id="btn-terms" class="hover:text-brand transition focus:outline-none">이용약관</button>
+        <button id="btn-privacy" class="hover:text-brand transition focus:outline-none">개인정보처리방침</button>
+        <button id="btn-guide" class="hover:text-brand transition focus:outline-none">콘텐츠 가이드라인</button>
+        <button id="btn-contact" class="hover:text-brand transition focus:outline-none">문의하기</button>
+      </div>
+    </div>
+  </footer>
+
+ <!-- ========================================== -->
+  <!-- 🛡️ 팝업(모달창) 영역 (내용 생략 없이 100% 완전 복원) -->
+  <!-- ========================================== -->
+
+  <!-- 1. 이용약관 팝업 (z-index 110) -->
+  <div id="modal-terms" class="fixed inset-0 z-[110] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
+        <h2 class="text-lg font-bold text-gray-800">이용약관 및 면책 조항</h2>
+        <button id="close-terms" class="text-gray-400 hover:text-gray-700 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-gray-600 space-y-6 leading-relaxed word-keep">
+        <div class="space-y-1">
+          <h4 class="font-bold text-gray-800 text-base">제1조 (목적)</h4>
+          <p>본 약관은 의약품 정보 통합 플랫폼 'SimiliBio'(이하 '회사'라 함)가 제공하는 제반 서비스의 이용 조건 및 운영 원칙, 그리고 이용자와 회사 간의 권리·의무 및 책임 사항을 규정함을 목적으로 합니다.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="font-bold text-gray-800 text-base">제2조 (이용 권한의 분리 및 콘텐츠 열람)</h4>
+          <p>SimiliBio는 투명하고 개방적인 지식 생태계를 지향합니다. 사이트 내 모든 콘텐츠(임상 데이터, 바이오시밀러 정보 등)는 <strong>비회원을 포함하여 누구나 제한 없이 자유롭게 열람</strong>할 수 있습니다.</p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="font-bold text-gray-800 text-base">제3조 (작성 권한 제한 및 소속 인증 의무)</h4>
+          <p>본 플랫폼은 의약학 정보의 전문성과 신뢰성 유지를 위하여 <strong>엄격한 작성 권한 분리 정책</strong>을 시행하고 있습니다.</p>
+          <ul class="list-disc list-inside mt-2 text-gray-500 ml-1">
+            <li>게시글 및 댓글 작성 등의 생성 권한은 <strong>회원가입 후 소속 인증(기업, 대학, 연구소 등)을 최종 완료한 사용자</strong>에게만 제한적으로 부여됩니다.</li>
+            <li>작성 권한을 얻고자 하는 사용자는 운영진이 요구하는 객관적 증빙 자료(재직증명서, 학생증 사본 등)를 제출해야 합니다.</li>
+            <li>타인의 명의를 도용하거나 <strong>허위 정보를 제공하여 인증을 시도한 경우, 적발 즉시 서비스 이용이 영구 제한</strong>될 수 있으며 관련 법령에 따른 책임이 따를 수 있습니다.</li>
+          </ul>
+        </div>
+        <div class="bg-gray-50 border border-gray-200 p-5 rounded-xl mt-2">
+          <h4 class="font-bold text-gray-800 text-base mb-2 flex items-center gap-2">
+            <span class="text-brand">⚠️</span> 제4조 (의료 및 법적 면책 조항)
+          </h4>
+          <p class="mb-3">
+            SimiliBio에서 제공되는 모든 의약품 정보는 소속이 확인된 전문가들에 의해 작성 및 검토되나, 이는 <strong>어디까지나 학술적 참고 및 일반적인 정보 제공</strong>을 목적으로 합니다. 본 정보는 결코 전문 의료인의 직접적인 진단, 진료 및 처방을 대신할 수 없습니다.
+          </p>
+          <p class="text-gray-700">
+            <strong>인증된 사용자가 작성한 정보라 할지라도, 이를 기반으로 내린 최종적인 의학적 결정 및 사업적 판단에 대한 책임은 전적으로 이용자 본인에게 있습니다.</strong> 회사는 정보의 오류, 누락 또는 최신 변경 사항 미반영으로 인해 발생하는 어떠한 손해에 대해서도 법적 책임을 지지 않습니다.
+          </p>
+        </div>
+        <div class="space-y-1">
+          <h4 class="font-bold text-gray-800 text-base">제5조 (저작권 라이선스)</h4>
+          <p>
+            본 웹사이트의 모든 저작물은 <strong>크리에이티브 커먼즈 저작자표시-비영리-동일조건변경허락 2.0 대한민국(CC BY-NC-SA 2.0 KR)</strong> 라이선스에 따라 이용할 수 있습니다. 상업적 목적의 이용은 엄격히 금지되며, 상세 기준은 콘텐츠 가이드라인을 따릅니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 개인정보처리방침 팝업 (z-index 110) -->
+  <div id="modal-privacy" class="fixed inset-0 z-[110] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
+        <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+          <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+          개인정보 처리방침 (Privacy Policy)
+        </h2>
+        <button id="close-privacy" class="text-gray-400 hover:text-gray-700 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-gray-600 space-y-7 leading-relaxed word-keep">
+        <p class="text-[0.95rem] text-gray-700 pb-2 border-b border-gray-100">
+          SimiliBio는 사용자의 개인정보를 <strong>최소한으로 수집</strong>하며, 특히 전문가 네트워크 유지를 위한 소속 인증 과정에서 <strong>가장 엄격한 데이터 보호 및 서버 미저장 원칙</strong>을 준수하고 있습니다.
+        </p>
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-gray-800 text-base">제1조 (수집 범위의 차등화 및 수집 항목)</h4>
+          <p>회사는 서비스 이용 수준에 따라 개인정보 수집 범위를 엄격하게 차등화하고 있습니다.</p>
+          <ul class="list-disc list-inside mt-2 text-gray-600 ml-1 space-y-1">
+            <li><strong class="text-gray-800">단순 열람자 (비회원):</strong> 정보 열람 시 <span class="text-brand font-bold">어떠한 개인정보도 수집하지 않습니다.</span></li>
+            <li><strong class="text-gray-800">회원가입 및 소속 인증 회원:</strong> 아이디, 비밀번호, 이메일, 소속 기관명</li>
+            <li><strong class="text-gray-800">인증 절차 진행 시:</strong> 소속 인증용 증빙 서류 (재직증명서, 학생증 등)</li>
+            <li><strong class="text-gray-800">문의하기 이용 시:</strong> 회신용 이메일 주소</li>
+          </ul>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-gray-800 text-base">제2조 (개인정보의 수집 및 이용 목적)</h4>
+          <p>수집한 최소한의 개인정보는 다음의 목적을 위해서만 활용됩니다.</p>
+          <ul class="list-disc list-inside mt-2 text-gray-500 ml-1">
+            <li>회원 관리 및 게시글/댓글 작성 권한 부여</li>
+            <li>부정 이용 및 허위 가입 제재를 통한 플랫폼 신뢰성 확보</li>
+            <li>고객 상담 처리 및 공지사항 전달</li>
+          </ul>
+        </div>
+        <div class="bg-[#F0F7F7] border border-[#CDE5E5] p-5 rounded-xl shadow-sm">
+          <h4 class="font-bold text-brand text-base mb-2 flex items-center gap-1.5">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            제3조 (인증 서류 절대 파기 원칙)
+          </h4>
+          <p class="text-[#084d4f] mt-1 leading-relaxed">
+            소속 확인을 위해 고객님께서 제출하신 <strong>'증빙 서류(재직증명서, 학생증 사본 등)'는 운영진의 육안 확인이 완료되는 즉시 복구 불가능한 방법으로 영구 파기</strong>됩니다. 회사는 어떠한 경우에도 고객님의 증빙 서류 원본 및 사본을 당사의 서버나 데이터베이스(DB)에 저장하거나 별도 보관하지 않음을 강력히 약속드립니다. 안심하고 인증 절차를 진행해 주십시오.
+          </p>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-gray-800 text-base">제4조 (개인정보의 보유 및 파기)</h4>
+          <p>회사는 회원이 회원 탈퇴를 요청하거나 개인정보 수집 및 이용 목적이 달성된 경우, <strong>서버에 저장된 모든 개인정보를 지체 없이 파기</strong>합니다. 단, 관계 법령(전자상거래법, 통신비밀보호법 등)의 규정에 의하여 일정 기간 보존할 의무가 있는 예외적인 경우에만 법령에서 정한 기간 동안 분리하여 안전하게 보관합니다.</p>
+        </div>
+        <div class="space-y-1.5">
+          <h4 class="font-bold text-gray-800 text-base">제5조 (보안 및 데이터 보호 대책)</h4>
+          <p>회사는 이용자의 데이터 보호를 최우선 가치로 여기며, 다음과 같은 기술적 조치를 적용합니다.</p>
+          <ul class="list-disc list-inside mt-2 text-gray-500 ml-1">
+            <li>이용자의 비밀번호는 관리자조차 복호화할 수 없는 일방향 암호화 처리되어 저장됩니다.</li>
+            <li>해킹이나 사이버 공격에 대비하여 최신 보안 시스템을 구축하고 엄격한 접근 통제를 실시합니다.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. 콘텐츠 가이드라인 팝업 (z-index 110) -->
+  <div id="modal-guide" class="fixed inset-0 z-[110] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
+        <h2 class="text-lg font-bold text-brand flex items-center gap-2">📖 콘텐츠 이용 가이드라인</h2>
+        <button id="close-guide" class="text-gray-400 hover:text-gray-700 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-gray-600">
+        <ul class="space-y-5 list-none">
+          <li class="flex gap-3 items-start">
+            <span class="text-brand font-bold text-lg mt-0.5">1.</span>
+            <div>
+              <strong class="text-gray-800 text-base">출처 표기 의무 (Attribution)</strong><br/>
+              <span class="leading-relaxed inline-block mt-1 text-gray-500">본 사이트의 콘텐츠를 외부로 공유하거나 인용할 경우, 반드시 출처를 'SimiliBio'로 명시해야 하며, 해당 정보로 연결되는 원문 링크(URL)를 필수적으로 포함해야 합니다.</span>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-brand font-bold text-lg mt-0.5">2.</span>
+            <div>
+              <strong class="text-gray-800 text-base">동일 라이선스 적용 (ShareAlike)</strong><br/>
+              <span class="leading-relaxed inline-block mt-1 text-gray-500">SimiliBio의 저작물을 바탕으로 내용을 수정, 변형하거나 2차적 저작물을 작성하여 배포할 경우, 반드시 원본과 동일한 CC 라이선스(CC BY-NC-SA 2.0 KR) 의무를 적용해야 합니다.</span>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-brand font-bold text-lg mt-0.5">3.</span>
+            <div>
+              <strong class="text-gray-800 text-base">상업적 이용 금지 및 별도 문의 (NonCommercial)</strong><br/>
+              <span class="leading-relaxed inline-block mt-1 text-gray-500">영리적 목적(광고 부착 창출, 유료 서비스 내 활용 등)으로 본 사이트의 정보를 사용하는 것은 전면 금지됩니다. 상업적 이용이 불가피하게 필요한 경우, 사전에 당사 운영팀으로 별도 문의 및 승인을 받아야 합니다.</span>
+            </div>
+          </li>
+          <li class="flex gap-3 items-start">
+            <span class="text-brand font-bold text-lg mt-0.5">4.</span>
+            <div>
+              <strong class="text-gray-800 text-base">저작권 침해 신고 절차</strong><br/>
+              <span class="leading-relaxed inline-block mt-1 text-gray-500">SimiliBio의 저작권을 침해하는 사례를 발견하시거나, 사이트 내 본인의 저작권이 무단으로 사용되었다고 판단되실 경우, 즉각 고객센터로 관련 링크와 함께 신고해 주시면 신속히 확인하여 조치하겠습니다.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. 문의하기 팝업 (z-index 110) -->
+  <div id="modal-contact" class="fixed inset-0 z-[110] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-2xl bg-white rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+      <div class="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50">
+        <h2 class="text-lg font-bold text-gray-800 flex items-center gap-2">
+          <svg class="w-5 h-5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+          고객센터 및 문의 안내
+        </h2>
+        <button id="close-contact" class="text-gray-400 hover:text-gray-700 transition">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto text-sm text-gray-600 space-y-6 leading-relaxed word-keep">
+        <p class="text-[0.95rem] text-gray-700">
+          SimiliBio를 이용해 주셔서 진심으로 감사드립니다.<br/>
+          저희 플랫폼은 신뢰할 수 있는 전문 데이터 생태계를 위해 <strong class="text-brand">기업 및 대학 소속 인증을 완료한 전문가</strong>분들께만 게시글 작성 권한을 부여하고 있습니다. 이와 관련하여 궁금하신 점이나 도움이 필요하시면 언제든 아래 이메일로 문의해 주세요.
+        </p>
+
+        <div class="bg-gray-50 border border-gray-200 rounded-xl p-5">
+          <h4 class="font-bold text-gray-800 text-base mb-3 border-b border-gray-200 pb-2">📋 유형별 문의 안내</h4>
+          <ul class="space-y-4">
+            <li class="flex gap-3">
+              <span class="bg-white border border-gray-200 text-gray-600 text-xs font-bold px-2.5 py-1 rounded-md h-fit whitespace-nowrap">가입/인증 문의</span>
+              <p class="text-gray-600 mt-0.5">진행 중인 인증 서류의 반려 사유 확인, 원활하지 않은 시스템 인증에 대한 <strong>수동 인증 요청</strong>을 도와드립니다.</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-white border border-gray-200 text-gray-600 text-xs font-bold px-2.5 py-1 rounded-md h-fit whitespace-nowrap">기업/단체 문의</span>
+              <p class="text-gray-600 mt-0.5">특정 연구 기관이나 대학, 기업 차원의 협업 및 프로젝트 인원 <strong>대량 계정 생성/인증</strong>과 관련된 안내를 받으실 수 있습니다.</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-white border border-gray-200 text-gray-600 text-xs font-bold px-2.5 py-1 rounded-md h-fit whitespace-nowrap">콘텐츠 제보</span>
+              <p class="text-gray-600 mt-0.5">잘못 기재된 의약품 정보의 수정 요청, 새로운 연구 및 임상 데이터 제보를 접수합니다.</p>
+            </li>
+            <li class="flex gap-3">
+              <span class="bg-white border border-gray-200 text-gray-600 text-xs font-bold px-2.5 py-1 rounded-md h-fit whitespace-nowrap">기타 문의</span>
+              <p class="text-gray-600 mt-0.5">사이트 이용 중 발생한 기술적 장애 신고 및 비즈니스 제휴 제안 등을 환영합니다.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-[#F0F7F7] border border-[#CDE5E5] p-5 rounded-xl flex gap-4 items-start">
+          <div class="text-2xl mt-1 text-brand">🛡️</div>
+          <div>
+            <h4 class="font-bold text-brand text-base mb-1">고객님의 소중한 정보, 안심하고 문의해 주세요!</h4>
+            <p class="text-[#084d4f] text-[0.85rem]">
+              가입 및 인증 문의를 위해 고객센터로 발송해 주신 개인의 소속 증빙 서류(재직증명서, 학생증 사본 등)는 <strong>상담 및 확인 절차가 종료되는 즉시 안전하게 영구 파기</strong>됩니다. 어떠한 경우에도 당사 시스템이나 이메일 서버에 무단으로 보관되지 않으므로 안심하셔도 좋습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="mailto:support@similibio.com" class="inline-flex items-center gap-2 bg-brand text-white font-bold px-8 py-3.5 rounded-xl hover:bg-brand-dark hover:-translate-y-0.5 hover:shadow-lg transition-all">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            이메일로 1:1 문의하기
+          </a>
+          <p class="text-xs text-gray-400 mt-3">support@similibio.com (평일 09:00 - 18:00)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 5. 로그인 팝업 (검증 및 잠금 로직 포함) (z-index 100) -->
+  <!-- ========================================== -->
+  <div id="modal-login" class="fixed inset-0 z-[100] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-white rounded-[2rem] shadow-2xl flex flex-col overflow-hidden">
+      <div class="flex justify-between items-center px-8 pt-8 pb-4">
+        <div class="text-2xl font-bold text-brand flex items-center gap-1.5"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.5 20.5l-6-6a4.95 4.95 0 1 1 7-7l6 6a4.95 4.95 0 1 1-7 7Z"></path><line x1="8.5" y1="8.5" x2="15.5" y2="15.5"></line></svg>SimiliBio</div>
+        <button id="close-login" class="text-gray-400 hover:text-gray-700 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+      </div>
+      <div class="px-8 pb-8">
+        <div class="mb-8"><h3 class="text-xl font-bold text-gray-800 mb-2">환영합니다!</h3><p class="text-sm text-gray-500 leading-relaxed word-keep">단순 열람은 누구에게나 자유롭습니다.<br/>전문가들과 깊이 있는 인사이트를 공유하시려면 로그인을 진행해 주세요.</p></div>
+        
+        <form class="space-y-4">
+          <div>
+            <input type="email" id="login-email" placeholder="아이디 (이메일 주소)" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+          </div>
+          <div>
+            <input type="password" id="login-password" placeholder="비밀번호" class="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+          </div>
+          
+          <p id="login-error-msg" class="hidden text-red-500 text-xs font-bold mt-1 px-1 word-keep"></p>
+
+          <div class="flex justify-between items-center text-[0.8rem] text-gray-500 pt-1 pb-4">
+            <label class="flex items-center gap-2 cursor-pointer hover:text-gray-700 transition">
+              <input type="checkbox" class="w-4 h-4 rounded border-gray-300 text-brand focus:ring-brand accent-brand"> 로그인 상태 유지
+            </label>
+            <div class="flex gap-3"><a href="#" class="hover:text-brand transition">아이디 찾기</a><span class="text-gray-300">|</span><a href="#" class="hover:text-brand transition">비밀번호 찾기</a></div>
+          </div>
+          <button type="button" id="btn-submit-login" class="w-full bg-brand text-white font-bold py-4 rounded-xl hover:bg-brand-dark transition-all disabled:opacity-50 disabled:cursor-not-allowed">로그인</button>
+        </form>
+      </div>
+      <div class="bg-gray-50 px-8 py-6 border-t border-gray-100 flex flex-col items-center text-center">
+        <p class="text-sm text-gray-600 font-medium mb-3">아직 SimiliBio의 회원이 아니신가요?</p>
+        <button id="btn-goto-signup" class="w-full bg-white border-2 border-brand text-brand font-bold py-3.5 rounded-xl hover:bg-brand hover:text-white transition-colors mb-5 shadow-sm">회원가입 하기</button>
+        <p class="text-xs text-gray-400 leading-relaxed word-keep flex items-start gap-1.5 text-left">
+          <svg class="w-4 h-4 flex-shrink-0 mt-0.5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          안내: 게시글 및 댓글 작성 권한은 가입 후 소속 인증(기업, 대학 등)이 완료된 회원에게만 안전하게 부여됩니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- 6. 2단계 회원가입 팝업 (검증 로직 포함) (z-index 100) -->
+  <!-- ========================================== -->
+  <div id="modal-signup" class="fixed inset-0 z-[100] hidden">
+    <div class="modal-bg absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-lg bg-white rounded-[2rem] shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+      
+      <div class="px-8 pt-8 pb-5 border-b border-gray-100">
+        <div class="flex justify-between items-center mb-6">
+          <h2 class="text-2xl font-bold text-gray-800">회원가입</h2>
+          <button id="close-signup" class="text-gray-400 hover:text-gray-700 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg></button>
+        </div>
+        <div class="flex items-center text-sm font-bold relative">
+          <div id="stepper-1" class="flex flex-col items-center relative z-10 w-1/2 text-brand">
+            <div class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center mb-2 shadow-md transition-colors">1</div><span>기본 정보</span>
+          </div>
+          <div class="absolute top-4 left-1/4 right-1/4 h-1 bg-gray-200 rounded-full -z-10">
+            <div id="stepper-line" class="h-full bg-brand w-0 transition-all duration-300 rounded-full"></div>
+          </div>
+          <div id="stepper-2" class="flex flex-col items-center relative z-10 w-1/2 text-gray-400 transition-colors">
+            <div id="stepper-circle-2" class="w-8 h-8 rounded-full bg-gray-200 text-gray-500 flex items-center justify-center mb-2 transition-colors">2</div><span>전문가 인증</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="overflow-y-auto px-8 py-6">
+        
+        <!-- [Step 1] 기본 정보 폼 -->
+        <div id="signup-step-1" class="space-y-4 animate-fade-in pb-4">
+          <p class="text-gray-500 text-sm mb-4 word-keep">단순 열람을 위한 기본 계정을 생성합니다. 입력해 주신 정보는 안전하게 보관됩니다.</p>
+          
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1.5">이메일 (아이디) <span class="text-red-500">*</span></label>
+            <div class="flex gap-2">
+              <input type="email" id="signup-email" placeholder="이메일 주소 입력" class="flex-grow px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+              <button type="button" id="btn-check-email" class="bg-white border border-brand text-brand font-bold px-4 rounded-xl text-sm hover:bg-brand hover:text-white transition whitespace-nowrap">중복 확인</button>
+            </div>
+            <p id="email-error-msg" class="text-xs font-bold mt-1.5 hidden"></p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1.5">비밀번호 <span class="text-red-500">*</span></label>
+            <input type="password" id="signup-pw" placeholder="영문, 숫자, 특수문자 조합 8자 이상" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition mb-1">
+            <p id="pw-error-msg" class="text-xs font-bold text-gray-400 mb-3 px-1">영문, 숫자, 특수문자를 포함하여 8자 이상 입력해 주세요.</p>
+            
+            <input type="password" id="signup-pw-confirm" placeholder="비밀번호 다시 입력" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+            <p id="pw-confirm-msg" class="text-xs font-bold mt-1.5 hidden"></p>
+          </div>
+
+          <div>
+            <label class="block text-sm font-bold text-gray-700 mb-1.5">이름 (실명) <span class="text-red-500">*</span></label>
+            <input type="text" id="signup-name" placeholder="이름 입력 (예: 홍길동)" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+          </div>
+
+          <div class="pt-2">
+            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl border border-gray-200 hover:bg-gray-100 transition">
+              <label class="flex items-center gap-3 cursor-pointer w-full">
+                <input type="checkbox" id="signup-agree" class="w-5 h-5 rounded border-gray-300 text-brand focus:ring-brand accent-brand">
+                <span class="text-sm font-bold text-gray-700">이용약관 및 개인정보처리 (필수)</span>
+              </label>
+              <!-- 💡 약관 바로보기 버튼 -->
+              <div class="flex gap-1.5 shrink-0 ml-2">
+                <button id="btn-view-terms-inline" type="button" class="px-2 py-1 text-[0.7rem] font-bold text-gray-500 bg-white border border-gray-200 rounded hover:text-brand hover:border-brand transition">약관 보기</button>
+                <button id="btn-view-privacy-inline" type="button" class="px-2 py-1 text-[0.7rem] font-bold text-gray-500 bg-white border border-gray-200 rounded hover:text-brand hover:border-brand transition">개인정보</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4">
+            <button id="btn-next-step" type="button" class="w-full bg-brand text-white font-bold py-4 rounded-xl hover:bg-brand-dark hover:-translate-y-0.5 shadow-md transition-all">다음 단계로 (전문가 인증)</button>
+          </div>
+        </div>
+
+        <!--[Step 2] 전문가 인증 폼 -->
+        <div id="signup-step-2" class="hidden space-y-5 animate-fade-in pb-4">
+          <div class="mb-4">
+            <p class="text-brand font-bold text-sm mb-1">게시글 작성 권한 부여 (선택)</p>
+            <p class="text-gray-500 text-sm leading-relaxed">게시글 및 댓글 작성은 소속이 인증된 전문가만 가능합니다. 당장 서류가 없다면 가입 후 나중에 인증하실 수 있습니다.</p>
+          </div>
+          
+          <div id="step2-validation-container" class="space-y-4 rounded-xl transition-all">
+            <div>
+              <label class="block text-sm font-bold text-gray-700 mb-2">소속 분류</label>
+              <div class="grid grid-cols-2 gap-2">
+                <label class="flex items-center justify-center gap-2 border border-gray-200 bg-white py-2.5 rounded-lg cursor-pointer hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-[#F0F7F7] transition">
+                  <input type="radio" name="affiliation" class="hidden" checked>
+                  <span class="text-sm font-bold text-gray-700">기업/제약사</span>
+                </label>
+                <label class="flex items-center justify-center gap-2 border border-gray-200 bg-white py-2.5 rounded-lg cursor-pointer hover:border-brand has-[:checked]:border-brand has-[:checked]:bg-[#F0F7F7] transition">
+                  <input type="radio" name="affiliation" class="hidden">
+                  <span class="text-sm font-bold text-gray-700">대학/연구소</span>
+                </label>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1.5">기관명 <span class="text-red-500">*</span></label>
+                <input type="text" id="signup-org" placeholder="예: 한국제약" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+              </div>
+              <div>
+                <label class="block text-sm font-bold text-gray-700 mb-1.5">부서 및 전공</label>
+                <input type="text" id="signup-dept" placeholder="예: 임상연구팀" class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-sm focus:bg-white focus:border-brand focus:outline-none transition">
+              </div>
+            </div>
+
+            <div class="pt-1">
+              <label class="block text-sm font-bold text-gray-700 mb-1.5">증빙 서류 <span class="text-red-500">*</span></label>
+              <label id="upload-box" class="flex flex-col items-center justify-center w-full h-32 border-2 border-dashed border-[#006266]/40 rounded-xl bg-[#F0F7F7] hover:bg-[#E4F1F1] cursor-pointer transition-colors group">
+                <div class="text-3xl mb-1 text-brand group-hover:scale-110 transition-transform">🔒</div>
+                <p class="text-sm font-bold text-brand">여기를 클릭하여 서류 업로드</p>
+                <p class="text-xs text-[#084d4f]/70 mt-1">JPG, PNG, PDF 지원 (최대 5MB)</p>
+                <input type="file" id="signup-file" class="hidden" accept=".jpg,.jpeg,.png,.pdf" />
+              </label>
+              <div class="flex items-start gap-1.5 mt-3 bg-gray-50 p-3 rounded-lg border border-gray-100">
+                <span class="text-green-600 font-bold mt-0.5 text-sm">✅</span>
+                <p class="text-xs text-gray-600 leading-relaxed word-keep">
+                  <strong>안심하세요.</strong> 제출 서류는 소속 확인 즉시 <strong>영구 파기</strong>되며 서버에 저장되지 않습니다.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <p id="step2-error-msg" class="hidden text-red-500 text-xs font-bold text-center word-keep"></p>
+
+          <div class="pt-4 flex flex-col gap-2">
+            <button type="button" id="btn-submit-auth" class="w-full bg-brand text-white font-bold py-4 rounded-xl hover:bg-brand-dark hover:-translate-y-0.5 shadow-md transition-all">인증 요청 및 가입 완료</button>
+            <button type="button" id="btn-skip-auth" class="w-full text-gray-400 font-semibold py-2 text-sm hover:text-gray-600 transition underline underline-offset-4">서류가 없습니다. 다음에 인증할게요. (기본 가입)</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================== -->
+  <!-- ⚙️ Javascript Logic (로딩 수정 + 대화형 공정 대시보드 연동) -->
+  <!-- ============================== -->
+  <script>
+    // 1.[수정됨] 페이지 로딩 멈춤 방지용 안전 장치 추가 (DOMContentLoaded 이벤트 사용)
+    document.addEventListener('DOMContentLoaded', () => {
+      const loader = document.getElementById('page-loader');
+      if(loader) {
+        // 짧은 지연 후 페이드아웃 실행 (사용자에게 부드러운 전환 제공)
+        setTimeout(() => {
+          loader.classList.add('fade-out');
+          setTimeout(() => loader.style.display = 'none', 600);
+        }, 400); 
+      }
+    });
+    // 최악의 경우를 대비한 3초 강제 종료 폴백
+    setTimeout(() => {
+      const loader = document.getElementById('page-loader');
+      if (loader && loader.style.display !== 'none') { loader.style.display = 'none'; }
+    }, 3000);
+
+    // 2. 모바일 메뉴 & 모달 제어
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if(mobileBtn && mobileMenu) mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
+
+    function toggleAccordion(contentId, button) {
+      const content = document.getElementById(contentId);
+      const icon = button.querySelector('svg');
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden'); icon.classList.add('rotate-180'); button.classList.add('text-brand');
+      } else {
+        content.classList.add('hidden'); icon.classList.remove('rotate-180'); button.classList.remove('text-brand');
+      }
+    }
+
+    function setupModal(openBtnIds, closeId, modalId) {
+      const closeBtn = document.getElementById(closeId);
+      const modal = document.getElementById(modalId);
+      if(modal && closeBtn) {
+        const modalBgs = modal.querySelectorAll('.modal-bg');
+        openBtnIds.forEach(id => {
+          const btn = document.getElementById(id);
+          if(btn) btn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.remove('hidden'); document.body.style.overflow = 'hidden'; });
+        });
+        const closeModal = () => {
+          modal.classList.add('hidden');
+          const openModals = document.querySelectorAll('.fixed.inset-0:not(.hidden)');
+          if(openModals.length === 0) document.body.style.overflow = 'auto'; 
+        };
+        closeBtn.addEventListener('click', closeModal);
+        modalBgs.forEach(bg => bg.addEventListener('click', closeModal));
+      }
+    }
+    setupModal(['btn-login', 'btn-login-mobile'], 'close-login', 'modal-login');
+    setupModal(['btn-signup', 'btn-signup-mobile', 'btn-goto-signup'], 'close-signup', 'modal-signup');
+    setupModal(['btn-terms'], 'close-terms', 'modal-terms');
+    setupModal(['btn-privacy'], 'close-privacy', 'modal-privacy');
+    setupModal(['btn-guide'], 'close-guide', 'modal-guide');
+    setupModal(['btn-contact'], 'close-contact', 'modal-contact');
+
+    const btnGotoSignup = document.getElementById('btn-goto-signup');
+    if(btnGotoSignup) btnGotoSignup.addEventListener('click', () => { document.getElementById('modal-login').classList.add('hidden'); });
+
+    // 로그인/회원가입 유효성 로직 (기능 유지)
+    const btnSubmitLogin = document.getElementById('btn-submit-login');
+    const loginEmail = document.getElementById('login-email');
+    const loginPw = document.getElementById('login-password');
+    let loginFailCount = 0;
+    let isLoginLocked = false;
+
+    if(btnSubmitLogin) {
+        btnSubmitLogin.addEventListener('click', () => {
+            if(isLoginLocked) return;
+            const loginErrorMsg = document.getElementById('login-error-msg');
+            loginFailCount++;
+            
+            if(loginFailCount >= 5) {
+                isLoginLocked = true;
+                btnSubmitLogin.disabled = true;
+                loginEmail.classList.add('border-red-500');
+                loginPw.classList.add('border-red-500');
+                let timeLeft = 60;
+                loginErrorMsg.classList.add('text-red-600');
+                
+                const timer = setInterval(() => {
+                  if(timeLeft <= 0) {
+                    clearInterval(timer);
+                    isLoginLocked = false;
+                    btnSubmitLogin.disabled = false;
+                    loginFailCount = 0;
+                    loginErrorMsg.textContent = '잠금이 해제되었습니다. 다시 시도해 주세요.';
+                  } else {
+                    loginErrorMsg.textContent = `보안을 위해 5회 이상 로그인이 제한되었습니다. 1분 후 다시 시도해 주세요. (남은 시간: 00:${timeLeft.toString().padStart(2, '0')})`;
+                    timeLeft--;
+                  }
+                }, 1000);
+            } else {
+                loginErrorMsg.textContent = '아이디 또는 비밀번호가 일치하지 않습니다. 다시 한번 확인해 주세요.';
+                loginErrorMsg.classList.remove('hidden');
+                loginEmail.classList.add('border-red-500');
+                loginPw.classList.add('border-red-500');
+            }
+        });
+    }
+
+    const sEmail = document.getElementById('signup-email');
+    const btnNextStep = document.getElementById('btn-next-step');
+    if(document.getElementById('btn-check-email')) {
+        document.getElementById('btn-check-email').addEventListener('click', () => {
+            if(sEmail.value) {
+                document.getElementById('email-error-msg').textContent = '✅ 사용 가능한 이메일입니다.';
+                document.getElementById('email-error-msg').className = 'text-xs font-bold mt-1.5 text-green-600';
+                document.getElementById('email-error-msg').classList.remove('hidden');
+            }
+        });
+    }
+
+    if(btnNextStep) {
+        btnNextStep.addEventListener('click', () => {
+            document.getElementById('signup-step-1').classList.add('hidden');
+            document.getElementById('signup-step-2').classList.remove('hidden');
+            document.getElementById('stepper-line').style.width = '100%';
+            setTimeout(() => {
+                document.getElementById('stepper-2').classList.replace('text-gray-400', 'text-brand');
+                document.getElementById('stepper-circle-2').classList.remove('bg-gray-200', 'text-gray-500');
+                document.getElementById('stepper-circle-2').classList.add('bg-brand', 'text-white', 'shadow-md');
+            }, 150);
+        });
+    }
+
+    if(document.getElementById('signup-file')) {
+        document.getElementById('signup-file').addEventListener('change', (e) => {
+            if(e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                document.getElementById('upload-box').innerHTML = `<div class="text-3xl mb-1 text-brand">📄</div><p class="text-sm font-bold text-brand">${fileName}</p><p class="text-xs text-[#084d4f]/70 mt-1">업로드 완료</p>`;
+                document.getElementById('upload-box').classList.add('border-brand', 'bg-[#E4F1F1]');
+            }
+        });
+    }
+
+    /* =========================================================
+       🧬 [핵심 기능] 대화형 바이오의약품 8단계 제조 공정 데이터 
+       ========================================================= */
+
+    // 공정 단계 매핑 정보 (상단 Indicator 용)
+    const processSteps =[
+      { id: 1, icon: '🧫', name: 'Cell Bank', eq: 'Cryo-tank (Liquid N2)' },
+      { id: 2, icon: '📈', name: 'Seed Train', eq: 'Wave Bioreactor (Up to 500L)' },
+      { id: 3, icon: '⚗️', name: 'Upstream', eq: '15,000L SUS Bioreactor' },
+      { id: 4, icon: '🌪️', name: 'Harvest', eq: 'Disk Stack Centrifuge' },
+      { id: 5, icon: '🧲', name: 'Capture', eq: 'Chromatography Skid (Protein A)' },
+      { id: 6, icon: '💎', name: 'Polishing', eq: 'AEX/CEX & 20nm Viral Filter' },
+      { id: 7, icon: '💉', name: 'Fill/Finish', eq: 'Lyophilizer & Isolator' },
+      { id: 8, icon: '🛡️', name: 'QA/PAT', eq: 'Raman Spec & LIMS/MES' }
+    ];
+
+    // 8개 공정 상세 슬라이드 데이터 (하이브리드 레이아웃)
+    const slideData =[
+      {
+        title: "세포주 개발 및 Cell Bank",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">항체 의약품 생산을 위한 안정적인 발현 시스템 구축 단계입니다. 재조합 단백질 발현율이 우수한 CHO 세포주를 선별하고, 유전적 변이를 막기 위해 마스터 세포은행(MCB)과 제조용 세포은행(WCB)을 확립합니다.</p>
+          </div>
+          
+          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
+            <div class="text-center"><span class="block font-bold text-brand">Clone</span>단일 세포 스크리닝</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">MCB</span>마스터 세포은행</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">WCB</span>제조용 세포은행</div>
+          </div>
+
+          <!-- 이미지 플레이스홀더 -->
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: CHO Cell Line Microscopic Image</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Cell Viability (생존율)</p>
+              <p class="text-xl font-bold text-[#084d4f]">> 99.0 %</p>
+            </div>
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Monoclonality</p>
+              <p class="text-xl font-bold text-[#084d4f]">99.9 %</p>
+            </div>
+            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
+              <p class="text-xs text-gray-500 font-bold">Generation Time</p>
+              <p class="text-sm font-bold text-gray-800">24.0 h</p>
+            </div>
+          </div>
+          <div class="mt-auto flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#CHO_Cell</span>
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#MCB_WCB</span>
+          </div>
+        `
+      },
+      {
+        title: "확장 배양 (Seed Train / Inoculum)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">WCB에서 해동된 세포를 플라스크 배양부터 시작하여, 본 배양 반응기의 부피에 맞추어 단계적으로 생물반응기(N-n to N-1) 규모를 키우는 Scale-up 공정입니다.</p>
+          </div>
+          
+          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
+            <div class="text-center"><span class="block font-bold text-brand">Thawing</span>WCB 해동</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Flask</span>초기 배양</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Wave</span>확장 배양기</div>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Seed Bioreactor Scaling Flow</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">VCD (생세포농도)</p>
+              <p class="text-lg font-bold text-[#084d4f]">10 × 10⁶ cells/mL</p>
+            </div>
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Doubling Time</p>
+              <p class="text-lg font-bold text-[#084d4f]">22.0 h</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
+             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500"><span>DO (용존산소량) Target: 50%</span> <span>Current: 51%</span></div>
+             <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-400 h-2 rounded-full" style="width: 51%"></div></div>
+          </div>
+
+          <div class="mt-auto flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Scale_Up</span>
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Doubling_Time</span>
+          </div>
+        `
+      },
+      {
+        title: "본 배양 (Upstream / Main Culture)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">대규모 생산용 생물반응기(Production Bioreactor)에서 타겟 항체를 대량 생산합니다. 중요공정변수(CPP)를 정밀 제어하며 유가배양(Fed-batch) 방식으로 영양분을 지속 공급합니다.</p>
+          </div>
+          
+          <div class="mb-6">
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li><span class="text-brand font-bold mr-1">CPP 제어:</span> pH, 온도, 교반을 통한 <span class="bg-brand-light text-brand px-1 rounded font-bold">kLa(산소전달계수)</span> 최적화.</li>
+              <li><span class="text-brand font-bold mr-1">CQA 관리:</span> 독성 대사산물(Lactate) 축적 억제로 <span class="bg-brand-light text-brand px-1 rounded font-bold">Viability</span> 및 수율 극대화.</li>
+            </ul>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: 15,000L Bioreactor Impeller & Sparger</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Titre (항체 수율)</p>
+              <p class="text-xl font-bold text-[#084d4f]">5.2 g/L</p>
+            </div>
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Viability (생존율)</p>
+              <p class="text-xl font-bold text-[#084d4f]">98.5 %</p>
+            </div>
+            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
+              <p class="text-xs text-gray-500 font-bold">pH Level</p>
+              <p class="text-sm font-bold text-gray-800">7.10 ± 0.05</p>
+            </div>
+            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
+              <p class="text-xs text-gray-500 font-bold">kLa (산소전달계수)</p>
+              <p class="text-sm font-bold text-gray-800">15.0 h⁻¹</p>
+            </div>
+          </div>
+          
+          <!-- 미니 차트 (성장 곡선 시뮬레이션) -->
+          <div class="flex items-end gap-1 h-12 mt-2 px-1">
+            <div class="w-1/6 bg-brand/20 h-1/4 rounded-t-sm"></div>
+            <div class="w-1/6 bg-brand/40 h-2/4 rounded-t-sm"></div>
+            <div class="w-1/6 bg-brand/60 h-3/4 rounded-t-sm"></div>
+            <div class="w-1/6 bg-brand/80 h-full rounded-t-sm"></div>
+            <div class="w-1/6 bg-brand h-[90%] rounded-t-sm"></div>
+            <div class="w-1/6 bg-brand/80 h-[80%] rounded-t-sm"></div>
+          </div>
+        `
+      },
+      {
+        title: "수확 및 회수 (Harvest)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">배양이 종료된 후, 원심분리 및 심층 여과(Depth Filtration)를 통해 세포와 잔해(Cell debris)를 제거하고 항체가 포함된 상등액만을 맑게 회수합니다.</p>
+          </div>
+          
+          <div class="mb-6">
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li><span class="text-brand font-bold mr-1">1. 원심분리:</span> 전단응력(Shear stress)으로 인한 <span class="bg-brand-light text-brand px-1 rounded font-bold">Cell Lysis(세포 파쇄)</span> 최소화.</li>
+              <li><span class="text-brand font-bold mr-1">2. 심층 여과:</span> 다공성 필터로 미세 입자 흡착 및 후속 컬럼 보호.</li>
+            </ul>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Centrifuge Separation Interface</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Step Yield (수율)</p>
+              <p class="text-xl font-bold text-[#084d4f]">95.0 %</p>
+            </div>
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Cell Lysis (파쇄율)</p>
+              <p class="text-xl font-bold text-[#084d4f]">0.8 %</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
+             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500">
+               <span>Turbidity (탁도) Limit: < 10 NTU</span> 
+               <span id="current-turbidity">Current: 8.5 NTU</span>
+             </div>
+             <div class="w-full bg-gray-200 rounded-full h-2">
+               <div id="turbidity-bar" class="bg-green-400 h-2 rounded-full transition-all duration-500" style="width: 85%"></div>
+             </div>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-[0.65rem] text-gray-400 font-bold mb-2 uppercase tracking-wider">Harvest Efficiency Trend</p>
+            <div class="flex items-end gap-1 h-12 px-1" id="mini-chart">
+              <div class="bar w-1/6 bg-brand/20 h-[40%] transition-all duration-700 rounded-t-sm"></div>
+              <div class="bar w-1/6 bg-brand/30 h-[60%] transition-all duration-700 rounded-t-sm"></div>
+              <div class="bar w-1/6 bg-brand/50 h-[85%] transition-all duration-700 rounded-t-sm"></div>
+              <div class="bar w-1/6 bg-brand/70 h-[95%] transition-all duration-700 rounded-t-sm"></div>
+              <div class="bar w-1/6 bg-brand h-[90%] transition-all duration-700 rounded-t-sm"></div>
+              <div class="bar w-1/6 bg-brand/80 h-[80%] transition-all duration-700 rounded-t-sm"></div>
+            </div>
+          </div>
+
+          <div class="mt-auto flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Centrifugation</span>
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Depth_Filter</span>
+          </div>
+        `
+      },
+      {
+        title: "친화성 정제 (Capture / Protein A)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">하류 공정(Downstream)의 첫 단계로, 항체의 Fc 영역에 특이적으로 결합하는 Protein A 수지를 이용하여 타겟 항체를 포집(Capture)하고 불순물을 대폭 제거합니다.</p>
+          </div>
+          
+          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
+            <div class="text-center"><span class="block font-bold text-brand">Load</span>배양액 주입</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Wash</span>HCP/DNA 제거</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Elution</span>Low pH 용출</div>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Chromatography Column & Resin</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
+              <p class="text-sm text-brand font-bold mb-1">Purity (초기 순도)</p>
+              <p class="text-xl font-bold text-[#084d4f]">> 99.0 %</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Host Cell Protein</span></p>
+              <p class="text-sm font-bold text-gray-800">< 100 ppm</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Host Cell DNA</span></p>
+              <p class="text-sm font-bold text-gray-800">< 10 ppb</p>
+            </div>
+          </div>
+          
+          <div class="mt-auto pt-2 flex gap-2">
+            <a href="index.html" class="text-xs font-bold text-brand bg-white border border-gray-200 px-3 py-2 rounded-lg hover:border-brand shadow-sm transition">3D 결합 구조 확인</a>
+          </div>
+        `
+      },
+      {
+        title: "중간 및 연마 정제 (Polishing & Viral Clearance)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">이온교환(IEX) 크로마토그래피로 전하(Charge) 차이를 이용해 잔류 불순물과 응집체(Aggregate)를 미세 연마(Polishing)하며, 20nm 필터로 바이러스를 원천 차단합니다.</p>
+          </div>
+          
+          <div class="mb-6">
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li><span class="text-brand font-bold mr-1">이온 교환(IEX):</span> 양이온(CEX) 및 음이온(AEX) 수지 적용.</li>
+              <li><span class="text-brand font-bold mr-1">바이러스 불활화:</span> Low pH 용액 노출로 지질 피막성 사멸.</li>
+              <li><span class="text-brand font-bold mr-1">바이러스 여과:</span> 나노 필터(20nm)로 물리적 제거 완수.</li>
+            </ul>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Nanofiltration Membrane Electron Microscope</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
+              <p class="text-sm text-brand font-bold mb-1">Aggregate (단백질 응집체)</p>
+              <p class="text-xl font-bold text-[#084d4f]">< 0.5 %</p>
+            </div>
+            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
+              <p class="text-xs text-gray-500 font-bold">LRV (Log Reduction Value)</p>
+              <p class="text-sm font-bold text-gray-800">> 15.0 Log</p>
+            </div>
+          </div>
+          
+          <!-- 크로마토그래피 피크 시뮬레이션 -->
+          <div class="flex items-end gap-0.5 h-12 mt-2 px-1">
+            <div class="w-1/12 bg-gray-200 h-1/6 rounded-t-sm"></div>
+            <div class="w-1/12 bg-brand/30 h-2/6 rounded-t-sm"></div>
+            <div class="w-1/12 bg-brand/60 h-4/6 rounded-t-sm"></div>
+            <div class="w-1/12 bg-brand h-full rounded-t-sm relative"><span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[0.6rem] font-bold text-brand">Peak</span></div>
+            <div class="w-1/12 bg-brand/60 h-3/6 rounded-t-sm"></div>
+            <div class="w-1/12 bg-brand/30 h-1/6 rounded-t-sm"></div>
+            <div class="w-1/12 bg-gray-200 h-1/6 rounded-t-sm"></div>
+          </div>
+        `
+      },
+      {
+        title: "제형화 및 완제 (Fill & Finish / UF/DF)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">한외여과/투석여과(UF/DF)를 통해 원료의약품 농도를 맞추고 완충액(Formulation)으로 치환한 뒤, 동결건조 및 무균 충전하여 완제의약품(DP)을 생산합니다.</p>
+          </div>
+          
+          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
+            <div class="text-center"><span class="block font-bold text-brand">UF/DF</span>농축 및 치환</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Filtration</span>최종 무균 여과</div>
+            <span class="text-gray-300">➔</span>
+            <div class="text-center"><span class="block font-bold text-brand">Filling</span>Vial 무균 충전</div>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Lyophilizer & Aseptic Filling Isolator</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Final Concentration</p>
+              <p class="text-lg font-bold text-[#084d4f]">100 mg/mL</p>
+            </div>
+            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
+              <p class="text-xs text-brand font-bold mb-1">Osmolality (삼투압)</p>
+              <p class="text-lg font-bold text-[#084d4f]">300 mOsm/kg</p>
+            </div>
+          </div>
+          
+          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
+             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500"><span>Fill Volume Accuracy (충전 정확도)</span> <span class="text-green-600">± 0.5% (Pass)</span></div>
+             <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div></div>
+          </div>
+
+          <div class="mt-auto flex flex-wrap gap-2">
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#UF_DF</span>
+            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Lyophilization</span>
+          </div>
+        `
+      },
+      {
+        title: "품질 보증 및 PAT (Quality Assurance & PAT)",
+        leftDesc: `
+          <div class="mb-4">
+            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
+            <p class="text-sm text-gray-600 leading-relaxed">설계기반 품질고도화(QbD)와 공정분석기술(PAT)을 활용하여 공정 중 실시간으로 중요 품질을 예측·통제하고, 데이터 완전성(Data Integrity)을 엄격히 준수합니다.</p>
+          </div>
+          
+          <div class="mb-6">
+            <ul class="text-sm text-gray-600 space-y-2">
+              <li><span class="text-brand font-bold mr-1">PAT 적용:</span> Raman 분광기 등을 활용한 <span class="bg-brand-light text-brand px-1 rounded font-bold">Glycosylation(당화)</span> 프로파일 실시간 예측.</li>
+              <li><span class="text-brand font-bold mr-1">Data Integrity:</span> LIMS 및 MES 시스템 연동으로 ALCOA+ 원칙 기반 Audit Trail 완벽 보장.</li>
+            </ul>
+          </div>
+
+          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
+            <span class="text-gray-400 text-sm font-medium">Shutterstock: Real-time PAT Dashboard Screen</span>
+          </div>
+        `,
+        rightDash: `
+          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
+          <div class="grid grid-cols-2 gap-3 mb-4">
+            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
+              <p class="text-sm text-brand font-bold mb-1">CQA Compliance</p>
+              <p class="text-xl font-bold text-[#084d4f]">100 %</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Glycan (G0F)</span></p>
+              <p class="text-sm font-bold text-gray-800">60.5 %</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
+              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Glycan (G1F)</span></p>
+              <p class="text-sm font-bold text-gray-800">25.2 %</p>
+            </div>
+          </div>
+          
+          <div class="mt-auto pt-2 flex gap-2">
+            <a href="ra-qc-archive.html" class="text-xs font-bold text-white bg-brand border border-brand px-4 py-2.5 rounded-lg hover:bg-brand-dark shadow-sm transition">QC 가이드라인 확인 →</a>
+          </div>
+        `
+      }
+    ];
+
+    let currentIdx = 0;
+    const viewport = document.getElementById('detail-content-viewport');
+    const curNum = document.getElementById('current-page-num');
+    const totNum = document.getElementById('total-page-num');
+    const pBtn = document.getElementById('prev-page');
+    const nBtn = document.getElementById('next-page');
+    const dotsContainer = document.getElementById('page-dots-container');
+    const processMapContainer = document.getElementById('process-map-container');
+
+    // 💡 하단 페이지네이션 도트 자동 생성
+    function initDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = ''; 
+      for (let i = 0; i < slideData.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'page-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-gray-200 cursor-pointer';
+        dot.addEventListener('click', () => { currentIdx = i; updateSlide(); });
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+   // 💡 상단 공정 맵 (Indicator) 업데이트
+ function updateProcessMap() {
+      if(!processMapContainer) return;
+      processMapContainer.innerHTML = '';
+      
+      // 1. 컨테이너 설정 (8칸 그리드)
+      processMapContainer.className = "grid grid-cols-8 relative w-full pt-12 pb-8 px-4";
+
+      // 🚀 2. 굵은 화살표 레이어 (수직 위치 미세 조정)
+      const arrowLayer = document.createElement('div');
+      arrowLayer.className = "absolute inset-0 pointer-events-none z-0 px-4"; 
+      
+      arrowLayer.innerHTML = `
+        <div class="relative w-full h-full">
+          <div class="absolute top-[78px] left-0 right-0 h-5 bg-gray-200 rounded-full overflow-hidden">
+            <div class="h-full bg-brand transition-all duration-500" 
+                 style="width: ${(currentIdx / (processSteps.length - 1)) * 100}%"></div>
+          </div>
+
+          <div class="absolute right-[-12px] top-[88px] -translate-y-1/2 w-0 h-0 
+            border-t-[16px] border-t-transparent 
+            border-b-[16px] border-b-transparent 
+            border-l-[25px] border-l-gray-200">
+          </div>
+        </div>
+      `;
+      processMapContainer.appendChild(arrowLayer);
+
+      // 3. 공정 노드(원+글자) 그리기
+      processSteps.forEach((step, idx) => {
+        const isCurrent = idx === currentIdx;
+        const isPast = idx < currentIdx;
+        
+        const bgClass = isCurrent 
+          ? 'bg-brand text-white scale-110 shadow-lg border-4 border-white' 
+          : (isPast ? 'bg-brand-light text-brand border-2 border-brand/20' : 'bg-gray-100 text-gray-400 border-2 border-gray-200');
+        
+        const textClass = isCurrent ? 'text-brand font-extrabold' : (isPast ? 'text-gray-600 font-bold' : 'text-gray-400 font-medium');
+
+        const node = document.createElement('div');
+        // z-10으로 설정하여 화살표보다 위에 오도록 함
+        node.className = 'flex flex-col items-center justify-center relative cursor-pointer group z-10';
+        node.addEventListener('click', () => { currentIdx = idx; updateSlide(); });
+
+        node.innerHTML = `
+          <div class="w-20 h-20 rounded-full flex items-center justify-center text-4xl transition-all duration-300 ${bgClass}">
+            ${step.icon}
+          </div>
+          <span class="mt-5 text-sm md:text-base text-center transition-all duration-300 ${textClass} whitespace-nowrap px-1">
+            ${step.name}
+          </span>
+        `;
+        processMapContainer.appendChild(node);
+      });
+    }
+
+    // 💡 하이브리드 슬라이드 렌더링
+    function updateSlide() {
+      if(!viewport) return;
+      const data = slideData[currentIdx];
+      
+      // 상단 공정 맵 렌더링
+      updateProcessMap();
+
+      // 슬라이드 뷰포트 렌더링 (2컬럼 분리)
+      viewport.innerHTML = `
+        <div class="w-full max-w-4xl mx-auto animate-fade-in flex flex-col h-full mt-4 md:mt-8">
+          
+          <!-- 슬라이드 타이틀 -->
+          <div class="flex items-center gap-3 mb-8 border-b border-gray-100 pb-4">
+            <span class="text-3xl md:text-4xl text-brand">${processSteps[currentIdx].icon}</span>
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">Step ${currentIdx + 1}. ${data.title}</h3>
+          </div>
+          
+          <!-- 하이브리드 대시보드 2단 레이아웃 -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow">
+            <!-- 왼쪽: 핵심 원리 및 프로세스 모식도 -->
+            <div class="flex flex-col text-left">
+              ${data.leftDesc}
+            </div>
+
+            <!-- 오른쪽: 실시간 데이터 대시보드 -->
+            <div class="bg-gray-50 border border-gray-200 rounded-2xl p-6 shadow-inner flex flex-col justify-start">
+              ${data.rightDash}
+            </div>
+          </div>
+        </div>
+      `;
+
+      if(curNum) curNum.textContent = currentIdx + 1;
+      if(totNum) totNum.textContent = slideData.length;
+
+      if(pBtn) pBtn.disabled = (currentIdx === 0);
+      if(nBtn) nBtn.disabled = (currentIdx === slideData.length - 1);
+
+      if(dotsContainer) {
+        const dots = dotsContainer.querySelectorAll('.page-dot');
+        dots.forEach((dot, idx) => {
+          if(idx === currentIdx) {
+            dot.classList.replace('bg-gray-200', 'bg-brand');
+            dot.classList.add('w-6'); 
+          } else {
+            dot.classList.replace('bg-brand', 'bg-gray-200');
+            dot.classList.remove('w-6');
+          }
+        });
+      }
+    }
+
+    if (slideData.length > 0) {
+      initDots();
+      if(pBtn && nBtn) {
+        pBtn.addEventListener('click', () => { if(currentIdx > 0) { currentIdx--; updateSlide(); } });
+        nBtn.addEventListener('click', () => { if(currentIdx < slideData.length - 1) { currentIdx++; updateSlide(); } });
+      }
+      updateSlide();
+    }
+// 수치, 그래프, 탁도 바를 동시에 미세하게 변동시키는 함수
+function simulateSensorData() {
+  // 1. 숫자 배지 업데이트 (수율, 파쇄율 등)
+  const dataBadges = document.querySelectorAll('.bg-brand-light p.text-xl, .bg-brand-light p.text-lg');
+  dataBadges.forEach(badge => {
+    const originalText = badge.textContent;
+    // 숫자와 단위 분리 (예: "95.0 %" -> 95.0)
+    const value = parseFloat(originalText);
+    const unit = originalText.replace(/[0-9.]/g, '');
+
+    if (!isNaN(value)) {
+      // ±0.2 범위 내에서 무작위 변동
+      const variation = (Math.random() - 0.5) * 0.4;
+      const newValue = (value + variation).toFixed(1);
+      badge.textContent = `${newValue}${unit}`;
+    }
+  });
+
+  // 2. 그래프 막대(mini-chart) 업데이트
+  const bars = document.querySelectorAll('#mini-chart .bar');
+  bars.forEach(bar => {
+    // 인라인 스타일로 지정된 height 값을 가져오거나 기본값(50) 사용
+    const currentHeight = parseFloat(bar.style.height) || 50;
+    // ±5% 범위 내에서 변동
+    const change = (Math.random() - 0.5) * 10;
+    const newHeight = Math.min(Math.max(currentHeight + change, 10), 100);
+    bar.style.height = `${newHeight}%`;
+  });
+
+  // 3. 탁도(Turbidity) 바 및 텍스트 업데이트
+  const turbidityBar = document.getElementById('turbidity-bar');
+  const turbidityText = document.getElementById('current-turbidity');
+  
+  if (turbidityBar && turbidityText) {
+    // 현재 8.5 NTU 근처에서 변동 시뮬레이션
+    const baseTurbidity = 8.5;
+    const variation = (Math.random() - 0.5) * 0.6;
+    const newTurbidity = (baseTurbidity + variation).toFixed(1);
+    
+    // 텍스트 업데이트
+    turbidityText.textContent = `Current: ${newTurbidity} NTU`;
+    // 막대 길이는 10 NTU가 100%이므로 (값 * 10)%로 계산
+    turbidityBar.style.width = `${newTurbidity * 10}%`;
+    
+    // 임계값(10 NTU) 초과 시 색상 변경 (디테일 추가)
+    if (newTurbidity >= 10) {
+      turbidityBar.classList.replace('bg-green-400', 'bg-red-500');
+    } else {
+      turbidityBar.classList.replace('bg-red-500', 'bg-green-400');
+    }
+  }
+}
+
+// 2초마다 데이터 업데이트 실행
+setInterval(simulateSensorData, 2000);
+  </script>
+
+</body>
+</html>
