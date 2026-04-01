@@ -809,7 +809,7 @@
     const processSteps =[
       { id: 1, icon: '🧫', name: 'Cell Bank', eq: 'Cryo-tank (Liquid N2)' },
       { id: 2, icon: '📈', name: 'Seed Train', eq: 'Wave Bioreactor (Up to 500L)' },
-      { id: 3, icon: '⚗️', name: 'Upstream', eq: '15,000L SUS Bioreactor' },
+      { id: 3, icon: '⚗️', name: 'Upstream', eq: '15,000L SS Bioreactor' },
       { id: 4, icon: '🌪️', name: 'Harvest', eq: 'Disk Stack Centrifuge' },
       { id: 5, icon: '🧲', name: 'Capture', eq: 'Chromatography Skid (Protein A)' },
       { id: 6, icon: '💎', name: 'Polishing', eq: 'AEX/CEX & 20nm Viral Filter' },
@@ -818,377 +818,627 @@
     ];
 
     // 8개 공정 상세 슬라이드 데이터 (하이브리드 레이아웃)
-    const slideData =[
-      {
-        title: "세포주 개발 및 Cell Bank",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">항체 의약품 생산을 위한 안정적인 발현 시스템 구축 단계입니다. 재조합 단백질 발현율이 우수한 CHO 세포주를 선별하고, 유전적 변이를 막기 위해 마스터 세포은행(MCB)과 제조용 세포은행(WCB)을 확립합니다.</p>
-          </div>
-          
-          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
-            <div class="text-center"><span class="block font-bold text-brand">Clone</span>단일 세포 스크리닝</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">MCB</span>마스터 세포은행</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">WCB</span>제조용 세포은행</div>
-          </div>
+const slideData = [
+ {
+    title: "세포주 개발 및 Cell Bank",
+    leftDesc: `
+      <div class="mb-6">
+        <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+        <p class="text-base text-gray-600 leading-relaxed">
+          항체 의약품 생산을 위한 안정적인 발현 시스템 구축 단계입니다. 재조합 단백질 발현율이 우수한 CHO 세포주를 선별하고, 유전적 변이를 막기 위해 마스터 세포은행(MCB)과 제조용 세포은행(WCB)을 확립합니다.
+        </p>
+      </div>
+      
+      <div class="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between text-base shadow-inner">
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">Clone</span>
+          <span class="text-gray-500 text-sm">단일 세포 스크리닝</span>
+        </div>
+        <span class="text-brand/30 font-bold text-xl">➔</span>
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">MCB</span>
+          <span class="text-gray-500 text-sm">마스터 세포은행</span>
+        </div>
+        <span class="text-brand/30 font-bold text-xl">➔</span>
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">WCB</span>
+          <span class="text-gray-500 text-sm">제조용 세포은행</span>
+        </div>
+      </div>
 
-          <!-- 이미지 플레이스홀더 -->
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: CHO Cell Line Microscopic Image</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Cell Viability (생존율)</p>
-              <p class="text-xl font-bold text-[#084d4f]">> 99.0 %</p>
-            </div>
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Monoclonality</p>
-              <p class="text-xl font-bold text-[#084d4f]">99.9 %</p>
-            </div>
-            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
-              <p class="text-xs text-gray-500 font-bold">Generation Time</p>
-              <p class="text-sm font-bold text-gray-800">24.0 h</p>
-            </div>
-          </div>
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#CHO_Cell</span>
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#MCB_WCB</span>
-          </div>
-        `
-      },
-      {
-        title: "확장 배양 (Seed Train / Inoculum)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">WCB에서 해동된 세포를 플라스크 배양부터 시작하여, 본 배양 반응기의 부피에 맞추어 단계적으로 생물반응기(N-n to N-1) 규모를 키우는 Scale-up 공정입니다.</p>
-          </div>
-          
-          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
-            <div class="text-center"><span class="block font-bold text-brand">Thawing</span>WCB 해동</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Flask</span>초기 배양</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Wave</span>확장 배양기</div>
-          </div>
+      <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md">
+        <img 
+          src="cell bank.webp" 
+          alt="CHO Cell Line" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+        >
+        <div class="absolute bottom-0 left-0 right-0 bg-black/70 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <p class="text-xs text-white leading-relaxed">
+            <strong class="text-brand-light text-sm block mb-1">Why CHO Cell?</strong> 
+            인간과 유사한 당화(Glycosylation) 패턴을 구현하여 면역 거부 반응을 최소화하고 대량 배양에 최적화된 세포주입니다.
+          </p>
+        </div>
+      </div>
+    `,
+    rightDash: `
+      <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+      
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">Cell Viability (생존율)</p>
+          <p class="text-2xl font-black text-brand-dark">> 99.0 %</p>
+        </div>
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">Monoclonality</p>
+          <p class="text-2xl font-black text-brand-dark">99.9 %</p>
+        </div>
+        <div class="col-span-2 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
+          <p class="text-base text-gray-500 font-bold">Generation Time</p>
+          <p class="text-lg font-black text-gray-800">24.0 h</p>
+        </div>
+      </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Seed Bioreactor Scaling Flow</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">VCD (생세포농도)</p>
-              <p class="text-lg font-bold text-[#084d4f]">10 × 10⁶ cells/mL</p>
-            </div>
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Doubling Time</p>
-              <p class="text-lg font-bold text-[#084d4f]">22.0 h</p>
-            </div>
-          </div>
-          
-          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
-             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500"><span>DO (용존산소량) Target: 50%</span> <span>Current: 51%</span></div>
-             <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-blue-400 h-2 rounded-full" style="width: 51%"></div></div>
-          </div>
+      <div class="mt-auto flex flex-wrap gap-3">
+        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#CHO_Cell</span>
+        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#MCB_WCB</span>
+      </div>
+    `
+},
+    {
+    title: "확장 배양 (Seed Train / Inoculum)",
+    leftDesc: `
+      <div class="mb-6">
+        <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+        <p class="text-base text-gray-600 leading-relaxed">
+          WCB에서 해동된 세포를 플라스크 배양부터 시작하여, 본 배양 반응기의 부피에 맞추어 단계적으로 생물반응기(N-n to N-1) 규모를 키우는 Scale-up 공정입니다.
+        </p>
+      </div>
+      
+      <div class="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between text-base shadow-inner">
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">Thawing</span>
+          <span class="text-gray-500 text-sm">WCB 해동</span>
+        </div>
+        <span class="text-brand/30 font-bold text-xl">➔</span>
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">Flask</span>
+          <span class="text-gray-500 text-sm">초기 배양</span>
+        </div>
+        <span class="text-brand/30 font-bold text-xl">➔</span>
+        <div class="text-center">
+          <span class="block font-bold text-brand text-lg mb-1">Wave</span>
+          <span class="text-gray-500 text-sm">확장 배양기</span>
+        </div>
+      </div>
 
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Scale_Up</span>
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Doubling_Time</span>
-          </div>
-        `
-      },
-      {
-        title: "본 배양 (Upstream / Main Culture)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">대규모 생산용 생물반응기(Production Bioreactor)에서 타겟 항체를 대량 생산합니다. 중요공정변수(CPP)를 정밀 제어하며 유가배양(Fed-batch) 방식으로 영양분을 지속 공급합니다.</p>
-          </div>
-          
-          <div class="mb-6">
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li><span class="text-brand font-bold mr-1">CPP 제어:</span> pH, 온도, 교반을 통한 <span class="bg-brand-light text-brand px-1 rounded font-bold">kLa(산소전달계수)</span> 최적화.</li>
-              <li><span class="text-brand font-bold mr-1">CQA 관리:</span> 독성 대사산물(Lactate) 축적 억제로 <span class="bg-brand-light text-brand px-1 rounded font-bold">Viability</span> 및 수율 극대화.</li>
-            </ul>
-          </div>
+      <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+        <img 
+          src="bioreactor scaleup.jpeg" 
+          alt="Bioprocess Scale-up Strategy" 
+          class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+        >
+        <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <p class="text-xs text-white leading-relaxed">
+            <strong class="text-brand-light text-sm block mb-1">Scale-up Strategy:</strong> 
+            세포의 급격한 환경 변화 스트레스를 방지하고, 본 배양(Production) 직전까지 <strong class="text-white">지수 성장기(Log Phase)</strong>를 유지하여 접종 농도를 최적화합니다.
+          </p>
+        </div>
+      </div>
+    `,
+    rightDash: `
+      <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+      
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">VCD (생세포농도)</p>
+          <p class="text-2xl font-black text-brand-dark">10 × 10⁶</p>
+          <p class="text-xs text-brand-dark/60">cells/mL</p>
+        </div>
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">Doubling Time</p>
+          <p class="text-2xl font-black text-brand-dark">22.0 h</p>
+        </div>
+      </div>
+      
+      <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm mb-6">
+         <div class="flex justify-between text-sm mb-2 font-bold text-gray-600">
+           <span>DO (용존산소량) Target: 50%</span> 
+           <span class="text-blue-500">Current: 51%</span>
+         </div>
+         <div class="w-full bg-gray-100 rounded-full h-3">
+           <div class="bg-blue-500 h-3 rounded-full shadow-[0_0_8px_rgba(59,130,246,0.5)]" style="width: 51%"></div>
+         </div>
+      </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: 15,000L Bioreactor Impeller & Sparger</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Titre (항체 수율)</p>
-              <p class="text-xl font-bold text-[#084d4f]">5.2 g/L</p>
-            </div>
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Viability (생존율)</p>
-              <p class="text-xl font-bold text-[#084d4f]">98.5 %</p>
-            </div>
-            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
-              <p class="text-xs text-gray-500 font-bold">pH Level</p>
-              <p class="text-sm font-bold text-gray-800">7.10 ± 0.05</p>
-            </div>
-            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
-              <p class="text-xs text-gray-500 font-bold">kLa (산소전달계수)</p>
-              <p class="text-sm font-bold text-gray-800">15.0 h⁻¹</p>
-            </div>
-          </div>
-          
-          <!-- 미니 차트 (성장 곡선 시뮬레이션) -->
-          <div class="flex items-end gap-1 h-12 mt-2 px-1">
-            <div class="w-1/6 bg-brand/20 h-1/4 rounded-t-sm"></div>
-            <div class="w-1/6 bg-brand/40 h-2/4 rounded-t-sm"></div>
-            <div class="w-1/6 bg-brand/60 h-3/4 rounded-t-sm"></div>
-            <div class="w-1/6 bg-brand/80 h-full rounded-t-sm"></div>
-            <div class="w-1/6 bg-brand h-[90%] rounded-t-sm"></div>
-            <div class="w-1/6 bg-brand/80 h-[80%] rounded-t-sm"></div>
-          </div>
-        `
-      },
-      {
-        title: "수확 및 회수 (Harvest)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">배양이 종료된 후, 원심분리 및 심층 여과(Depth Filtration)를 통해 세포와 잔해(Cell debris)를 제거하고 항체가 포함된 상등액만을 맑게 회수합니다.</p>
-          </div>
-          
-          <div class="mb-6">
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li><span class="text-brand font-bold mr-1">1. 원심분리:</span> 전단응력(Shear stress)으로 인한 <span class="bg-brand-light text-brand px-1 rounded font-bold">Cell Lysis(세포 파쇄)</span> 최소화.</li>
-              <li><span class="text-brand font-bold mr-1">2. 심층 여과:</span> 다공성 필터로 미세 입자 흡착 및 후속 컬럼 보호.</li>
-            </ul>
-          </div>
+      <div class="mt-auto flex flex-wrap gap-3">
+        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Scale_Up</span>
+        <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Doubling_Time</span>
+      </div>
+    `
+},
+    {
+    title: "본 배양 (Upstream / Main Culture)",
+    leftDesc: `
+      <div class="mb-6">
+        <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+        <p class="text-base text-gray-600 leading-relaxed">
+          대규모 생산용 생물반응기(Production Bioreactor)에서 타겟 항체를 대량 생산합니다. 중요공정변수(CPP)를 정밀 제어하며 유가배양(Fed-batch) 방식으로 영양분을 지속 공급합니다.
+        </p>
+      </div>
+      
+      <div class="mb-8">
+        <ul class="text-base text-gray-600 space-y-4">
+          <li class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+            <span>
+              <span class="text-brand font-bold mr-1 text-lg">CPP 제어:</span> 
+              pH, 온도, 교반을 통한 <span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">kLa(산소전달계수)</span> 최적화.
+            </span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+            <span>
+              <span class="text-brand font-bold mr-1 text-lg">CQA 관리:</span> 
+              독성 대사산물(Lactate) 축적 억제로 <span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">Viability</span> 및 수율 극대화.
+            </span>
+          </li>
+        </ul>
+      </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Centrifuge Separation Interface</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Step Yield (수율)</p>
-              <p class="text-xl font-bold text-[#084d4f]">95.0 %</p>
-            </div>
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Cell Lysis (파쇄율)</p>
-              <p class="text-xl font-bold text-[#084d4f]">0.8 %</p>
-            </div>
-          </div>
-          
-          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
-             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500">
-               <span>Turbidity (탁도) Limit: < 10 NTU</span> 
-               <span id="current-turbidity">Current: 8.5 NTU</span>
-             </div>
-             <div class="w-full bg-gray-200 rounded-full h-2">
-               <div id="turbidity-bar" class="bg-green-400 h-2 rounded-full transition-all duration-500" style="width: 85%"></div>
-             </div>
-          </div>
+      <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+        <img 
+          src="bioreactor.png" 
+          alt="Large-scale Bioreactor Internal Structure" 
+          class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+        >
+        <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <p class="text-xs text-white leading-relaxed">
+            <strong class="text-brand-light text-sm block mb-1">Engineering Challenge:</strong> 
+            15,000L 이상 대규모 배양 시, 세포에 가해지는 <strong class="text-white">전단 응력(Shear Stress)</strong>을 최소화하면서 효율적인 <strong class="text-white">산소 전달(kLa)</strong>을 구현하는 것이 핵심 기술력입니다.
+          </p>
+        </div>
+      </div>
+    `,
+    rightDash: `
+      <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+      
+      <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">Titre (항체 수율)</p>
+          <p class="text-2xl font-black text-brand-dark">5.2 g/L</p>
+        </div>
+        <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+          <p class="text-sm text-brand font-bold mb-2">Viability (생존율)</p>
+          <p class="text-2xl font-black text-brand-dark">98.5 %</p>
+        </div>
+        <div class="col-span-2 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
+          <p class="text-base text-gray-500 font-bold">pH Level</p>
+          <p class="text-lg font-black text-gray-800">7.10 ± 0.05</p>
+        </div>
+        <div class="col-span-2 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
+          <p class="text-base text-gray-500 font-bold">kLa (산소전달계수)</p>
+         <p class="text-lg font-black text-gray-800">15.0 h⁻¹</p>
+        </div>
+      </div>
+      
+      <div class="mt-auto">
+        <p class="text-xs text-gray-400 font-bold mb-3 uppercase tracking-wider text-center">Batch Growth Curve Projection</p>
+        <div class="flex items-end gap-1.5 h-16 px-2">
+          <div class="flex-1 bg-brand/20 h-1/4 rounded-t-md animate-pulse"></div>
+          <div class="flex-1 bg-brand/40 h-2/4 rounded-t-md"></div>
+          <div class="flex-1 bg-brand/60 h-3/4 rounded-t-md"></div>
+          <div class="flex-1 bg-brand/80 h-full rounded-t-md"></div>
+          <div class="flex-1 bg-brand h-[90%] rounded-t-md"></div>
+          <div class="flex-1 bg-brand/80 h-[80%] rounded-t-md shadow-inner"></div>
+        </div>
+      </div>
+    `
+},
+    {
+  title: "수확 및 회수 (Harvest)",
+  leftDesc: `
+    <div class="mb-6">
+      <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+      <p class="text-base text-gray-600 leading-relaxed">
+        배양이 종료된 후, 원심분리 및 심층 여과(Depth Filtration)를 통해 세포와 잔해(Cell debris)를 제거하고 항체가 포함된 상등액만을 맑게 회수합니다.
+      </p>
+    </div>
+    
+    <div class="mb-8">
+      <ul class="text-base text-gray-600 space-y-4">
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">1. 원심분리:</span> 
+            전단응력(Shear stress)으로 인한 <span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">Cell Lysis(세포 파쇄)</span> 최소화.
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">2. 심층 여과:</span> 
+            다공성 필터로 미세 입자 흡착 및 후속 정제 컬럼 보호.
+          </span>
+        </li>
+      </ul>
+    </div>
 
-          <div class="mb-4">
-            <p class="text-[0.65rem] text-gray-400 font-bold mb-2 uppercase tracking-wider">Harvest Efficiency Trend</p>
-            <div class="flex items-end gap-1 h-12 px-1" id="mini-chart">
-              <div class="bar w-1/6 bg-brand/20 h-[40%] transition-all duration-700 rounded-t-sm"></div>
-              <div class="bar w-1/6 bg-brand/30 h-[60%] transition-all duration-700 rounded-t-sm"></div>
-              <div class="bar w-1/6 bg-brand/50 h-[85%] transition-all duration-700 rounded-t-sm"></div>
-              <div class="bar w-1/6 bg-brand/70 h-[95%] transition-all duration-700 rounded-t-sm"></div>
-              <div class="bar w-1/6 bg-brand h-[90%] transition-all duration-700 rounded-t-sm"></div>
-              <div class="bar w-1/6 bg-brand/80 h-[80%] transition-all duration-700 rounded-t-sm"></div>
-            </div>
-          </div>
+    <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+      <img 
+        src="harvest.jpg" 
+        alt="Centrifugation and Clarification" 
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      >
+      <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <p class="text-xs text-white leading-relaxed">
+          <strong class="text-brand-light text-sm block mb-1">Clarification Strategy:</strong> 
+          세포 파쇄 시 방출되는 HCP와 DNA는 정제 부하를 높입니다. <strong class="text-white">Cell Integrity</strong>를 유지하며 맑은 상등액을 얻는 것이 공정 효율의 핵심입니다.
+        </p>
+      </div>
+    </div>
+  `,
+  rightDash: `
+    <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+    
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+        <p class="text-sm text-brand font-bold mb-2">Step Yield (수율)</p>
+        <p class="text-2xl font-black text-brand-dark">95.0 %</p>
+      </div>
+      <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+        <p class="text-sm text-brand font-bold mb-2">Cell Lysis (파쇄율)</p>
+        <p class="text-2xl font-black text-brand-dark">0.8 %</p>
+      </div>
+    </div>
+    
+    <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm mb-6">
+  <div class="flex justify-between text-sm mb-2 font-bold text-gray-600">
+    <span>Turbidity (탁도) Limit: < 1.0 NTU</span>
+    <span class="text-green-600 font-black">Current: 0.5 NTU</span>
+  </div>
+  <div class="w-full bg-gray-100 rounded-full h-3">
+    <div class="bg-green-400 h-3 rounded-full shadow-[0_0_8px_rgba(74,222,128,0.5)]" style="width: 5%"></div>
+  </div>
+</div>
 
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Centrifugation</span>
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Depth_Filter</span>
-          </div>
-        `
-      },
-      {
-        title: "친화성 정제 (Capture / Protein A)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">하류 공정(Downstream)의 첫 단계로, 항체의 Fc 영역에 특이적으로 결합하는 Protein A 수지를 이용하여 타겟 항체를 포집(Capture)하고 불순물을 대폭 제거합니다.</p>
-          </div>
-          
-          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
-            <div class="text-center"><span class="block font-bold text-brand">Load</span>배양액 주입</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Wash</span>HCP/DNA 제거</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Elution</span>Low pH 용출</div>
-          </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Chromatography Column & Resin</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
-              <p class="text-sm text-brand font-bold mb-1">Purity (초기 순도)</p>
-              <p class="text-xl font-bold text-[#084d4f]">> 99.0 %</p>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
-              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Host Cell Protein</span></p>
-              <p class="text-sm font-bold text-gray-800">< 100 ppm</p>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
-              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Host Cell DNA</span></p>
-              <p class="text-sm font-bold text-gray-800">< 10 ppb</p>
-            </div>
-          </div>
-          
-          <div class="mt-auto pt-2 flex gap-2">
-            <a href="index.html" class="text-xs font-bold text-brand bg-white border border-gray-200 px-3 py-2 rounded-lg hover:border-brand shadow-sm transition">3D 결합 구조 확인</a>
-          </div>
-        `
-      },
-      {
-        title: "중간 및 연마 정제 (Polishing & Viral Clearance)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">이온교환(IEX) 크로마토그래피로 전하(Charge) 차이를 이용해 잔류 불순물과 응집체(Aggregate)를 미세 연마(Polishing)하며, 20nm 필터로 바이러스를 원천 차단합니다.</p>
-          </div>
-          
-          <div class="mb-6">
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li><span class="text-brand font-bold mr-1">이온 교환(IEX):</span> 양이온(CEX) 및 음이온(AEX) 수지 적용.</li>
-              <li><span class="text-brand font-bold mr-1">바이러스 불활화:</span> Low pH 용액 노출로 지질 피막성 사멸.</li>
-              <li><span class="text-brand font-bold mr-1">바이러스 여과:</span> 나노 필터(20nm)로 물리적 제거 완수.</li>
-            </ul>
-          </div>
+    <div class="mb-6">
+      <p class="text-xs text-gray-400 font-bold mb-3 uppercase tracking-wider text-center">Harvest Efficiency Trend</p>
+      <div class="flex items-end gap-1.5 h-16 px-2">
+        <div class="flex-1 bg-brand/20 h-[40%] rounded-t-md"></div>
+        <div class="flex-1 bg-brand/30 h-[60%] rounded-t-md"></div>
+        <div class="flex-1 bg-brand/50 h-[85%] rounded-t-md"></div>
+        <div class="flex-1 bg-brand/70 h-[95%] rounded-t-md animate-pulse"></div>
+        <div class="flex-1 bg-brand h-[90%] rounded-t-md"></div>
+        <div class="flex-1 bg-brand/80 h-[80%] rounded-t-md"></div>
+      </div>
+    </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Nanofiltration Membrane Electron Microscope</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
-              <p class="text-sm text-brand font-bold mb-1">Aggregate (단백질 응집체)</p>
-              <p class="text-xl font-bold text-[#084d4f]">< 0.5 %</p>
-            </div>
-            <div class="col-span-2 bg-white p-3 rounded-lg border border-gray-200 shadow-sm flex justify-between items-center">
-              <p class="text-xs text-gray-500 font-bold">LRV (Log Reduction Value)</p>
-              <p class="text-sm font-bold text-gray-800">> 15.0 Log</p>
-            </div>
-          </div>
-          
-          <!-- 크로마토그래피 피크 시뮬레이션 -->
-          <div class="flex items-end gap-0.5 h-12 mt-2 px-1">
-            <div class="w-1/12 bg-gray-200 h-1/6 rounded-t-sm"></div>
-            <div class="w-1/12 bg-brand/30 h-2/6 rounded-t-sm"></div>
-            <div class="w-1/12 bg-brand/60 h-4/6 rounded-t-sm"></div>
-            <div class="w-1/12 bg-brand h-full rounded-t-sm relative"><span class="absolute -top-4 left-1/2 -translate-x-1/2 text-[0.6rem] font-bold text-brand">Peak</span></div>
-            <div class="w-1/12 bg-brand/60 h-3/6 rounded-t-sm"></div>
-            <div class="w-1/12 bg-brand/30 h-1/6 rounded-t-sm"></div>
-            <div class="w-1/12 bg-gray-200 h-1/6 rounded-t-sm"></div>
-          </div>
-        `
-      },
-      {
-        title: "제형화 및 완제 (Fill & Finish / UF/DF)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">한외여과/투석여과(UF/DF)를 통해 원료의약품 농도를 맞추고 완충액(Formulation)으로 치환한 뒤, 동결건조 및 무균 충전하여 완제의약품(DP)을 생산합니다.</p>
-          </div>
-          
-          <div class="mb-6 p-4 bg-gray-50 rounded-xl border border-gray-100 flex items-center justify-between text-sm">
-            <div class="text-center"><span class="block font-bold text-brand">UF/DF</span>농축 및 치환</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Filtration</span>최종 무균 여과</div>
-            <span class="text-gray-300">➔</span>
-            <div class="text-center"><span class="block font-bold text-brand">Filling</span>Vial 무균 충전</div>
-          </div>
+    <div class="mt-auto flex flex-wrap gap-3">
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Centrifugation</span>
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Depth_Filter</span>
+    </div>
+  `
+},
+   {
+  title: "친화성 정제 및 바이러스 불활화 (Capture & Low pH Hold)",
+  leftDesc: `
+    <div class="mb-6">
+      <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+      <p class="text-base text-gray-600 leading-relaxed">
+  하류 공정(Downstream)의 첫 단계로, Protein A 수지를 이용하여 타겟 항체를 포집(Capture)합니다. 
+  특히 <strong>Protein A 용출액의 낮은 pH(3.3~3.6) 조건을 그대로 유지(Hold)</strong>하여, 
+  별도의 첨가제 없이도 지질 피막성 바이러스를 효과적으로 사멸시키는 공정 효율을 확보합니다.
+</p>
+    </div>
+    
+    <div class="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between text-base shadow-inner">
+      <div class="text-center">
+        <span class="block font-bold text-brand text-lg mb-1">Load / Wash</span>
+        <span class="text-gray-500 text-[0.75rem]">불순물 1차 제거</span>
+      </div>
+      <span class="text-brand/30 font-bold text-xl">➔</span>
+      <div class="text-center">
+        <span class="block font-bold text-brand text-lg mb-1">Elution <br> (Low pH)</span>
+        <span class="text-gray-500 text-[0.75rem]">산성 버퍼로 용출</span>
+      </div>
+      <span class="text-brand/30 font-bold text-xl">➔</span>
+      <div class="text-center">
+        <span class="block font-bold text-rose-500 text-lg mb-1">Low pH Hold</span>
+        <span class="text-gray-500 text-[0.75rem]">바이러스 사멸 (30~60분)</span>
+      </div>
+    </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Lyophilizer & Aseptic Filling Isolator</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Final Concentration</p>
-              <p class="text-lg font-bold text-[#084d4f]">100 mg/mL</p>
-            </div>
-            <div class="bg-brand-light p-3 rounded-lg border border-[#006266]/20">
-              <p class="text-xs text-brand font-bold mb-1">Osmolality (삼투압)</p>
-              <p class="text-lg font-bold text-[#084d4f]">300 mOsm/kg</p>
-            </div>
-          </div>
-          
-          <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm mb-4">
-             <div class="flex justify-between text-xs mb-1 font-bold text-gray-500"><span>Fill Volume Accuracy (충전 정확도)</span> <span class="text-green-600">± 0.5% (Pass)</span></div>
-             <div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div></div>
-          </div>
+    <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+      <img 
+        src="protein-a.webp" 
+        alt="Protein A Chromatography & Viral Inactivation" 
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      >
+      <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <p class="text-xs text-white leading-relaxed">
+          <strong class="text-brand-light text-sm block mb-1">Process Efficiency:</strong> 
+          Protein A 용출액의 산성 상태를 그대로 유지하여 지질 피막성 바이러스를 사멸시킨 후, 염기성 버퍼로 <strong class="text-white">중화(Neutralization)</strong>하여 다음 정제 단계(IEX)를 준비합니다.
+        </p>
+      </div>
+    </div>
+  `,
+  rightDash: `
+    <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+    
+    <div class="grid grid-cols-2 gap-4 mb-4">
+      <div class="col-span-2 bg-brand-light p-5 rounded-xl border border-brand/20 shadow-sm flex justify-between items-center">
+        <p class="text-base text-brand font-bold">Purity (초기 순도)</p>
+        <p class="text-3xl font-black text-brand-dark">> 99.0 %</p>
+      </div>
+      
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center flex flex-col justify-center min-h-[100px]">
+        <p class="text-[0.65rem] text-gray-400 font-bold mb-2 uppercase tracking-tight">Viral Inactivation pH</p>
+        <p class="text-xl font-black text-rose-600">pH 3.5</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center flex flex-col justify-center min-h-[100px]">
+        <p class="text-[0.65rem] text-gray-400 font-bold mb-2 uppercase tracking-tight">Hold Time</p>
+        <p class="text-xl font-black text-gray-800">45 Min</p>
+      </div>
+    </div>
 
-          <div class="mt-auto flex flex-wrap gap-2">
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#UF_DF</span>
-            <span class="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded">#Lyophilization</span>
-          </div>
-        `
-      },
-      {
-        title: "품질 보증 및 PAT (Quality Assurance & PAT)",
-        leftDesc: `
-          <div class="mb-4">
-            <h4 class="font-bold text-gray-800 text-lg mb-2">핵심 원리</h4>
-            <p class="text-sm text-gray-600 leading-relaxed">설계기반 품질고도화(QbD)와 공정분석기술(PAT)을 활용하여 공정 중 실시간으로 중요 품질을 예측·통제하고, 데이터 완전성(Data Integrity)을 엄격히 준수합니다.</p>
-          </div>
-          
-          <div class="mb-6">
-            <ul class="text-sm text-gray-600 space-y-2">
-              <li><span class="text-brand font-bold mr-1">PAT 적용:</span> Raman 분광기 등을 활용한 <span class="bg-brand-light text-brand px-1 rounded font-bold">Glycosylation(당화)</span> 프로파일 실시간 예측.</li>
-              <li><span class="text-brand font-bold mr-1">Data Integrity:</span> LIMS 및 MES 시스템 연동으로 ALCOA+ 원칙 기반 Audit Trail 완벽 보장.</li>
-            </ul>
-          </div>
+    <div class="bg-gray-50 p-5 rounded-xl border border-gray-200 mt-2">
+      <div class="flex justify-between items-end mb-3">
+        <div>
+          <p class="text-[11px] text-gray-400 font-bold uppercase tracking-widest mb-1">Column Status</p>
+          <p class="text-sm font-bold text-gray-700">Resin Lifetime (Cycle)</p>
+        </div>
+        <span class="text-base font-black text-brand">42 / 200</span>
+      </div>
+      <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden shadow-inner">
+        <div class="bg-brand h-full rounded-full transition-all duration-1000" style="width: 21%"></div>
+      </div>
+      <div class="flex items-center gap-1.5 mt-3">
+        <span class="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+        <p class="text-[11px] text-gray-500 font-medium">Next CIP scheduled after current elution step</p>
+      </div>
+    </div>
+  `
+},
+{
+  title: "중간 및 연마 정제 (Polishing & Viral Filtration)",
+  leftDesc: `
+    <div class="mb-6">
+      <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+      <p class="text-base text-gray-600 leading-relaxed">
+  바이러스 불활화 및 중화가 완료된 액을 대상으로 이온교환(IEX) 크로마토그래피를 수행합니다. 
+  전하(Charge) 차이를 이용해 잔류 숙주세포 단백질(HCP), DNA 및 단백질 응집체(Aggregate)를 미세 제거하여 
+  최종 의약품 수준의 고순도 항체를 얻는 '연마(Polishing)' 공정입니다.
+</p>
+    </div>
+    
+    <div class="mb-8">
+      <ul class="text-base text-gray-600 space-y-4">
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">양이온 교환 (CEX):</span> 
+            항체의 전하를 양성(+)으로 띠게 하여 레진에 결합시킨 후, 불순물인 <span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">응집체(Aggregate)</span>를 효과적으로 분리.
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+           <span class="text-brand font-bold mr-1 text-lg">음이온 교환 (AEX):</span>
+항체는 통과(Flow-through)시키고, 음전하를 띠는 
+<span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">HCP, 잔류 DNA, 일부 바이러스 입자</span>
+를 레진에 흡착시켜 제거하는 보조적 정제 단계.
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">바이러스 여과 (Nanofiltration):</span> 
+            20nm 기공 크기의 필터를 통해 화학적 불활화에 견디는 '비피막성 바이러스'까지 물리적으로 제거하여 높은 수준의 Viral Clearance를 확보.
+          </span>
+        </li>
+      </ul>
+    </div>
 
-          <div class="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex items-center justify-center bg-gray-50 mb-4 hover:bg-gray-100 transition cursor-pointer">
-            <span class="text-gray-400 text-sm font-medium">Shutterstock: Real-time PAT Dashboard Screen</span>
-          </div>
-        `,
-        rightDash: `
-          <h4 class="font-bold text-gray-800 mb-4 border-b border-gray-200 pb-2">실시간 모니터링 대시보드</h4>
-          <div class="grid grid-cols-2 gap-3 mb-4">
-            <div class="col-span-2 bg-brand-light p-3 rounded-lg border border-[#006266]/20 flex justify-between items-center">
-              <p class="text-sm text-brand font-bold mb-1">CQA Compliance</p>
-              <p class="text-xl font-bold text-[#084d4f]">100 %</p>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
-              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Glycan (G0F)</span></p>
-              <p class="text-sm font-bold text-gray-800">60.5 %</p>
-            </div>
-            <div class="bg-white p-3 rounded-lg border border-gray-200 shadow-sm text-center">
-              <p class="text-xs text-gray-500 font-bold mb-1"><span class="bg-brand-light text-brand px-1 rounded">Glycan (G1F)</span></p>
-              <p class="text-sm font-bold text-gray-800">25.2 %</p>
-            </div>
-          </div>
-          
-          <div class="mt-auto pt-2 flex gap-2">
-            <a href="ra-qc-archive.html" class="text-xs font-bold text-white bg-brand border border-brand px-4 py-2.5 rounded-lg hover:bg-brand-dark shadow-sm transition">QC 가이드라인 확인 →</a>
-          </div>
-        `
-      }
+    <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+      <img 
+        src="purification.jpg" 
+        alt="Nanofiltration for Viral Clearance" 
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      >
+      <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <p class="text-xs text-white leading-relaxed">
+          <strong class="text-brand-light text-sm block mb-1">Patient Safety:</strong>
+응집체는 면역 반응을 유발할 수 있어, Protein A 단계부터 IEX 정제 과정까지
+일관되게 관리됩니다. 또한 20nm 나노 필터는 바이러스 제거 공정에서
+가장 높은 Log Reduction Value(LRV)를 제공하여 전체 Viral Clearance의
+핵심 역할을 수행합니다.
+        </p>
+      </div>
+    </div>
+  `,
+  rightDash: `
+    <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+    
+    <div class="grid grid-cols-2 gap-4 mb-8">
+      <div class="col-span-2 bg-brand-light p-5 rounded-xl border border-brand/20 shadow-sm flex justify-between items-center">
+        <p class="text-base text-brand font-bold">Aggregate (응집체)</p>
+        <p class="text-2xl font-black text-brand-dark">< 0.5 %</p>
+      </div>
+      
+      <div class="col-span-2 bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex justify-between items-center">
+        <p class="text-base text-gray-500 font-bold">Viral LRV (Log Reduction)</p>
+
+<p class="text-[0.9rem] text-gray-500 font-bold leading-tight">Cumulative Viral LRV<br><span class="text-xs font-medium text-gray-400">(전체 공정 누적)</span></p>
+        <p class="text-lg font-black text-gray-800">> 15.0 Log</p>
+      </div>
+    </div>
+    
+    <div class="mt-auto">
+      <div class="flex items-end gap-1 h-20 px-4 border-b border-gray-200">
+        <div class="flex-1 bg-gray-100 h-1/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-brand/20 h-2/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-brand/40 h-4/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-brand/80 h-5/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-brand h-full rounded-t-md relative">
+          <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[0.7rem] font-black text-brand bg-brand-light px-1.5 py-0.5 rounded border border-brand/20 animate-bounce">PEAK</span>
+        </div>
+        <div class="flex-1 bg-brand/60 h-4/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-brand/30 h-2/6 rounded-t-sm"></div>
+        <div class="flex-1 bg-gray-100 h-1/6 rounded-t-sm"></div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#CEX_AEX_Polishing</span>
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Nanofiltration</span>
+    </div>
+  `
+},
+   {
+  title: "제형화 및 완제 (Fill & Finish / Lyophilization)",
+  leftDesc: `
+    <div class="mb-6">
+      <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+      <p class="text-base text-gray-600 leading-relaxed">
+        최종 정제된 항체를 한외여과/투석여과(UF/DF)를 통해 목표 농도로 맞추고 약물의 안정성을 높이는 완충액으로 치환합니다. 
+        이후 <strong>무균 충전(Aseptic Filling) 후 동결건조(Lyophilization)</strong>를 거쳐 장기 보관이 가능한 완제의약품(DP) 상태로 제조합니다.
+      </p>
+    </div>
+    
+    <div class="mb-8 p-6 bg-gray-50 rounded-2xl border border-gray-100 flex items-center justify-between text-base shadow-inner">
+      <div class="text-center">
+        <span class="block font-bold text-brand text-lg mb-1">UF/DF</span>
+        <span class="text-gray-500 text-[0.7rem]">농축 및 조제</span>
+      </div>
+      <span class="text-brand/30 font-bold text-xl">➔</span>
+      <div class="text-center">
+        <span class="block font-bold text-brand text-lg mb-1">Filling</span>
+        <span class="text-gray-500 text-[0.7rem]">무균 충전</span>
+      </div>
+      <span class="text-brand/30 font-bold text-xl">➔</span>
+      <div class="text-center">
+        <span class="block font-bold text-rose-500 text-lg mb-1">Lyophilization</span>
+        <span class="text-gray-500 text-[0.7rem]">동결건조 및 타발</span>
+      </div>
+    </div>
+
+    <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+      <img 
+        src="dp.jpg" 
+        alt="Aseptic Filling and Lyophilization Process" 
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      >
+      <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <p class="text-xs text-white leading-relaxed">
+          <strong class="text-brand-light text-sm block mb-1">Lyophilization Strategy:</strong> 
+          인플릭시맙과 같은 대표적인 항체 의약품은 열에 취약한 단백질 구조를 보호하기 위해, 액상 충전 후 <strong>동결건조(Lyophilization)</strong> 과정을 거쳐 분말 형태로 최종 제품화되는 것이 일반적입니다.
+        </p>
+      </div>
+    </div>
+  `,
+  rightDash: `
+    <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+    
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+        <p class="text-sm text-brand font-bold mb-2">Cake Appearance</p>
+        <p class="text-2xl font-black text-brand-dark">Uniform</p>
+      </div>
+      <div class="bg-brand-light p-4 rounded-xl border border-brand/20 shadow-sm">
+        <p class="text-sm text-brand font-bold mb-2">Residual Moisture</p>
+        <p class="text-2xl font-black text-brand-dark">< 2.0 %</p>
+      </div>
+    </div>
+    
+    <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm mb-6">
+       <div class="flex justify-between text-sm mb-3 font-bold text-gray-600">
+         <span>Shelf Temp Control (-45℃ ~ 25℃)</span> 
+         <span class="text-blue-600 font-black">Active</span>
+       </div>
+       <div class="w-full bg-gray-100 rounded-full h-3 overflow-hidden">
+         <div class="bg-blue-500 h-full rounded-full shadow-[0_0_10px_rgba(59,130,246,0.4)]" style="width: 85%"></div>
+       </div>
+       <p class="text-[10px] text-gray-400 mt-2 text-right tracking-tighter">Primary drying stage in progress...</p>
+    </div>
+
+    <div class="mt-auto flex flex-wrap gap-3">
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Aseptic_Filling</span>
+      <span class="px-3 py-1.5 bg-gray-100 text-gray-600 text-sm font-bold rounded-lg border border-gray-200">#Lyophilization</span>
+    </div>
+  `
+},
+     {
+  title: "품질 보증 및 PAT (Quality Assurance & PAT)",
+  leftDesc: `
+    <div class="mb-6">
+      <h4 class="font-bold text-gray-800 text-xl mb-3">핵심 원리</h4>
+      <p class="text-base text-gray-600 leading-relaxed">
+  설계기반 품질고도화(QbD)와 공정분석기술(PAT)을 활용하여 공정 중 실시간으로 중요 품질을 예측·통제합니다. 
+  특히 바이오시밀러의 핵심인 <strong>'오리지널 의약품과의 물리화학적·생물학적 동등성(Comparability)'</strong>을 
+  입증하기 위해 데이터 완전성(Data Integrity)을 엄격히 준수합니다.
+</p>
+    </div>
+    
+    <div class="mb-8">
+      <ul class="text-base text-gray-600 space-y-4">
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">PAT 적용:</span> 
+            라만 분광기 등을 활용한 <span class="bg-brand-light text-brand px-2 py-0.5 rounded-md font-bold">Glycosylation(당화)</span> 프로파일 실시간 예측.
+          </span>
+        </li>
+        <li class="flex items-start gap-2">
+          <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+          <span>
+            <span class="text-brand font-bold mr-1 text-lg">Data Integrity:</span> 
+            LIMS/MES 연동으로 ALCOA+ 원칙 기반 Audit Trail 완벽 보장.
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="group relative w-full h-52 overflow-hidden rounded-2xl mb-4 border border-gray-100 shadow-md bg-white">
+      <img 
+        src="quality.png" 
+        alt="Process Analytical Technology (PAT) Dashboard" 
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+      >
+      <div class="absolute bottom-0 left-0 right-0 bg-brand-dark/90 backdrop-blur-md p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <p class="text-xs text-white leading-relaxed">
+          <strong class="text-brand-light text-sm block mb-1">Quality by Design (QbD):</strong> 
+          라만 분광법과 다변량 분석(MVDA)을 통해 <strong class="text-white">CQA(핵심 품질 특성)</strong>의 미세한 변화를 감지하고 교정하는 스마트 팩토리의 핵심 기술입니다.
+        </p>
+      </div>
+    </div>
+  `,
+  rightDash: `
+    <h4 class="font-bold text-gray-800 text-lg mb-6 border-b-2 border-brand/10 pb-3">실시간 모니터링 대시보드</h4>
+    
+    <div class="grid grid-cols-2 gap-4 mb-8">
+      <div class="col-span-2 bg-brand-light p-5 rounded-xl border border-brand/20 shadow-sm flex justify-between items-center">
+        <p class="text-base text-brand font-bold">CQA Compliance</p>
+        <p class="text-3xl font-black text-brand-dark">100 %</p>
+      </div>
+      
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center flex flex-col justify-center">
+        <p class="text-xs text-gray-400 font-bold mb-2 uppercase tracking-tight">Glycan (G0F)</p>
+        <p class="text-xl font-black text-gray-800">60.5 %</p>
+      </div>
+      <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center flex flex-col justify-center">
+        <p class="text-xs text-gray-400 font-bold mb-2 uppercase tracking-tight">Glycan (G1F)</p>
+        <p class="text-xl font-black text-gray-800">25.2 %</p>
+      </div>
+    </div>
+    
+    <div class="mt-auto pt-4">
+      <a href="ra-qc-archive.html" class="flex items-center justify-center w-full text-sm font-bold text-white bg-brand border border-brand px-4 py-4 rounded-xl hover:bg-brand-dark hover:shadow-lg transition-all active:scale-95 group">
+        <span>QC 가이드라인 확인</span>
+        <span class="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+      </a>
+    </div>
+  `
+}
     ];
 
     let currentIdx = 0;

@@ -686,6 +686,212 @@
       </div>
     </div>
   </div>
+
+<!-- 💡 단백질 밀도 비교 팝업 (환자용 팝업과 동일한 풀스크린 UI/UX 적용) -->
+  <div id="modal-density" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4 transition-all duration-300 opacity-0 pointer-events-none">
+  
+  <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="window.closeDensityModal()"></div>
+  
+  <div id="modal-density-box" class="relative z-10 w-full max-w-4xl bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] flex flex-col h-[85vh] max-h-[90vh] overflow-hidden transform scale-95 translate-y-8 transition-all duration-500 ease-out">
+    
+    <div class="flex justify-between items-center p-6 border-b border-blue-100 bg-blue-50 shrink-0">
+      <h2 class="text-lg md:text-xl font-bold text-blue-800 flex items-center gap-2 tracking-tight">
+        <span class="text-2xl">🔬</span> 동일 부피 내 단백질 분자 밀도 비교 (IV vs SC)
+      </h2>
+      <button onclick="window.closeDensityModal()" class="w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm text-blue-400 hover:text-blue-700 transition focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      </button>
+    </div>
+    
+    <div class="p-6 md:p-10 overflow-y-auto flex-grow bg-white">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+        
+        <div class="flex flex-col items-center">
+          <div class="w-full h-56 md:h-64 bg-blue-50 rounded-3xl border-2 border-blue-100 relative mb-6 flex items-center justify-center overflow-hidden">
+            <div class="w-8 h-8 bg-blue-400 rounded-full absolute top-10 left-10 opacity-60 animate-pulse"></div>
+            <div class="w-8 h-8 bg-blue-400 rounded-full absolute bottom-12 right-16 opacity-60 animate-pulse" style="animation-delay: 0.5s"></div>
+            <div class="w-8 h-8 bg-blue-400 rounded-full absolute top-24 left-1/2 opacity-60 animate-pulse" style="animation-delay: 1s"></div>
+            <span class="text-sm font-bold text-blue-700 bg-white/90 px-4 py-2 rounded-xl shadow-sm z-10 border border-blue-100">Low Density (IV)</span>
+          </div>
+          <h4 class="text-xl font-bold text-gray-800 mb-3">정맥주사 (IV)</h4>
+          <p class="text-[0.9rem] text-gray-500 text-center leading-relaxed">
+            넓은 혈관으로 직접 투여되어 1회 투여량이 많아도 농도 제약이 상대적으로 적습니다. 단백질 분자가 넓게 퍼져 있습니다.
+          </p>
+        </div>
+
+        <div class="flex flex-col items-center">
+          <div class="w-full h-56 md:h-64 bg-blue-100 rounded-3xl border-2 border-blue-300 relative mb-6 p-6 flex flex-wrap gap-3 justify-center items-center overflow-hidden shadow-inner">
+            <!-- JS 없이 CSS만으로 촘촘한 분자 모형 렌더링 -->
+              <div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div><div class="w-6 h-6 bg-blue-600 rounded-full shadow-sm hover:scale-125 transition-transform"></div>
+            
+            <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+               <span class="text-sm font-bold text-white bg-blue-800/90 px-4 py-2 rounded-xl shadow-lg backdrop-blur-sm border border-blue-400/30">High Density (SC)</span>
+            </div>
+          </div>
+          <h4 class="text-xl font-bold text-[#006266] mb-3">피하주사 (SC)</h4>
+          <p class="text-[0.9rem] text-gray-500 text-center leading-relaxed">
+             한정된 피하 조직 투여를 위해 단백질이 촘촘하게 뭉쳐 있습니다. 이를 해결하기 위한 <strong class="text-blue-700">고농도 안정화 기술</strong>이 필수적으로 적용됩니다.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 bg-blue-50/50 p-6 rounded-2xl border border-blue-100 flex gap-4 items-start">
+          <div class="text-3xl mt-1">💡</div>
+          <div>
+            <h5 class="font-bold text-blue-900 text-lg mb-1">기술적 난제: 단백질 응집 현상 (Aggregation) 극복</h5>
+             <p class="text-sm text-[#084d4f] leading-relaxed word-keep">
+               단백질 분자가 촘촘해지면 서로 엉겨 붙는 <strong>'응집 현상(Aggregation)'</strong>이 발생합니다. 이로 인해 약효를 잃거나 부작용을 유발할 수 있습니다. SimiliBio는 이러한 고농도 상태에서도 분자들이 독립적인 구조를 유지하는 <strong>첨가제(Excipient) 배합 기술</strong>을 시각화하여 보여줍니다.
+
+            </p>
+          </div>
+      </div>
+    </div>
+    
+    <div class="p-6 border-t border-gray-100 bg-gray-50 flex justify-end shrink-0">
+       <button onclick="window.closeDensityModal()" class="w-full md:w-auto px-10 py-4 rounded-2xl bg-blue-600 text-white font-bold text-base hover:bg-blue-700 hover:shadow-lg transition-all active:scale-95">
+         확인 완료
+       </button>
+    </div>
+
+  </div>
+</div>
+<!-- ============================================== -->
+  <!-- 🌍 글로벌 콜드체인 모니터링 팝업 (밝기 업그레이드 버전) -->
+  <!-- ============================================== -->
+  
+  <style>
+    /* 선이 흐르는 애니메이션 (글로벌 통합) */
+    @keyframes flowLine {
+      from { stroke-dashoffset: 30; }
+      to { stroke-dashoffset: 0; }
+    }
+    .path-anim-global {
+      stroke-dasharray: 10 5;
+      animation: flowLine 1.5s linear infinite;
+    }
+    /* 지도 위 밝은 안개 효과 */
+    .map-overlay {
+      background: radial-gradient(circle at 50% 50%, rgba(30, 41, 59, 0) 0%, rgba(15, 23, 42, 0.5) 100%);
+    }
+  </style>
+
+  <div id="modal-coldchain" class="fixed inset-0 z-[130] hidden flex items-center justify-center p-4 transition-opacity duration-500 opacity-0 pointer-events-none">
+    
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onclick="window.closeColdChainModal()"></div>
+    
+    <!-- 대시보드 컨테이너 (배경을 조금 더 밝은 Slate-800으로 변경) -->
+    <div id="modal-coldchain-box" class="relative bg-slate-800 border border-slate-600 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] w-full max-w-6xl overflow-hidden transform scale-95 translate-y-4 transition-all duration-500 ease-out flex flex-col">
+      
+      <!-- 상단 헤더 -->
+      <div class="flex justify-between items-center p-7 border-b border-slate-700 bg-slate-800/50 shrink-0 z-20">
+        <div>
+          <h2 class="text-xl md:text-2xl font-bold text-white flex items-center gap-3 tracking-tight">
+            <span class="flex h-3 w-3 bg-emerald-400 rounded-full animate-ping"></span>
+            Global Cold Chain Real-time Monitor
+          </h2>
+          <p class="text-slate-400 text-xs mt-1 font-medium uppercase tracking-widest">Celltrion Songdo HQ Center</p>
+        </div>
+        <button onclick="window.closeColdChainModal()" class="bg-slate-700 hover:bg-rose-500 text-white p-2 rounded-full transition-colors focus:outline-none">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <!-- 🗺️ 메인 지도 영역 -->
+      <div class="relative w-full h-[450px] bg-slate-900 overflow-hidden flex-shrink-0">
+        
+        <!-- 로컬 map.png (불투명도를 높여 더 잘 보이게 수정) -->
+        <img src="map.png" alt="World Map" class="absolute inset-0 w-full h-full object-cover opacity-50 contrast-125 select-none pointer-events-none" />
+        <div class="absolute inset-0 map-overlay pointer-events-none"></div>
+        
+        <!-- ✈️ 글로벌 경로 SVG -->
+        <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 450" preserveAspectRatio="none">
+          <!-- 필터 정의 -->
+          <defs>
+            <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur stdDeviation="3" result="blur" />
+              <feComposite in="SourceGraphic" in2="blur" operator="over" />
+            </filter>
+          </defs>
+
+          <!-- 1. 인천 -> 유럽 경로 -->
+          <path class="path-anim-global opacity-80" stroke="#10b981" stroke-width="2" fill="none" filter="url(#lineGlow)" 
+                d="M 820 150 Q 650 30, 500 120" />
+          
+          <!-- 2. 인천 -> 미국 동부 경로 -->
+          <path class="path-anim-global opacity-60" stroke="#60a5fa" stroke-width="2" fill="none" filter="url(#lineGlow)"
+                style="animation-duration: 2s;"
+                d="M 820 150 C 950 150, 50 100, 250 140" />
+
+          <!-- 3. 인천 -> 동남아(베트남/싱가포르) 경로 -->
+          <path class="path-anim-global opacity-70" stroke="#fbbf24" stroke-width="2" fill="none" filter="url(#lineGlow)"
+                style="animation-duration: 1.2s;"
+                d="M 820 150 Q 800 200, 780 250" />
+        </svg>
+
+        <!-- 📍 본사: 인천 송도 (중심점) -->
+        <div class="absolute left-[82%] top-[33.5%] -translate-x-1/2 -translate-y-1/2 z-20 group">
+          <div class="relative flex items-center justify-center">
+            <span class="absolute w-12 h-12 rounded-full bg-emerald-500/20 animate-pulse"></span>
+            <div class="w-5 h-5 bg-white rounded-full border-4 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.8)]"></div>
+          </div>
+          <div class="absolute top-7 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-2 py-0.5 rounded text-[0.6rem] font-black shadow-lg">HQ</div>
+        </div>
+
+        <!-- 📍 지점 1: 유럽(독일) -->
+        <div class="absolute left-[50%] top-[26.5%] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+          <div class="w-3.5 h-3.5 bg-emerald-400 rounded-full border-2 border-slate-900 shadow-lg group-hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-white p-3 rounded-xl shadow-2xl w-44 pointer-events-none">
+            <p class="text-[0.6rem] font-black text-emerald-600 uppercase">Europe Hub</p>
+            <p class="text-xs font-bold text-slate-800">Temp: 4.2°C <span class="text-emerald-500 ml-1">● Stable</span></p>
+          </div>
+        </div>
+
+        <!-- 📍 지점 2: 미국(보스턴/뉴욕) -->
+        <div class="absolute left-[25%] top-[31%] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+          <div class="w-3.5 h-3.5 bg-blue-400 rounded-full border-2 border-slate-900 shadow-lg group-hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-white p-3 rounded-xl shadow-2xl w-44 pointer-events-none">
+            <p class="text-[0.6rem] font-black text-blue-600 uppercase">US East Coast</p>
+            <p class="text-xs font-bold text-slate-800">Temp: 4.5°C <span class="text-blue-500 ml-1">● Stable</span></p>
+          </div>
+        </div>
+
+        <!-- 📍 지점 3: 아시아(싱가포르) -->
+        <div class="absolute left-[78%] top-[55.5%] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+          <div class="w-3.5 h-3.5 bg-amber-400 rounded-full border-2 border-slate-900 shadow-lg group-hover:scale-150 transition-transform"></div>
+          <div class="absolute top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all bg-white p-3 rounded-xl shadow-2xl w-44 pointer-events-none">
+            <p class="text-[0.6rem] font-black text-amber-600 uppercase">ASEAN Hub</p>
+            <p class="text-xs font-bold text-slate-800">Temp: 5.1°C <span class="text-emerald-500 ml-1">● Stable</span></p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 하단 정보 패널 (밝은 Slate-700 배경) -->
+      <div class="p-7 bg-slate-700/50 border-t border-slate-600 grid grid-cols-1 md:grid-cols-4 gap-6 shrink-0 z-20">
+        <div class="space-y-1">
+          <p class="text-slate-400 text-[0.65rem] font-bold uppercase tracking-wider">Active Routes</p>
+          <p class="text-xl font-black text-white">24 Global Way</p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-slate-400 text-[0.65rem] font-bold uppercase tracking-wider">Avg Fleet Temp</p>
+          <p class="text-xl font-black text-emerald-400">4.6°C <span class="text-xs font-normal text-slate-400">(-0.2)</span></p>
+        </div>
+        <div class="space-y-1">
+          <p class="text-slate-400 text-[0.65rem] font-bold uppercase tracking-wider">Status</p>
+          <p class="text-xl font-black text-blue-400">All Secure</p>
+        </div>
+        <div class="flex items-center justify-end">
+          <div class="bg-emerald-500/10 border border-emerald-500/30 px-4 py-2 rounded-full">
+            <p class="text-emerald-400 text-xs font-bold flex items-center gap-2">
+              <span class="h-2 w-2 bg-emerald-400 rounded-full animate-pulse"></span>
+              Live Data Syncing...
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
   <!-- ============================== -->
   <!-- ⚙️ Javascript Logic (3D 뷰 + 공정 슬라이드 연동) -->
   <!-- ============================== -->
@@ -833,7 +1039,7 @@ const slideData = [
           <div class="flex-grow flex flex-col justify-start space-y-4 mb-6">
             <ul class="text-sm text-gray-600 space-y-2.5">
               <li><strong class="text-gray-800">성분:</strong> 인플릭시맙 (키메라 항체)</li>
-              <li><strong class="text-gray-800">분자량:</strong> 약 149.1 kDa (Daltons)</li>
+              <li><strong class="text-gray-800">분자량:</strong> 약 149.1 kDa (Kilo Daltons)</li>
               <li><strong class="text-gray-800">표적:</strong> TNF-α 삼량체 중화</li>
             </ul>
             
@@ -973,955 +1179,1201 @@ const slideData = [
   {
     title: "정교한 설계: 키메라 항체(Chimeric Antibody) 구조",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <div class="mb-6">
-          <h4 class="text-lg font-bold text-gray-800 mb-3 flex items-center gap-2">
-            <span class="p-1.5 bg-brand-light rounded-lg text-brand">01</span>
-            분자 구조적 특징: 150 kDa의 정밀 공학
-          </h4>
-          <p class="text-[0.8rem] text-gray-600 leading-relaxed word-keep mb-4">
-            렘시마(Infliximab)는 약 <strong>150 kDa(kiloDalton)</strong>의 거대 단백질로, 전형적인 Y자형 구조를 가집니다. 2개의 중쇄(Heavy chain)와 2개의 경쇄(Light chain)가 이황화 결합(Disulfide bond)으로 단단하게 묶여 있으며, 고도의 생물공학 기술을 통해 탄생한 <strong>'키메라 단일클론항체(Chimeric Monoclonal Antibody, IgG1)'</strong>입니다.
-          </p>
-        </div>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <div class="mb-8 border-b border-gray-100 pb-6">
+    <h4 class="text-[1.4rem] font-bold text-gray-800 mb-4 flex items-center gap-3">
+      <span class="px-3 py-1 bg-blue-600 rounded-lg text-white text-[1.1rem]">01</span>
+      분자 구조적 특징: 150 kDa의 정밀 공학
+    </h4>
+    <p class="text-[1.1rem] text-gray-600 leading-relaxed word-keep">
+      렘시마(Infliximab)는 약 <strong>150 kDa(kiloDalton)</strong>의 거대 단백질로, 전형적인 Y자형 구조를 가집니다. 2개의 중쇄와 2개의 경쇄가 이황화 결합으로 결합된 <strong class="text-blue-600">'키메라 단일클론항체(Chimeric Monoclonal Antibody, IgG1)'</strong>입니다.
+    </p>
+  </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-grow mb-6">
-          <!-- 가변 영역 (Variable Region) -->
-          <div class="bg-brand-light/30 p-5 rounded-2xl border border-brand/20 relative overflow-hidden flex flex-col">
-            <div class="absolute -right-2 -top-2 text-6xl opacity-10">🐭</div>
-            <p class="text-xs font-bold text-brand uppercase mb-2 tracking-widest flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-brand rounded-full"></span>Variable Region (Fab)</p>
-            <h5 class="font-bold text-gray-800 mb-3 text-sm">마우스(Mouse) 유래 가변 영역 (약 25%)</h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              항원과 직접 맞닿는 Y자의 두 팔 끝부분입니다. 쥐의 면역계는 인간의 TNF-α를 강력한 독소로 인식하기 때문에, 수조 개의 단백질 중 <strong>오직 TNF-α에만 가장 정밀하고 강력하게 달라붙는 집게 역할(높은 특이성과 결합력)</strong>을 수행합니다.
-            </p>
-            <div class="mt-auto bg-white p-3 rounded-xl border border-brand/10 text-[0.65rem] text-gray-500 font-semibold flex items-start gap-2">
-              <span class="text-brand">💡</span>
-              <p>VH(Heavy chain variable) + VL(Light chain variable)의 조합으로 구성되며, CDR(상보성 결정 부위)이 실제 항원 결합을 담당합니다.</p>
-            </div>
-          </div>
-
-          <!-- 불변 영역 (Constant Region) -->
-          <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100 relative overflow-hidden flex flex-col">
-            <div class="absolute -right-2 -top-2 text-6xl opacity-10">🧍</div>
-            <p class="text-xs font-bold text-blue-600 uppercase mb-2 tracking-widest flex items-center gap-1.5"><span class="w-1.5 h-1.5 bg-blue-600 rounded-full"></span>Constant Region (Fc)</p>
-            <h5 class="font-bold text-gray-800 mb-3 text-sm">인간(Human) 유래 불변 영역 (약 75%)</h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              Y자의 기둥과 팔 아랫부분으로, 모든 인간 IgG1 항체가 공통으로 가지는 구조입니다. 쥐의 단백질을 그대로 사용할 경우 발생하는 <strong>면역 거부 반응(ADA 생성)을 최소화</strong>하기 위해 인간 서열로 교체되었습니다.
-            </p>
-            <div class="mt-auto bg-white p-3 rounded-xl border border-blue-100 text-[0.65rem] text-gray-500 font-semibold flex items-start gap-2">
-              <span class="text-blue-600">💡</span>
-              <p>인간 불변 영역 사용으로 체내 반감기가 약 21일까지 증대되며, 면역세포(NK Cell) 및 보체계와의 상호작용(ADCC/CDC)을 가능하게 합니다.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-auto pt-4 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 bg-gray-50 text-[0.65rem] font-bold text-gray-600 rounded border border-gray-200">#Chimeric_Antibody</span>
-            <span class="px-2.5 py-1 bg-gray-50 text-[0.65rem] font-bold text-gray-600 rounded border border-gray-200">#IgG1_Subclass</span>
-            <span class="px-2.5 py-1 bg-gray-50 text-[0.65rem] font-bold text-gray-600 rounded border border-gray-200">#Fab_Fc_Region</span>
-          </div>
-          <p class="text-[0.6rem] text-gray-400 italic">Data source: Infliximab Molecular Structure Analysis</p>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 flex-grow mb-10">
+    
+    <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-200 relative overflow-hidden flex flex-col transition-all hover:bg-white hover:shadow-md">
+      <div class="absolute -right-4 -top-4 text-7xl opacity-10">🐭</div>
+      <p class="text-[0.85rem] font-bold text-blue-600 uppercase mb-3 tracking-widest flex items-center gap-2">
+        <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>Variable Region (Fab)
+      </p>
+      <h5 class="font-bold text-gray-800 mb-4 text-[1.2rem]">마우스 유래 가변 영역 <span class="text-blue-600">(약 25%)</span></h5>
+      <p class="text-[1rem] text-gray-600 leading-relaxed mb-6 word-keep">
+        항원과 직접 맞닿는 Y자의 두 팔 끝부분입니다. 수조 개의 단백질 중 <strong>오직 TNF-α에만 가장 정밀하고 강력하게 달라붙는 집게 역할</strong>(높은 특이성)을 수행합니다.
+      </p>
+      <div class="mt-auto bg-white/80 p-4 rounded-xl border border-blue-100 text-[0.85rem] text-gray-500 font-semibold flex items-start gap-3">
+        <span class="text-blue-600 text-lg">💡</span>
+        <p>VH + VL 조합으로 구성되며, CDR(상보성 결정 부위)이 실제 항원 결합을 담당합니다.</p>
       </div>
+    </div>
+
+    <div class="bg-emerald-50/50 p-8 rounded-2xl border border-emerald-200 relative overflow-hidden flex flex-col transition-all hover:bg-white hover:shadow-md">
+      <div class="absolute -right-4 -top-4 text-7xl opacity-10">🧍</div>
+      <p class="text-[0.85rem] font-bold text-emerald-600 uppercase mb-3 tracking-widest flex items-center gap-2">
+        <span class="w-2 h-2 bg-emerald-600 rounded-full animate-pulse"></span>Constant Region (Fc)
+      </p>
+      <h5 class="font-bold text-gray-800 mb-4 text-[1.2rem]">인간 유래 불변 영역 <span class="text-emerald-600">(약 75%)</span></h5>
+      <p class="text-[1rem] text-gray-600 leading-relaxed mb-6 word-keep">
+        Y자의 기둥 부분으로, 쥐 단백질 사용 시 발생하는 <strong>면역 거부 반응(ADA 생성)을 최소화</strong>하기 위해 인간 서열로 교체되었습니다.
+      </p>
+      <div class="mt-auto bg-white/80 p-4 rounded-xl border border-emerald-100 text-[0.85rem] text-gray-500 font-semibold flex items-start gap-3">
+        <span class="text-emerald-600 text-lg">💡</span>
+        <p>
+인간 불변 영역을 도입함으로써 쥐 항체 대비 체내 안정성이 향상되며, 
+약 <strong>8~10일 수준의 반감기</strong>를 확보하고 면역세포 매개 기전(ADCC/CDC)을 가능하게 합니다.
+</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-auto pt-6 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="flex flex-wrap gap-3">
+      <span class="px-4 py-1.5 bg-gray-100 text-[0.85rem] font-bold text-gray-600 rounded-full border border-gray-200">#Chimeric_Antibody</span>
+      <span class="px-4 py-1.5 bg-gray-100 text-[0.85rem] font-bold text-gray-600 rounded-full border border-gray-200">#IgG1_Subclass</span>
+      <span class="px-4 py-1.5 bg-gray-100 text-[0.85rem] font-bold text-gray-600 rounded-full border border-gray-200">#Fab_Fc_Region</span>
+    </div>
+    <p class="text-[0.8rem] text-gray-400 italic">Data source: Infliximab Molecular Structure Analysis</p>
+  </div>
+</div>
     `
   },
 
-  // 2번 슬라이드: 표적 항원(TNF-alpha) 이해
-  {
-    title: "염증의 핵심 트리거, TNF-α (종양괴사인자)",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
+ // 2번 슬라이드: 표적 항원(TNF-alpha) 이해
+{
+  title: "염증의 핵심 트리거, TNF-α (종양괴사인자)",
+  desc: `
+    <div class="bg-white rounded-3xl p-8 md:p-10 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
 
-        <div class="mb-6 p-5 bg-gray-50 rounded-2xl border-l-4 border-brand">
-          <h4 class="text-lg font-bold text-gray-800 mb-2">패러다임 전환: 사이토카인 표적 치료의 등장</h4>
-          <p class="text-[0.8rem] text-gray-700 leading-relaxed word-keep">
-            과거 류마티스 관절염 등 복잡한 면역 질환은 특정 효소를 억제하는 저분자 화합물(합성 의약품)로는 치료에 명백한 한계가 있었습니다. 연구 결과, 다수의 신호 전달 경로 최상단에서 <strong>전신 염증을 지휘하는 핵심 사이토카인이 TNF-α(Tumor Necrosis Factor-alpha)</strong>임이 규명되었고, 이를 직접 차단하는 것이 치료 효과를 극대화하는 표준 전략이 되었습니다.
+      <div class="mb-8 p-6 bg-blue-50 rounded-2xl border-l-8 border-brand">
+        <h4 class="text-xl font-extrabold text-gray-900 mb-3">패러다임 전환: 사이토카인 표적 치료의 등장</h4>
+        <p class="text-[1rem] md:text-[1.05rem] text-gray-700 leading-relaxed word-keep">
+          과거의 치료법은 특정 효소를 억제하는 데 그쳤으나, 연구 결과 다수의 신호 전달 최상단에서 <strong>전신 염증을 지휘하는 핵심 주동자가 TNF-α</strong>임이 밝혀졌습니다. 이를 직접 차단하는 것이 현대 면역 질환 치료의 표준 전략(Standard Strategy)입니다.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 flex-grow">
+        
+        <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-200 shadow-md">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-8 h-8 rounded-full bg-brand text-white flex items-center justify-center font-bold text-lg">1</span>
+            <h5 class="font-bold text-gray-800 text-lg">활성 조건: 삼량체(Trimer)</h5>
+          </div>
+          <p class="text-[0.95rem] text-gray-600 leading-relaxed mb-6">
+            TNF-α는 단량체(Monomer) 상태에서는 힘을 쓰지 못합니다. <strong>3개의 단량체가 정교하게 맞물린 '삼량체' 형태</strong>를 갖춰야만 세포 수용체를 꽉 잡을 수 있는 결합면이 생겨 활성화됩니다.
+          </p>
+          
+          <div class="mt-auto bg-gray-50 p-6 rounded-xl border border-gray-100 flex items-center justify-around">
+            <div class="flex flex-col items-center gap-2 opacity-40">
+              <div class="w-8 h-8 rounded-full bg-gray-400"></div>
+              <span class="text-[0.8rem] font-bold text-gray-500">단량체 (Inactive)</span>
+            </div>
+            <div class="text-brand font-bold text-2xl">→</div>
+            <div class="flex flex-col items-center gap-2">
+              <div class="relative w-12 h-12">
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-6 h-6 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
+                <div class="absolute bottom-0 left-0 w-6 h-6 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
+                <div class="absolute bottom-0 right-0 w-6 h-6 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
+              </div>
+              <span class="text-[0.8rem] font-bold text-red-600 font-bold">삼량체 (Active)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col p-6 rounded-2xl bg-white border border-gray-200 shadow-md">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="w-8 h-8 rounded-full bg-red-600 text-white flex items-center justify-center font-bold text-lg">2</span>
+            <h5 class="font-bold text-gray-800 text-lg">수용체 결합 및 염증 폭포</h5>
+          </div>
+          <p class="text-[0.95rem] text-gray-600 leading-relaxed mb-4">
+            TNF-α는 혈액을 떠도는 <strong>가용성(sTNF)</strong>과 세포막에 붙은 <strong>막 결합형(tmTNF)</strong>으로 존재하며, 두 종류의 수용체와 결합합니다.
+          </p>
+          <div class="mt-auto space-y-4">
+            <div class="bg-red-50 p-4 rounded-xl border border-red-100">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-red-600"></span>
+                <strong class="text-[0.9rem] text-red-900">TNFR1: 전신 염증 및 세포 사멸 유도</strong>
+              </div>
+              <p class="text-[0.85rem] text-red-800/80 ml-4">거의 모든 세포에 존재, 강력한 염증 연쇄 반응 촉발</p>
+            </div>
+            <div class="bg-blue-50 p-4 rounded-xl border border-blue-100">
+              <div class="flex items-center gap-2 mb-1">
+                <span class="w-2 h-2 rounded-full bg-blue-600"></span>
+                <strong class="text-[0.9rem] text-blue-900">TNFR2: 면역 조절 및 세포 증식</strong>
+              </div>
+              <p class="text-[0.85rem] text-blue-800/80 ml-4">주로 면역 세포에 발현, 항상성 유지 및 세포 생존 담당</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-auto">
+        <div class="bg-brand text-white px-6 py-5 rounded-2xl shadow-lg flex items-center gap-5">
+          <div class="text-3xl">🛡️</div>
+          <p class="text-[1.05rem] leading-snug">
+            <strong class="text-yellow-300">렘시마의 중화 기전:</strong> 
+            TNF-α 삼량체의 결합 부위에 정밀하게 침투하여, 마치 열쇠 구멍을 막듯 <strong>수용체와의 결합을 입체적으로 원천 차단</strong>합니다.
           </p>
         </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6 flex-grow">
-          
-          <!-- 생물학적 활성 조건 (Monomer vs Trimer) -->
-          <div class="flex flex-col p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
-            <div class="flex justify-between items-start mb-4">
-              <h5 class="font-bold text-gray-800 flex items-center gap-2 text-sm">
-                <span class="w-6 h-6 rounded bg-brand text-white flex items-center justify-center text-xs">1</span>
-                생물학적 활성 조건: 삼량체(Trimer)
-              </h5>
-            </div>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              TNF-α는 주로 대식세포에서 분비되며, 단량체(Monomer, 약 17 kDa) 혼자서는 수용체와 결합할 수 없습니다. <strong>반드시 3개의 단량체가 정교하게 맞물려 종 모양(피라미드)의 삼량체(Trimer, 약 51 kDa)를 형성해야만</strong> 세포 수용체(TNFR)를 꽉 잡을 수 있는 결합면이 생깁니다.
-            </p>
-            
-            <div class="mt-auto bg-gray-50 p-4 rounded-xl border border-gray-100 flex items-center justify-center gap-6">
-              <div class="flex flex-col items-center gap-1 opacity-40">
-                <div class="w-6 h-6 rounded-full bg-gray-500"></div>
-                <span class="text-[0.6rem] font-bold text-gray-600">단량체 (결합 불가)</span>
-              </div>
-              <div class="text-gray-300 font-bold">➡</div>
-              <div class="flex flex-col items-center">
-                <div class="relative w-10 h-10 mb-1">
-                  <!-- CSS로 삼량체 형태(클로버 모양) 모사 -->
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-5 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
-                  <div class="absolute bottom-0 left-0 w-5 h-5 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
-                  <div class="absolute bottom-0 right-0 w-5 h-5 rounded-full bg-red-500 opacity-90 mix-blend-multiply"></div>
-                </div>
-                <span class="text-[0.6rem] font-bold text-red-600">삼량체 (수용체 결합 가능)</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 수용체 결합 및 염증 폭포 -->
-          <div class="flex flex-col p-5 rounded-2xl bg-white border border-gray-200 shadow-sm">
-            <div class="flex justify-between items-start mb-4">
-              <h5 class="font-bold text-gray-800 flex items-center gap-2 text-sm">
-                <span class="w-6 h-6 rounded bg-red-600 text-white flex items-center justify-center text-xs">2</span>
-                수용체 결합 및 염증 폭포(Cascade)
-              </h5>
-            </div>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              TNF-α 삼량체는 세포막에 고정되어 주변 세포를 자극하는 <strong>'막 결합형(tmTNF-α)'</strong>과, 떨어져 나와 전신을 도는 <strong>'가용성(sTNF-α)'</strong> 형태로 존재하며 수용체와 결합합니다.
-            </p>
-            <ul class="text-[0.7rem] text-gray-600 space-y-3 mt-auto bg-gray-50 p-4 rounded-xl border border-gray-100">
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 text-red-500 font-bold">▪</span>
-                <div>
-                  <strong class="text-gray-800">TNFR1 수용체:</strong> 
-                  거의 모든 전신 세포에 분포. TNF-α와 결합 시 <strong>세포 사멸 신호 및 강력한 염증 반응(IL-1, IL-6 연쇄 반응)</strong>을 촉발합니다.
-                </div>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="mt-0.5 text-blue-500 font-bold">▪</span>
-                <div>
-                  <strong class="text-gray-800">TNFR2 수용체:</strong> 
-                  주로 면역 세포에 국한되어 발현. 세포 생존 및 증식 등 면역 조절 신호를 담당합니다.
-                </div>
-              </li>
-            </ul>
-          </div>
-          
-        </div>
-
-        <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
-          <div class="text-[0.75rem] text-gray-700 bg-brand-light/30 px-4 py-3 rounded-lg border border-brand/20 w-full flex items-center gap-3">
-            <span class="text-xl">🛡️</span>
-            <p class="word-keep">
-              <strong class="text-brand">렘시마의 중화 목표:</strong> 
-              렘시마는 가용성 및 막결합형 <strong>TNF-α 삼량체의 측면(골짜기)에 정밀하게 파고들어, 수용체(TNFR)와의 열쇠-자물쇠 결합을 입체적으로 원천 차단</strong>합니다.
-            </p>
-          </div>
-        </div>
-
       </div>
-    `
-  },
+
+    </div>
+  `
+},
   // 2. 작용기전 (1) 중화 작용
-  {
-    title: "작용 기전 (1) - 중화 작용: 물리적 차단을 통한 염증 신호 중단",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
+ {
+  title: "작용 기전 (1) - 중화 작용: 물리적 차단을 통한 염증 신호 중단",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
 
-        <div class="mb-6 p-5 bg-brand-light/30 rounded-2xl border-l-4 border-brand">
-          <h4 class="text-lg font-bold text-gray-800 mb-2 flex items-center gap-2">
-            <span class="text-brand">🛑</span> 물리적 결합을 통한 원천적 차단 (Neutralization)
-          </h4>
-          <p class="text-[0.8rem] text-gray-700 leading-relaxed word-keep">
-            혈액을 타고 전신으로 퍼진 렘시마는 가용성(Soluble) TNF-α 삼량체의 수용체 결합 부위를 <strong>물리적으로 덮어버립니다.</strong> 이러한 강력한 입체적 방해는 TNF-α가 세포막의 수용체(TNFR1, TNFR2)와 맞물리는 것을 원천적으로 차단합니다.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 flex-grow mb-6">
-          <!-- 면역 복합체 형성 -->
-          <div class="flex flex-col p-5 rounded-2xl bg-gray-50 border border-gray-200 hover:shadow-md transition">
-            <h5 class="font-bold text-gray-800 mb-3 text-sm border-b border-gray-200 pb-2">
-              1. 거대 면역 복합체 형성 (Immune Complex)
-            </h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              수소 결합 및 소수성 상호작용을 통해 렘시마는 TNF-α에 대해 매우 낮은 해리 상수를 가집니다. 렘시마 3분자와 TNF-α 삼량체가 결합하면 <strong>약 500 kDa 이상의 거대한 단백질 그물망(가교)을 형성</strong>합니다.
-            </p>
-            <ul class="text-[0.7rem] text-gray-600 space-y-2 mt-auto">
-              <li class="flex gap-2 items-start"><span class="text-brand font-bold">✔️</span><span><strong>대식 작용(Macrophage) 촉진:</strong> 덩어리가 커진 복합체는 대식세포가 훨씬 효율적으로 인식하여 체내에서 빠르게 먹어 치웁니다.</span></li>
-            </ul>
-          </div>
-
-          <!-- 신호 억제 -->
-          <div class="flex flex-col p-5 rounded-2xl bg-gray-50 border border-gray-200 hover:shadow-md transition">
-            <h5 class="font-bold text-gray-800 mb-3 text-sm border-b border-gray-200 pb-2">
-              2. NF-κB 경로 억제 및 염증 중단
-            </h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-4">
-              수용체(TNFR) 클러스터링이 실패함에 따라, 세포 핵 내부로 향하는 전사 인자인 <strong>NF-κB의 활성화 및 이동이 중단</strong>됩니다.
-            </p>
-            <ul class="text-[0.7rem] text-gray-600 space-y-2 mt-auto bg-white p-3 rounded-xl border border-gray-100">
-              <li class="flex gap-2 items-start"><span class="text-red-500 font-bold">⬇️</span><span><strong>사이토카인 차단:</strong> IL-1, IL-6 등 2차 염증성 사이토카인의 대량 합성이 멈춥니다.</span></li>
-              <li class="flex gap-2 items-start"><span class="text-red-500 font-bold">⬇️</span><span><strong>조직 파괴 방지:</strong> 연골 분해 효소(MMP) 방출 및 파골세포 활성화를 억제하여 관절의 영구적 변형을 막습니다.</span></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-auto flex justify-start">
-          <a href="렘시마 작용기전 video.mp4" class="inline-flex items-center justify-center px-6 py-3 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-sm gap-2">
-            TNF-α 결합 3D 시뮬레이션 보기
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
-        </div>
-
+      <div class="mb-8 p-6 bg-brand-light/20 rounded-2xl border-l-8 border-brand">
+        <h4 class="text-xl font-extrabold text-gray-900 mb-3 flex items-center gap-2">
+          <span class="text-2xl">🛑</span> 물리적 결합을 통한 원천적 차단 (Neutralization)
+        </h4>
+        <p class="text-[1rem] text-gray-700 leading-relaxed word-keep">
+          혈액을 타고 전신으로 퍼진 렘시마는 가용성(Soluble) <strong>TNF-α 삼량체</strong>의 수용체 결합 부위를 <span class="text-brand font-bold underline underline-offset-4">물리적으로 덮어버립니다.</span> 이러한 강력한 입체적 방해는 TNF-α가 세포막의 수용체(TNFR1, TNFR2)와 맞물리는 것을 원천적으로 차단합니다.
+        </p>
       </div>
-    `
-  },
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 flex-grow mb-8">
+        
+        <div class="flex flex-col p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:shadow-md transition-all">
+          <h5 class="font-bold text-gray-900 mb-4 text-base border-b-2 border-brand/30 pb-2 flex items-center">
+            <span class="bg-brand text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">1</span>
+            거대 면역 복합체 형성 (Immune Complex)
+          </h5>
+          <p class="text-[0.9rem] text-gray-600 leading-relaxed mb-6">
+            수소 결합 및 소수성 상호작용을 통해 렘시마는 TNF-α에 대해 매우 낮은 해리 상수를 가집니다. 렘시마 3분자와 TNF-α 삼량체가 결합하면 <strong>약 500 kDa 이상의 거대한 단백질 그물망(가교)을 형성</strong>합니다.
+          </p>
+          <div class="mt-auto bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+            <ul class="text-[0.85rem] text-gray-700 space-y-2">
+              <li class="flex gap-2 items-start">
+                <span class="text-brand font-bold">✔️</span>
+                <span><strong>대식 작용(Macrophage) 촉진:</strong> 덩어리가 커진 복합체는 대식세포가 훨씬 효율적으로 인식하여 체내에서 빠르게 제거합니다.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="flex flex-col p-6 rounded-2xl bg-gray-50 border border-gray-200 hover:shadow-md transition-all">
+          <h5 class="font-bold text-gray-900 mb-4 text-base border-b-2 border-red-200 pb-2 flex items-center">
+            <span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs mr-2">2</span>
+            NF-κB 경로 억제 및 염증 중단
+          </h5>
+          <p class="text-[0.9rem] text-gray-600 leading-relaxed mb-6">
+            수용체(TNFR) 클러스터링이 실패함에 따라, 세포 핵 내부로 향하는 전사 인자인 <strong>NF-κB의 활성화 및 이동이 중단</strong>됩니다.
+          </p>
+          <div class="mt-auto bg-white p-4 rounded-xl border border-gray-100 shadow-sm">
+            <ul class="text-[0.85rem] text-gray-700 space-y-3">
+              <li class="flex gap-2 items-start">
+                <span class="text-red-500 font-bold">⬇️</span>
+                <span><strong>사이토카인 차단:</strong> IL-1, IL-6 등 2차 염증성 사이토카인의 대량 합성이 멈춥니다.</span>
+              </li>
+              <li class="flex gap-2 items-start">
+                <span class="text-red-500 font-bold">⬇️</span>
+                <span><strong>조직 파괴 방지:</strong> 연골 분해 효소(MMP) 및 파골세포 활성화를 억제하여 관절 변형을 막습니다.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center md:justify-start">
+        <a href="셀트리온 렘시마 작용기전 공식 영상.mp4" class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white text-md font-extrabold rounded-2xl hover:bg-brand-dark transition-all shadow-lg hover:-translate-y-1 gap-3">
+          셀트리온 렘시마 소개 영상
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+        </a>
+      </div>
+
+    </div>
+  `
+},
 
   // 3. 작용기전 (2) 세포 사멸 유도 (ADCC/CDC)
   {
-    title: "작용 기전 (2) - 세포 사멸 유도: 염증 근원 세포의 직접 제거",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        
-        <div class="mb-6 p-5 bg-red-50 rounded-2xl border-l-4 border-red-500">
-          <h4 class="text-lg font-bold text-gray-800 mb-2">항체 의존적(ADCC) 및 보체 의존적(CDC) 세포 독성</h4>
-          <p class="text-[0.8rem] text-gray-700 leading-relaxed word-keep">
-            렘시마는 떠다니는 TNF-α만 중화하는 것이 아닙니다. <strong>막 결합형 TNF-α(tmTNF-α)</strong>를 표면에 매달고 염증을 뿜어내는 '근원 세포' 자체를 표적으로 삼아, <strong>항체의 Fc 영역</strong>을 통해 선천 면역 시스템을 현장으로 유인하고 세포 사멸(Apoptosis)을 직접 유도합니다.
-          </p>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          
-          <!-- ADCC -->
-          <div class="flex flex-col p-6 rounded-2xl bg-blue-50/50 border border-blue-100 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold shadow-sm">A</div>
-              <h5 class="font-bold text-blue-900">ADCC: NK세포에 의한 사멸</h5>
-            </div>
-            <p class="text-[0.75rem] text-gray-700 leading-relaxed mb-4">
-              렘시마의 Fc 부위가 <strong>자연살해세포(NK Cell) 표면의 FcγRIII(CD16) 수용체</strong>와 교차 결합합니다. 유인된 NK세포는 <strong>퍼포린(Perforin)과 그랜자임(Granzyme)</strong> 독성 물질을 표적 세포에 주입하여 프로그래밍된 세포 자폭(Apoptosis)을 유도합니다.
-            </p>
-            <div class="mt-auto bg-white p-3 rounded-xl border border-blue-50 flex items-center justify-around shadow-sm">
-              <span class="text-[0.6rem] font-bold text-brand">Remsima Fc</span>
-              <span class="text-gray-300">🔗</span>
-              <span class="text-[0.6rem] font-bold text-blue-600">NK Cell (CD16)</span>
-              <span class="text-gray-300">➡️</span>
-              <span class="text-[0.6rem] font-bold text-red-500">Apoptosis</span>
-            </div>
-          </div>
-
-          <!-- CDC -->
-          <div class="flex flex-col p-6 rounded-2xl bg-rose-50/50 border border-rose-100 hover:shadow-md transition-shadow">
-            <div class="flex items-center gap-3 mb-4">
-              <div class="w-10 h-10 rounded-full bg-rose-600 text-white flex items-center justify-center font-bold shadow-sm">C</div>
-              <h5 class="font-bold text-rose-900">CDC: 보체 시스템에 의한 용해</h5>
-            </div>
-            <p class="text-[0.75rem] text-gray-700 leading-relaxed mb-4">
-              항체가 결합된 염증 세포 표면에 혈청 단백질인 <strong>보체 C1q</strong>가 인식·결합하며 보체 연쇄 반응(Cascade)이 시작됩니다. 최종적으로 세포막에 <strong>MAC(막 공격 복합체)</strong>라는 물리적 구멍을 뚫어, 삼투압 평형을 파괴하고 세포를 즉각적으로 용해(Lysis)시킵니다.
-            </p>
-            <div class="mt-auto bg-white p-3 rounded-xl border border-rose-50 flex items-center justify-around shadow-sm">
-              <span class="text-[0.6rem] font-bold text-rose-500">C1q Binding</span>
-              <span class="text-gray-300">➡️</span>
-              <span class="text-[0.6rem] font-bold text-rose-600">MAC Hole</span>
-              <span class="text-gray-300">➡️</span>
-              <span class="text-[0.6rem] font-bold text-rose-700">Osmotic Lysis</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mt-auto flex flex-wrap gap-2 border-t border-gray-100 pt-4">
-          <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#ADCC</span>
-          <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#CDC</span>
-          <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#NK_Cell</span>
-          <span class="px-2.5 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#Apoptosis</span>
-        </div>
-
+  title: "작용 기전 (2) - 세포 사멸 유도: 염증 근원 세포의 직접 제거",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+      
+      <div class="mb-8 p-6 bg-rose-50 rounded-2xl border-l-8 border-rose-500">
+        <h4 class="text-xl font-extrabold text-gray-900 mb-3 flex items-center gap-2">
+          <span class="text-2xl">🎯</span> 항체 의존적(ADCC) 및 보체 의존적(CDC) 세포 독성
+        </h4>
+        <p class="text-[1rem] text-gray-700 leading-relaxed word-keep">
+  렘시마는 떠다니는 TNF-α만 중화하는 것이 아닙니다. 
+  <strong>막 결합형 TNF-α(tmTNF-α)</strong>를 표면에 가진 
+  <span class="text-rose-600 font-bold">'근원 세포'</span>를 표적으로 삼아, 
+  선천 면역 시스템을 활성화하고 
+  <strong>ADCC와 CDC 기전을 통해 염증 유발 세포의 사멸을 유도</strong>합니다.
+</p>
       </div>
-    `
-  },
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8 flex-grow">
+        
+        <div class="flex flex-col p-6 rounded-2xl bg-blue-50 border border-blue-100 hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold shadow-md text-lg italic">A</div>
+            <h5 class="font-extrabold text-blue-900 text-lg">ADCC: NK세포에 의한 사멸</h5>
+          </div>
+          <p class="text-[0.9rem] text-gray-700 leading-relaxed mb-6">
+            렘시마의 Fc 부위가 <strong>NK세포 표면의 수용체(CD16)</strong>와 결합합니다. 유인된 NK세포는 <strong>독성 물질(퍼포린, 그랜자임)</strong>을 표적 세포에 주입하여 프로그래밍된 <span class="text-blue-700 font-bold italic">세포 자폭</span>을 유도합니다.
+          </p>
+          <div class="mt-auto bg-white/80 p-4 rounded-xl border border-blue-100 flex items-center justify-between shadow-sm">
+            <span class="text-[0.75rem] font-bold text-blue-600">Remsima Fc</span>
+            <span class="text-gray-400">🔗</span>
+            <span class="text-[0.75rem] font-bold text-blue-600">NK Cell</span>
+            <span class="text-gray-400">➡️</span>
+            <span class="text-[0.75rem] font-bold text-red-600">Apoptosis</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col p-6 rounded-2xl bg-orange-50 border border-orange-100 hover:shadow-md transition-all">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-12 h-12 rounded-2xl bg-orange-600 text-white flex items-center justify-center font-bold shadow-md text-lg italic">C</div>
+            <h5 class="font-extrabold text-orange-900 text-lg">CDC: 보체 시스템에 의한 용해</h5>
+          </div>
+          <p class="text-[0.9rem] text-gray-700 leading-relaxed mb-6">
+            항체가 결합된 염증 세포 표면에 <strong>보체 C1q</strong>가 결합하며 연쇄 반응이 시작됩니다. 최종적으로 세포막에 <strong>MAC(막 공격 복합체)</strong>라는 구멍을 뚫어 삼투압 평형을 파괴하고 <span class="text-orange-700 font-bold italic">세포를 즉각 용해</span>시킵니다.
+          </p>
+          <div class="mt-auto bg-white/80 p-4 rounded-xl border border-orange-100 flex items-center justify-between shadow-sm">
+            <span class="text-[0.75rem] font-bold text-orange-600">C1q Binding</span>
+            <span class="text-gray-400">➡️</span>
+            <span class="text-[0.75rem] font-bold text-orange-600">MAC Hole</span>
+            <span class="text-gray-400">➡️</span>
+            <span class="text-[0.75rem] font-bold text-red-600">Lysis</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-auto flex flex-wrap gap-2 border-t border-gray-100 pt-6">
+        <span class="px-4 py-1.5 bg-gray-100 text-gray-600 text-[0.8rem] font-bold rounded-lg border border-gray-200 shadow-sm italic">#ADCC</span>
+        <span class="px-4 py-1.5 bg-gray-100 text-gray-600 text-[0.8rem] font-bold rounded-lg border border-gray-200 shadow-sm italic">#CDC</span>
+        <span class="px-4 py-1.5 bg-gray-100 text-gray-600 text-[0.8rem] font-bold rounded-lg border border-gray-200 shadow-sm italic">#NK_Cell</span>
+        <span class="px-4 py-1.5 bg-gray-100 text-gray-600 text-[0.8rem] font-bold rounded-lg border border-gray-200 shadow-sm italic">#Apoptosis</span>
+      </div>
+
+    </div>
+  `
+},
 // 5번 슬라이드: 임상적 동등성
- {
-    title: "임상적 동등성: 근거의 총체성 (Totality of Evidence)",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-gray-500 leading-relaxed mb-6">
-          바이오시밀러의 승인은 단일 임상 시험이 아닌, 분석적, 비임상적, 임상적 데이터를 모두 종합하여 오리지널 의약품과 차이가 없음을 증명하는 <strong>'근거의 총체성(Totality of Evidence)'</strong>에 기반합니다.
+{
+  title: "임상적 동등성: 근거의 총체성 (Totality of Evidence)",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+      
+      <div class="mb-8">
+        <h4 class="text-xl font-extrabold text-gray-900 mb-4 flex items-center gap-2">
+          <span class="text-2xl">📋</span> 근거의 총체성 (Totality of Evidence) 기반 승인
+        </h4>
+        <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+          바이오시밀러의 승인은 단일 임상 시험 결과에만 의존하지 않습니다. 분석적, 비임상적, 임상적 데이터를 모두 종합하여 <span class="text-brand font-bold">오리지널 의약품과 차이가 없음을 증명</span>하는 엄격한 과정을 거칩니다.
         </p>
+      </div>
+      
+      <div class="flex flex-col xl:flex-row gap-6 mb-10 flex-grow">
         
-        <div class="flex flex-col md:flex-row gap-4 mb-8">
-          <div class="flex-1 bg-gray-50 p-5 rounded-2xl border border-gray-200 relative">
-            <div class="text-3xl mb-2">🔬</div>
-            <h5 class="font-bold text-gray-800 mb-2">Step 1. 물리화학적 분석</h5>
-            <p class="text-xs text-gray-500">질량분석, 3D 구조 분석을 통해 아미노산 서열 및 당화 패턴(Glycosylation)의 고도 유사성 입증.</p>
-            <div class="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-gray-300 text-2xl">▶</div>
-          </div>
-          <div class="flex-1 bg-gray-50 p-5 rounded-2xl border border-gray-200 relative">
-            <div class="text-3xl mb-2">🧫</div>
-            <h5 class="font-bold text-gray-800 mb-2">Step 2. 비임상 (In vitro)</h5>
-            <p class="text-xs text-gray-500">세포 기반 분석(Bioassay)을 통해 TNF-α 중화능 및 ADCC/CDC 활성이 오리지널과 동등함을 증명.</p>
-            <div class="hidden md:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-gray-300 text-2xl">▶</div>
-          </div>
-          <div class="flex-1 bg-brand-light p-5 rounded-2xl border border-brand/20">
-            <div class="text-3xl mb-2">🧑‍⚕️</div>
-            <h5 class="font-bold text-brand mb-2">Step 3. 임상 (Clinical)</h5>
-            <p class="text-xs text-[#084d4f]">PLANETAS (약동학/안전성) 및 PLANETRA (유효성) 임상을 통한 환자 대상 동등성 최종 입증.</p>
-          </div>
+        <div class="flex-1 bg-gray-50 p-6 rounded-2xl border border-gray-200 relative group hover:border-brand/50 transition-all">
+          <div class="text-4xl mb-4">🔬</div>
+          <h5 class="font-extrabold text-gray-900 mb-3 text-lg italic text-brand">Step 1. 물리화학적 분석</h5>
+          <p class="text-[0.9rem] text-gray-600 leading-relaxed">
+            질량분석, 3D 구조 분석을 통해 <strong>아미노산 서열 및 당화 패턴(Glycosylation)</strong>의 고도 유사성을 입증합니다.
+          </p>
+          <div class="hidden xl:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-gray-300 text-3xl font-light">▶</div>
         </div>
 
-        <div class="mt-auto p-5 bg-white border border-gray-200 rounded-xl flex items-start gap-3 shadow-sm">
-          <span class="text-brand font-bold">💡</span>
-          <p class="text-[0.75rem] text-gray-600 leading-relaxed">
-            <strong>규제 기관의 승인:</strong> 렘시마는 위 3단계의 방대한 데이터를 바탕으로 2013년 유럽 EMA, 2016년 미국 FDA로부터 '오리지널 의약품과 임상적으로 의미 있는 차이가 없음'을 공식 인정받았습니다.
+        <div class="flex-1 bg-gray-50 p-6 rounded-2xl border border-gray-200 relative group hover:border-brand/50 transition-all">
+          <div class="text-4xl mb-4">🧫</div>
+          <h5 class="font-extrabold text-gray-900 mb-3 text-lg italic text-brand">Step 2. 비임상 (In vitro)</h5>
+          <p class="text-[0.9rem] text-gray-600 leading-relaxed">
+            세포 기반 분석(Bioassay)을 통해 <strong>TNF-α 중화능 및 ADCC/CDC 활성</strong>이 오리지널과 동등함을 증명합니다.
+          </p>
+          <div class="hidden xl:block absolute top-1/2 -right-4 transform -translate-y-1/2 text-gray-300 text-3xl font-light">▶</div>
+        </div>
+
+        <div class="flex-1 bg-brand-light/20 p-6 rounded-2xl border-2 border-brand shadow-md relative group">
+          <div class="text-4xl mb-4">🧑‍⚕️</div>
+          <h5 class="font-extrabold text-brand mb-3 text-lg italic">Step 3. 임상 (Clinical)</h5>
+          <p class="text-[0.9rem] text-brand-dark leading-relaxed font-medium">
+            <strong>PLANETAS</strong>(약동학/안전성) 및 <strong>PLANETRA</strong>(유효성) 임상을 통해 환자 대상 동등성을 최종 입증합니다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="mt-auto p-6 bg-gray-900 text-white rounded-2xl flex items-start gap-4 shadow-xl">
+        <span class="text-3xl">💡</span>
+        <div class="flex flex-col gap-1">
+          <p class="text-[0.95rem] font-bold leading-relaxed">글로벌 규제 기관의 공식 승인</p>
+          <p class="text-[0.85rem] text-gray-300 leading-relaxed opacity-90">
+            렘시마는 위 3단계의 방대한 데이터를 바탕으로 <strong>2013년 유럽 EMA, 2016년 미국 FDA</strong>로부터 '오리지널 의약품과 임상적으로 유의미한 차이가 없음'을 공식 인정받았습니다.
           </p>
         </div>
       </div>
-    `
-  },
-  {
-    title: "효능 동등성: PLANETRA 임상 (류마티스 관절염)",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          <strong>논문 참조:</strong> A randomised, double-blind, parallel-group study... the PLANETRA study | <em>Annals of the Rheumatic Diseases</em>
+
+    </div>
+  `
+},
+//
+{
+  title: "효능 동등성: PLANETRA 임상 (류마티스 관절염)",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+      
+      <div class="mb-6 pb-4 border-b border-gray-100">
+        <p class="text-[0.85rem] text-gray-400 leading-snug italic">
+          <strong>Reference:</strong> Yoo DH, et al. Equivalence in efficacy and safety of CT-P13 compared with innovator infliximab: the PLANETRA study. <strong>Annals of the Rheumatic Diseases.</strong> 2013;72(10):1613-1620.
         </p>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-6">
-          <div class="flex flex-col justify-center">
-            <h5 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
-              <span class="text-brand">📊</span> ACR20 반응률 비교 (30주차)
-            </h5>
-            <p class="text-[0.8rem] text-gray-600 leading-relaxed mb-4 word-keep">
-              전 세계 606명의 류마티스 관절염 환자를 대상으로 한 PLANETRA 글로벌 임상 3상 결과, 투여 30주 차에 질병 활성도가 20% 이상 감소한 환자의 비율(ACR20)을 측정했습니다.<br><br>
-              분석 결과, 두 약물 간의 치료 효과 차이는 사전 정의된 <strong>통계적 동등성 마진(Equivalence Margin, ±15%)</strong> 내에 완벽하게 들어왔습니다.
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#Efficacy</span>
-              <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#ACR20</span>
-              <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#Phase_3</span>
-            </div>
-          </div>
-
-          <!-- 95% CI Error Bar가 포함된 고급 막대 그래프 -->
-          <div class="p-6 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col items-center justify-end h-64 relative">
-            <div class="w-full flex justify-around items-end h-40 border-b-2 border-gray-300 pb-1 relative">
-              
-              <!-- 렘시마 막대 -->
-              <div class="relative w-20 flex flex-col items-center group">
-                <span class="absolute -top-7 text-[0.8rem] font-bold text-brand">60.9%</span>
-                <!-- 에러바 (95% CI) -->
-                <div class="absolute -top-4 w-0.5 h-8 bg-gray-700 z-10">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-gray-700"></div>
-                  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-gray-700"></div>
-                </div>
-                <div class="w-full bg-brand rounded-t-sm shadow-md transition-transform group-hover:opacity-90" style="height: 60.9px; /* 스케일 조정 */ height: 120px;"></div>
-                <span class="mt-2 text-[0.7rem] font-bold text-gray-700">Remsima®</span>
-              </div>
-
-              <!-- 오리지널 막대 -->
-              <div class="relative w-20 flex flex-col items-center group">
-                <span class="absolute -top-7 text-[0.8rem] font-bold text-gray-600">58.6%</span>
-                <!-- 에러바 (95% CI) -->
-                <div class="absolute -top-4 w-0.5 h-8 bg-gray-700 z-10">
-                  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-gray-700"></div>
-                  <div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-0.5 bg-gray-700"></div>
-                </div>
-                <div class="w-full bg-gray-400 rounded-t-sm shadow-md transition-transform group-hover:opacity-90" style="height: 58.6px; /* 스케일 조정 */ height: 115px;"></div>
-                <span class="mt-2 text-[0.7rem] font-bold text-gray-700">Original</span>
-              </div>
-              
-            </div>
-            <p class="text-[0.6rem] text-gray-400 mt-4 text-center">에러바는 95% 신뢰구간(CI)을 나타내며, 차이가 동등성 한계 내에 있음을 의미합니다.</p>
-          </div>
-        </div>
       </div>
-    `
-  },
-  {
-    title: "약동학(PK) 및 면역원성: PLANETAS 임상",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          <strong>논문 참조:</strong> Infliximab and CT-P13 immunogenicity assessment in PLANETAS... | <em>Annals of the Rheumatic Diseases</em>
-        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <!-- PK 카드 -->
-          <div class="p-6 rounded-2xl bg-blue-50/50 border border-blue-100">
-            <h5 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
-              <span class="text-lg">📈</span> 약동학적 동등성 (Pharmacokinetics)
-            </h5>
-            <p class="text-[0.75rem] text-gray-700 leading-relaxed mb-4 word-keep">
-              강직성 척추염(AS) 환자 250명을 대상으로 한 임상 1/3상 결과, 인체 내 약물의 흡수 및 분포를 나타내는 핵심 지표가 오리지널과 <strong>기하평균비율(GMR) 100%에 근접</strong>하게 일치했습니다.
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 flex-grow">
+        
+        <div class="flex flex-col justify-center">
+          <h5 class="font-extrabold text-gray-900 text-xl mb-5 flex items-center gap-2">
+            <span class="text-2xl text-brand">📊</span> ACR20 반응률 비교 (30주차)
+          </h5>
+          <div class="space-y-5">
+            <p class="text-[1rem] text-gray-700 leading-relaxed word-keep">
+              전 세계 <strong>606명의 류마티스 관절염 환자</strong>를 대상으로 한 PLANETRA 글로벌 임상 3상 결과, 투여 30주 차에 질병 활성도가 20% 이상 감소한 환자의 비율(ACR20)을 측정했습니다.
             </p>
-            <ul class="text-[0.75rem] text-gray-600 space-y-2 bg-white p-3 rounded-lg border border-blue-50">
-              <li class="flex justify-between"><span>AUC (혈중 약물 농도 곡선 면적)</span> <span class="font-bold text-blue-700">104% (동등)</span></li>
-              <li class="flex justify-between border-t border-gray-100 pt-2"><span>Cmax (최고 혈중 약물 농도)</span> <span class="font-bold text-blue-700">97% (동등)</span></li>
-            </ul>
-          </div>
-
-          <!-- Immunogenicity 카드 -->
-          <div class="p-6 rounded-2xl bg-rose-50/50 border border-rose-100">
-            <h5 class="font-bold text-rose-900 mb-3 flex items-center gap-2">
-              <span class="text-lg">🛡️</span> 면역원성 (Immunogenicity)
-            </h5>
-            <p class="text-[0.75rem] text-gray-700 leading-relaxed mb-4 word-keep">
-              바이오의약품 투여 시 체내에서 약물을 공격하는 <strong>항약물항체(ADA, Anti-Drug Antibody)</strong> 발생 여부는 안전성의 핵심입니다. 두 약물 간 ADA 발생률의 차이는 없었습니다.
-            </p>
-            <div class="flex items-center justify-around bg-white p-3 rounded-lg border border-rose-50">
-              <div class="text-center">
-                <span class="block text-[0.65rem] text-gray-400 font-bold mb-1">렘시마 ADA 발생률</span>
-                <span class="text-lg font-bold text-rose-600">48.4%</span>
-              </div>
-              <div class="w-px h-8 bg-gray-200"></div>
-              <div class="text-center">
-                <span class="block text-[0.65rem] text-gray-400 font-bold mb-1">오리지널 ADA 발생률</span>
-                <span class="text-lg font-bold text-gray-600">48.2%</span>
-              </div>
+            <div class="p-5 bg-brand-light/10 border-l-4 border-brand rounded-r-xl font-medium text-[0.95rem] text-brand-dark">
+              분석 결과, 두 약물 간의 치료 효과 차이는 사전 정의된 <span class="underline decoration-2 underline-offset-4 font-bold text-brand">통계적 동등성 마진(±13.5%)</span> 내에 완벽하게 포함되었습니다.
             </div>
           </div>
-        </div>
-      </div>
-    `
-  },
-  {
-    title: "교체 투여(Switching)의 안전성: NOR-SWITCH 연구",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          <strong>논문 참조:</strong> Switching from originator infliximab to biosimilar CT-P13... | <em>The Lancet</em>
-        </p>
-
-        <h5 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
-          <span class="text-brand">🔄</span> 오리지널에서 렘시마로 바꾸면 부작용이 생길까?
-        </h5>
-        <p class="text-[0.8rem] text-gray-600 leading-relaxed mb-6 word-keep">
-          노르웨이 정부 주도로 진행된 대규모 독립 임상인 <strong>NOR-SWITCH</strong>는 다양한 자가면역질환 환자 481명을 대상으로 진행되었습니다. 기존 오리지널 의약품을 투여받던 환자들을 무작위로 나누어, 한 그룹은 계속 유지(Maintenance)하고 다른 그룹은 렘시마로 교체 투여(Switching)했습니다.
-        </p>
-
-        <!-- Forest Plot 시각화 (Tailwind CSS 활용) -->
-        <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200 mb-6">
-          <h6 class="text-[0.75rem] font-bold text-gray-700 mb-4 text-center">질병 악화율 (Disease Worsening Rate) 비교 - 비열등성 입증</h6>
           
-          <div class="relative w-full max-w-lg mx-auto py-4">
-            <!-- 0 기준선 -->
-            <div class="absolute top-0 bottom-0 left-[30%] w-px bg-gray-400 border-dashed border-l"></div>
-            <span class="absolute -top-2 left-[30%] -translate-x-1/2 text-[0.6rem] text-gray-400 font-bold">비열등성 한계 (-15%)</span>
-            
-            <div class="absolute top-0 bottom-0 left-1/2 w-px bg-gray-800"></div>
-            <span class="absolute -top-2 left-1/2 -translate-x-1/2 text-[0.6rem] text-gray-800 font-bold">0 (차이 없음)</span>
-
-            <div class="absolute top-0 bottom-0 left-[70%] w-px bg-gray-400 border-dashed border-l"></div>
-            <span class="absolute -top-2 left-[70%] -translate-x-1/2 text-[0.6rem] text-gray-400 font-bold">비열등성 한계 (+15%)</span>
-
-            <!-- 데이터 포인트 (에러바 + 마커) -->
-            <div class="relative h-12 flex items-center mt-4">
-              <span class="absolute left-0 text-[0.7rem] font-bold text-gray-600 w-24 text-right pr-4">전체 질환 합산</span>
-              <!-- CI 바 (Tailwind width 조정으로 구현) -->
-              <div class="absolute left-[45%] w-[8%] h-1 bg-brand rounded-full"></div>
-              <!-- 중앙 마커 (차이값: -4.4%) -->
-              <div class="absolute left-[48%] w-3 h-3 bg-brand rounded-full transform -translate-y-1/2 top-1/2 border-2 border-white shadow-sm"></div>
-            </div>
+          <div class="flex flex-wrap gap-2 mt-8">
+            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-[0.75rem] font-extrabold rounded-lg border border-gray-200 shadow-sm">#Efficacy</span>
+            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-[0.75rem] font-extrabold rounded-lg border border-gray-200 shadow-sm">#ACR20</span>
+            <span class="px-3 py-1 bg-gray-100 text-gray-600 text-[0.75rem] font-extrabold rounded-lg border border-gray-200 shadow-sm">#Phase_3</span>
           </div>
         </div>
 
-        <div class="mt-auto flex items-start gap-3 bg-[#F0F7F7] p-4 rounded-xl border border-brand/20">
-          <span class="text-brand font-bold text-lg leading-none">✓</span>
-          <p class="text-[0.75rem] text-[#084d4f] leading-relaxed word-keep">
-            <strong>결론 (The Lancet):</strong> 렘시마로의 교체 투여는 오리지널 의약품을 계속 투여하는 것과 비교하여 효능 저하, 면역원성 증가, 부작용 발생 측면에서 <strong>열등하지 않음(Non-inferior)</strong>이 증명되었습니다. 이는 실제 의료 현장(Real-World)에서의 처방 신뢰도를 극적으로 높인 기념비적 연구입니다.
-          </p>
+        <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200 flex flex-col items-center justify-center min-h-[320px] relative shadow-inner">
+          <div class="w-full flex justify-around items-end h-48 border-b-2 border-gray-300 pb-2 relative">
+            
+            <div class="relative w-24 flex flex-col items-center group">
+              <span class="absolute -top-10 text-[1.1rem] font-black text-brand tracking-tighter">60.9%</span>
+              <div class="absolute -top-6 w-[2px] h-10 bg-gray-800 z-10 flex flex-col justify-between items-center">
+                <div class="w-3 h-[2px] bg-gray-800"></div>
+                <div class="w-3 h-[2px] bg-gray-800"></div>
+              </div>
+              <div class="w-full bg-brand rounded-t-lg shadow-[4px_0_15px_rgba(0,171,176,0.3)] transition-all group-hover:brightness-110" style="height: 140px;"></div>
+              <span class="mt-3 text-[0.85rem] font-extrabold text-gray-800 tracking-tight">Remsima®</span>
+            </div>
+
+            <div class="relative w-24 flex flex-col items-center group">
+              <span class="absolute -top-10 text-[1.1rem] font-black text-gray-500 tracking-tighter">58.6%</span>
+              <div class="absolute -top-6 w-[2px] h-10 bg-gray-800 z-10 flex flex-col justify-between items-center">
+                <div class="w-3 h-[2px] bg-gray-800"></div>
+                <div class="w-3 h-[2px] bg-gray-800"></div>
+              </div>
+              <div class="w-full bg-gray-400 rounded-t-lg shadow-md transition-all group-hover:brightness-110" style="height: 135px;"></div>
+              <span class="mt-3 text-[0.85rem] font-extrabold text-gray-800 tracking-tight">Original</span>
+            </div>
+
+          </div>
+          <div class="mt-8 flex items-start gap-2 px-4">
+            <span class="text-gray-400 text-xs mt-0.5">ℹ️</span>
+            <p class="text-[0.75rem] text-gray-500 text-center leading-snug">에러바는 <strong>95% 신뢰구간(CI)</strong>을 나타내며, 두 약물 간의 차이가 통계적으로 유의미하지 않은 동등한 수준임을 증명합니다.</p>
+          </div>
         </div>
       </div>
-    `
-  },
-  {
+    </div>
+  `
+},
+//
+{
+  title: "약동학(PK) 및 면역원성: PLANETAS 임상",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+      
+      <div class="mb-8 pb-4 border-b border-gray-100">
+        <p class="text-[0.85rem] text-gray-400 leading-snug italic">
+          <strong>Reference:</strong> Park W, et al. Pharmacokinetics, safety, and efficacy of CT-P13 compared with innovator infliximab: the PLANETAS study. <strong>Annals of the Rheumatic Diseases.</strong> 2013;72(10):1605-1612.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8 flex-grow">
+        
+        <div class="p-8 rounded-3xl bg-blue-50/50 border border-blue-100 flex flex-col hover:shadow-md transition-all">
+          <h5 class="font-extrabold text-blue-900 mb-5 flex items-center gap-2 text-lg">
+            <span class="text-2xl">📈</span> 약동학적 동등성 (Pharmacokinetics)
+          </h5>
+         <p class="text-[0.95rem] text-gray-700 leading-relaxed mb-6 word-keep">
+  강직성 척추염(AS) 환자 250명을 대상으로 한 임상 결과, 약물의 흡수·분포 핵심 지표는 오리지널과 
+  <span class="text-blue-700 font-bold">기하평균비율(GMR)이 유사</span>하였으며, 
+  <span class="font-bold text-blue-700">90% 신뢰구간이 규정된 동등성 범위(80–125%)를 모두 충족</span>했습니다.
+</p>
+          
+          <div class="mt-auto space-y-3 bg-white p-5 rounded-2xl border border-blue-100 shadow-sm">
+  
+  <div class="flex justify-between items-center">
+    <span class="text-[0.85rem] text-gray-600 font-medium">
+      AUC <span class="text-[0.7rem] block text-gray-400">(곡선하 면적)</span>
+    </span>
+    <span class="text-[1.05rem] font-black text-blue-600">
+      GMR 1.04 
+      <span class="text-[0.65rem] text-gray-500 block">90% CI: 0.98–1.10</span>
+    </span>
+  </div>
+
+  <div class="w-full h-px bg-gray-100"></div>
+
+  <div class="flex justify-between items-center">
+    <span class="text-[0.85rem] text-gray-600 font-medium">
+      Cmax <span class="text-[0.7rem] block text-gray-400">(최고 농도)</span>
+    </span>
+    <span class="text-[1.05rem] font-black text-blue-600">
+      GMR 0.97
+      <span class="text-[0.65rem] text-gray-500 block">90% CI: 0.90–1.05</span>
+    </span>
+  </div>
+
+</div>
+
+        <div class="p-8 rounded-3xl bg-rose-50/50 border border-rose-100 flex flex-col hover:shadow-md transition-all">
+          <h5 class="font-extrabold text-rose-900 mb-5 flex items-center gap-2 text-lg">
+            <span class="text-2xl">🛡️</span> 면역원성 (Immunogenicity)
+          </h5>
+          <p class="text-[0.95rem] text-gray-700 leading-relaxed mb-6 word-keep">
+            바이오의약품 투여 시 약물을 공격하는 <strong>항약물항체(ADA)</strong> 발생 여부는 안전성의 핵심입니다. 두 약물 간 발생률 차이는 통계적으로 유의미하지 않았습니다.
+          </p>
+          
+          <div class="mt-auto flex items-center justify-around bg-white p-6 rounded-2xl border border-rose-100 shadow-sm relative overflow-hidden">
+             <div class="absolute inset-y-6 left-1/2 w-px bg-gray-100"></div>
+            
+            <div class="text-center z-10">
+              <span class="block text-[0.75rem] text-gray-400 font-bold mb-2">램시마®</span>
+              <span class="text-2xl font-black text-rose-600 tracking-tight">27%</span>
+              <span class="block text-[0.6rem] text-rose-300 font-bold mt-1">ADA (+)</span>
+            </div>
+            
+            <div class="text-center z-10">
+              <span class="block text-[0.75rem] text-gray-400 font-bold mb-2">오리지널</span>
+              <span class="text-2xl font-black text-gray-600 tracking-tight">24%</span>
+              <span class="block text-[0.6rem] text-gray-400 font-bold mt-1">ADA (+)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-auto p-4 bg-gray-50 rounded-xl border border-gray-200">
+        <p class="text-[0.85rem] text-gray-600 text-center leading-relaxed">
+          이 데이터는 <strong>체내 약물 거동(PK)</strong>과 <strong>면역학적 안전성</strong> 측면에서 램시마가 오리지널과 고도로 유사함을 입증합니다.
+        </p>
+      </div>
+
+    </div>
+  `
+},
+//
+ {
+  title: "교체 투여(Switching)의 안전성: NOR-SWITCH 연구",
+  desc: `
+    <div class="bg-white rounded-3xl p-6 md:p-10 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+      
+      <div class="mb-8 pb-4 border-b border-gray-100">
+        <p class="text-[0.85rem] text-gray-400 leading-snug italic">
+          <strong>Reference:</strong> Jørgensen KK, et al. Switching from originator infliximab to biosimilar CT-P13 (NOR-SWITCH). <strong>The Lancet.</strong> 2017;389(10086):2304-2316.
+        </p>
+      </div>
+
+      <div class="mb-8">
+        <h5 class="font-extrabold text-gray-900 text-xl mb-4 flex items-center gap-2">
+          <span class="text-2xl">🔄</span> 오리지널에서 렘시마로의 전환, 안전할까?
+        </h5>
+        <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+          노르웨이 정부 주도의 <strong>NOR-SWITCH</strong> 임상은 오리지널을 투여받던 환자 481명을 대상으로 진행되었습니다. 52주간의 비교 분석을 통해 <span class="text-blue-600 font-bold">바이오시밀러 교체 투여의 임상적 신뢰도</span>를 세계 최초로 대규모 입증했습니다.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-3xl bg-gray-50 border border-gray-200 mb-8 flex-grow shadow-inner">
+        <h6 class="text-[0.9rem] font-extrabold text-gray-800 mb-8 text-center bg-white py-2 px-4 rounded-full inline-block mx-auto border border-gray-100 shadow-sm">
+          질병 악화율 (Disease Worsening) - 비열등성 평가 결과
+        </h6>
+        
+        <div class="relative w-full max-w-2xl mx-auto py-10 px-4">
+          <div class="absolute top-0 bottom-0 left-[15%] w-px bg-red-400 border-dashed border-l-2 z-0"></div>
+          <span class="absolute -top-6 left-[15%] -translate-x-1/2 text-[0.7rem] text-red-500 font-black whitespace-nowrap bg-red-50 px-2 py-0.5 rounded">비열등성 마진 (-15%)</span>
+          
+          <div class="absolute top-0 bottom-0 left-1/2 w-[2px] bg-gray-800 z-10"></div>
+          <span class="absolute -top-6 left-1/2 -translate-x-1/2 text-[0.7rem] text-gray-900 font-black bg-gray-100 px-2 py-0.5 rounded italic">0 (차이 없음)</span>
+
+          <div class="relative h-16 flex items-center mt-6">
+            <span class="absolute -left-4 text-[0.9rem] font-extrabold text-gray-700 w-32 text-right pr-6 italic">전체 질환 합산</span>
+            <div class="absolute left-[28.5%] w-[33%] h-2 bg-blue-500/30 rounded-full"></div>
+            <div class="absolute left-[41.5%] w-5 h-5 bg-blue-700 rounded-full transform -translate-y-1/2 top-1/2 border-4 border-white shadow-xl group hover:scale-125 transition-transform"></div>
+          </div>
+          
+          <div class="mt-10 text-center">
+            <p class="text-[0.85rem] text-blue-800 font-black italic p-3 bg-blue-50 rounded-2xl border border-blue-100 inline-block px-8 shadow-sm">
+              Adjusted Difference: -4.4% <span class="text-[0.75rem] font-bold text-blue-600 ml-2">(95% CI -12.7 to 3.9)</span>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-auto flex items-start gap-4 bg-blue-600 p-6 rounded-2xl shadow-lg border-b-8 border-blue-800">
+        <div class="bg-white rounded-full p-1 shadow-inner">
+          <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+        </div>
+        <p class="text-[0.95rem] text-white leading-relaxed font-bold">
+          <strong class="text-blue-100 italic mr-1">Key Result:</strong> 연구 결과, 두 그룹 간의 차이가 비열등성 한계(-15%) 내에 있음이 확인되었습니다. 이는 렘시마로의 교환 처방이 의학적으로 <span class="text-yellow-300 font-black decoration-double underline decoration-yellow-300">적절하고 안전함(Non-inferior)</span>을 증명하는 강력한 근거입니다.
+        </p>
+      </div>
+
+    </div>
+  `
+},
+//
+{
     title: "적응증 외삽 (Extrapolation)의 과학적 정당성",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4 word-keep">
-          "류마티스 관절염 데이터만으로 어떻게 크론병이나 궤양성 대장염의 처방 승인을 받을 수 있었을까요?"
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[0.9rem] text-gray-500 mb-8 border-b border-gray-100 pb-5">
+    <strong>논문 참조:</strong> The scientific and regulatory rationale for indication extrapolation: a case study based on the infliximab biosimilar CT-P13 | <em class="italic">Expert Rev Gastroenterol Hepatol (2015)</em>
+  </p>
+
+  <h2 class="text-[1.4rem] md:text-[1.6rem] font-bold text-blue-600 mb-10 word-keep leading-snug">
+    "류마티스 관절염 데이터만으로 어떻게 크론병이나 궤양성 대장염의 처방 승인을 받을 수 있었을까요?"
+  </h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+    
+    <div class="p-7 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col">
+      <h5 class="text-[1.2rem] font-bold text-gray-800 mb-4 flex items-center gap-3">
+        <span class="text-2xl">🧬</span> 동일한 작용 기전 (MoA)
+      </h5>
+      <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+        류마티스 관절염과 염증성 장질환(크론병 등)은 발병 부위는 다르지만, 염증을 유발하는 핵심 원인 물질이 <strong>TNF-α</strong>로 동일합니다. 렘시마는 앞선 분석적/비임상 시험을 통해 오리지널과 동일하게 TNF-α를 정밀하게 억제함(Target binding & Neutralization)을 증명했습니다.
+      </p>
+    </div>
+
+    <div class="p-7 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col">
+      <h5 class="text-[1.2rem] font-bold text-gray-800 mb-4 flex items-center gap-3">
+        <span class="text-2xl">⚖️</span> 규제 기관의 과학적 검토
+      </h5>
+      <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+        EMA(유럽)와 FDA(미국)의 가이드라인에 따르면, 특정 적응증에서 임상적 동등성이 확증되고 약물의 작용 기전(MoA)이 동일함이 증명될 경우, 나머지 적응증에 대해서도 별도의 임상 없이 효능을 인정하는 <strong>'적응증 외삽(Extrapolation)'</strong>을 부여합니다.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-auto p-8 bg-blue-600 text-white rounded-2xl relative overflow-hidden shadow-md">
+    <div class="absolute -right-10 -top-10 w-40 h-40 bg-white opacity-10 rounded-full blur-3xl"></div>
+    
+    <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+      <div class="flex-shrink-0 text-5xl">🌍</div>
+      <div>
+        <h5 class="text-[1.3rem] font-bold mb-2">광범위한 적응증 승인 확보</h5>
+        <p class="text-[1rem] opacity-95 leading-relaxed word-keep">
+렘시마는 오리지널 의약품인 레미케이드와 동등한 품질·효능·안전성을 기반으로 류마티스 관절염, 강직성 척추염, 크론병, 궤양성 대장염, 건선 등 <strong>주요 자가면역질환 적응증에 대해 규제 기관으로부터 외삽(Extrapolation)을 인정받았습니다. 국가별 규제 정책에 따라 세부 승인 범위는 다를 수 있습니다.
         </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <span class="text-lg">🧬</span> 동일한 작용 기전 (MoA)
-            </h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed word-keep">
-              류마티스 관절염과 염증성 장질환(크론병 등)은 발병 부위는 다르지만, 염증을 유발하는 핵심 원인 물질이 <strong>TNF-α</strong>로 동일합니다. 렘시마는 앞선 분석적/비임상 시험을 통해 오리지널과 동일하게 TNF-α를 정밀하게 억제함(Target binding & Neutralization)을 증명했습니다.
-            </p>
-          </div>
-
-          <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <span class="text-lg">⚖️</span> 규제 기관의 엄격한 과학적 검토
-            </h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed word-keep">
-              EMA(유럽)와 FDA(미국)의 바이오시밀러 가이드라인에 따르면, 특정 적응증에서 임상적 동등성이 확증되고, 약물의 작용 기전 및 수용체(Fc receptor) 특성이 동일함이 증명될 경우, 나머지 적응증에 대해서도 별도의 임상 3상 없이 효능을 인정하는 <strong>'적응증 외삽'</strong>을 부여합니다.
-            </p>
-          </div>
-        </div>
-
-        <!-- 결론 배너 -->
-        <div class="mt-auto p-6 bg-brand text-white rounded-2xl relative overflow-hidden shadow-md">
-          <!-- 배경 장식용 원 -->
-          <div class="absolute -right-10 -top-10 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
-          
-          <div class="flex flex-col md:flex-row items-center gap-6 relative z-10">
-            <div class="flex-shrink-0 text-4xl">🌍</div>
-            <div>
-              <h5 class="text-lg font-bold mb-1">모든 적응증 100% 획득 완료</h5>
-              <p class="text-[0.75rem] opacity-90 leading-relaxed word-keep">
-                렘시마는 오리지널 약물이 가지고 있던 류마티스 관절염, 강직성 척추염, 크론병, 궤양성 대장염, 건선 등 <strong>모든 자가면역질환 적응증에 대해 동일하게 처방 가능함</strong>을 전 세계 규제 기관으로부터 승인받았습니다.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
+  </div>
+</div>
     `
   },
 // 제형 변화
  {
     title: "환자 편의성을 위한 기술 혁신: 렘시마 SC",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-gray-500 leading-relaxed mb-6 word-keep">
-          본래 정맥주사(IV)용으로 설계되어 분자 구조가 크고 예민한 인플릭시맙을 단 <strong>2mL 미만의 작은 부피</strong>에 담아 피하주사(SC)로 투여할 수 있게 만든 것은 고도의 단백질 제형(Formulation) 공학의 산물입니다.
-        </p>
-        
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <!-- IV 제형 카드 -->
-          <div class="p-6 rounded-2xl bg-gray-50 border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-4 flex items-center gap-2">
-              <span class="text-xl">🏥</span> 기존 정맥주사 (IV)
-            </h5>
-            <ul class="text-[0.75rem] text-gray-600 space-y-3">
-              <li class="flex items-start gap-2">
-                <span class="text-brand mt-0.5 font-bold">▪</span>
-                <span><strong>제형 형태:</strong> 동결건조 분말(Lyophilized Powder) 형태로 유통되며, 투여 전 멸균 생리식염수로 재구성(Reconstitution) 필요.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand mt-0.5 font-bold">▪</span>
-                <span><strong>투여 방식:</strong> 병원에 방문하여 약 2~3시간 동안 전문 의료진에 의해 링거 형태로 서서히 투여(빠른 초기 효과 발현).</span>
-              </li>
-            </ul>
-          </div>
-
-          <!-- SC 제형 카드 (강조) -->
-          <div class="p-6 rounded-2xl bg-[#F0F7F7] border border-brand/20 shadow-sm relative overflow-hidden">
-            <div class="absolute -right-4 -bottom-4 text-6xl opacity-10">💉</div>
-            <h5 class="font-bold text-brand mb-4 flex items-center gap-2">
-              <span class="text-xl">🏡</span> 혁신 피하주사 (SC)
-            </h5>
-            <ul class="text-[0.75rem] text-[#084d4f] space-y-3">
-              <li class="flex items-start gap-2">
-                <span class="text-brand mt-0.5 font-bold">▪</span>
-                <span><strong>고농도·저점도 기술:</strong> 단백질 농도가 높아질 때 발생하는 응집(Aggregation)과 점도 상승을 제어하는 <strong>독자적 완충계(Buffer System) 및 계면 보호제</strong> 설계.</span>
-              </li>
-              <li class="flex items-start gap-2">
-                <span class="text-brand mt-0.5 font-bold">▪</span>
-                <span><strong>투여 방식:</strong> 환자가 직접 보관하며, 병원 방문 없이 집에서 오토인젝터(Auto-injector)로 약 10초 이내에 간편하게 자가 주입.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="mt-auto flex flex-wrap gap-2">
-          <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#Formulation_Technology</span>
-          <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#High_Concentration</span>
-          <span class="px-2 py-1 bg-gray-100 text-gray-600 text-[0.65rem] font-bold rounded">#Buffer_System</span>
-        </div>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto">
+  
+  <p class="text-[1.1rem] md:text-[1.2rem] text-gray-600 leading-relaxed mb-10 word-keep">
+    본래 정맥주사(IV)용으로 설계된 인플릭시맙을 단 <strong class="text-emerald-600 text-[1.25rem]">2mL 미만의 작은 부피</strong>에 담아 피하주사(SC)로 구현한 것은 고도의 <strong>단백질 제형(Formulation) 공학</strong>의 산물입니다.
+  </p>
+  
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+    
+    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-200 flex flex-col justify-between">
+      <div>
+        <h5 class="text-[1.3rem] font-bold text-gray-800 mb-6 flex items-center gap-3">
+          <span class="text-2xl">🏥</span> 기존 정맥주사 (IV)
+        </h5>
+        <ul class="text-[1rem] text-gray-600 space-y-5">
+          <li class="flex items-start gap-3">
+            <span class="text-gray-400 mt-1.5">●</span>
+            <span><strong>제형 형태:</strong> 동결건조 분말 형태로 유통되며, 투여 전 별도의 재구성(Reconstitution) 과정 필요</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-gray-400 mt-1.5">●</span>
+            <span><strong>투여 방식:</strong> 병원에 방문하여 2~3시간 동안 전문 의료진을 통해 링거 형태로 투여</span>
+          </li>
+        </ul>
       </div>
+    </div>
+
+    <div class="p-8 rounded-2xl bg-[#F0F7F7] border border-emerald-100 shadow-sm relative overflow-hidden flex flex-col justify-between">
+      <div class="absolute -right-6 -top-6 text-8xl opacity-5 rotate-12">💉</div>
+      <div>
+        <h5 class="text-[1.3rem] font-bold text-emerald-700 mb-6 flex items-center gap-3">
+          <span class="text-2xl">🏡</span> 혁신 피하주사 (SC)
+        </h5>
+        <ul class="text-[1rem] text-[#084d4f] space-y-5 relative z-10">
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-500 mt-1.5 font-bold">●</span>
+            <span><strong>고농도·저점도 기술:</strong> 응집과 점도를 제어하는 <strong>독자적 완충계(Buffer System)</strong> 및 계면 보호제 설계</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-emerald-500 mt-1.5 font-bold">●</span>
+            <span><strong>투여 방식:</strong> 병원 방문 없이 <strong>집에서 오토인젝터</strong>로 10초 이내에 간편하게 자가 주입</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-auto flex flex-wrap gap-3">
+    <span class="px-4 py-2 bg-gray-100 text-gray-700 text-[0.85rem] font-bold rounded-lg border border-gray-200">#Formulation_Technology</span>
+    <span class="px-4 py-2 bg-gray-100 text-gray-700 text-[0.85rem] font-bold rounded-lg border border-gray-200">#High_Concentration</span>
+    <span class="px-4 py-2 bg-gray-100 text-gray-700 text-[0.85rem] font-bold rounded-lg border border-gray-200">#Buffer_System</span>
+  </div>
+</div>
     `
   },
+//
   {
     title: "널뛰기 없는 안정성: 약동학(PK) 및 임상적 우위",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          <strong>논문 참조:</strong> LIBERTY-CD/UC Trials for Subcutaneous Infliximab | <em>Gastroenterology</em>
-        </p>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[0.9rem] text-gray-500 mb-8 border-b border-gray-100 pb-5">
+    <strong>논문 참조:</strong> LIBERTY-CD/UC Trials for Subcutaneous Infliximab | <em class="italic">Gastroenterology</em>
+  </p>
 
-        <h5 class="font-bold text-gray-800 text-lg mb-3 flex items-center gap-2">
-          <span class="text-brand">📈</span> Peak & Trough 현상의 완화
-        </h5>
-        <p class="text-[0.8rem] text-gray-600 leading-relaxed mb-6 word-keep">
-          IV 제형은 투여 직후 약물 농도가 급격히 치솟았다가(Peak) 투여 주기 말에 급격히 떨어지는(Trough) 현상이 발생합니다. 반면, SC 제형은 지속적이고 일정한 혈중 농도를 유지하여 약효의 공백을 최소화합니다.
-        </p>
+  <h2 class="text-[1.4rem] md:text-[1.6rem] font-bold text-gray-800 mb-6 flex items-center gap-3">
+    <span class="text-blue-600 text-2xl">📈</span> Peak & Trough 현상의 완화
+  </h2>
+  
+  <p class="text-[1.05rem] text-gray-600 leading-relaxed mb-10 word-keep">
+    IV 제형은 투여 직후 약물 농도가 치솟았다가(Peak) 투여 주기 말에 급격히 떨어지는(Trough) 현상이 발생합니다. 반면, <strong class="text-blue-600">SC 제형은 지속적이고 일정한 혈중 농도를 유지</strong>하여 약효의 공백을 최소화합니다.
+  </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="p-5 rounded-2xl bg-blue-50/50 border border-blue-100">
-            <h6 class="font-bold text-blue-900 mb-2">높은 최저 혈중 농도 (Ctrough)</h6>
-            <p class="text-[0.7rem] text-gray-700 leading-relaxed">
-              임상 3상(LIBERTY) 결과, 렘시마 SC 투여군의 <strong>최저 혈중 농도(Ctrough)가 IV 투여군 대비 약 2~3배 높게 유지</strong>되었습니다. 이는 치료 기간 내내 더욱 안정적인 임상적 관해(Remission)를 유도합니다.
-            </p>
-          </div>
-          <div class="p-5 rounded-2xl bg-green-50/50 border border-green-100">
-            <h6 class="font-bold text-green-900 mb-2">면역원성(ADA) 발생 감소</h6>
-            <p class="text-[0.7rem] text-gray-700 leading-relaxed">
-              약물 농도가 바닥으로 떨어지는 구간(Trough)이 줄어들면서, 인체 면역계가 약물을 외부 물질로 인식해 공격하는 <strong>항약물항체(ADA)의 발생 빈도가 IV 제형 대비 현저히 낮게</strong> 나타났습니다.
-            </p>
-          </div>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+    
+    <div class="p-7 rounded-2xl bg-blue-50 border border-blue-100 flex flex-col shadow-sm">
+      <h6 class="text-[1.2rem] font-bold text-blue-900 mb-4">높은 최저 혈중 농도 (Ctrough)</h6>
+      <p class="text-[1rem] text-blue-800/80 leading-relaxed word-keep">
+        임상 3상(LIBERTY) 결과, 렘시마 SC 투여군의 <strong>최저 혈중 농도(Ctrough)가 IV 대비 약 2~3배 높게 유지</strong>되었습니다. 이는 치료 기간 내내 더욱 안정적인 임상적 관해(Remission)를 유도합니다.
+      </p>
+    </div>
 
-        <div class="mt-auto p-5 bg-gray-50 border border-gray-200 rounded-xl flex items-start gap-3 shadow-sm">
-          <span class="text-brand font-bold text-lg">💡</span>
-          <p class="text-[0.75rem] text-gray-600 leading-relaxed">
-            <strong>임상적 결과:</strong> 신규 크론병 및 궤양성 대장염 환자를 대상으로 한 임상에서 렘시마 SC 투여군은 위약군 및 IV 단독 투여군 대비 <strong>통계적으로 유의미하게 높은 임상적 관해율</strong>을 달성했습니다.
-          </p>
-        </div>
-      </div>
+    <div class="p-7 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col shadow-sm">
+      <h6 class="text-[1.2rem] font-bold text-emerald-900 mb-4">면역원성(ADA) 발생 감소</h6>
+      <p class="text-[1rem] text-emerald-800/80 leading-relaxed word-keep">
+        약물 농도가 바닥으로 떨어지는 구간이 줄어들면서, 인체 면역계가 약물을 공격하는 <strong>항약물항체(ADA) 발생 빈도가 IV 대비 현저히 낮게</strong> 나타나 장기적인 약효 유지에 유리합니다.
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-auto p-7 bg-gray-50 border-l-4 border-blue-500 rounded-r-xl flex items-start gap-4 shadow-sm">
+    <span class="text-blue-600 font-bold text-2xl mt-1">💡</span>
+    <div>
+      <p class="text-[1.05rem] text-gray-700 leading-relaxed word-keep">
+        <strong>임상적 결과:</strong> 신규 크론병 및 궤양성 대장염 환자 대상 임상에서 렘시마 SC는 위약 및 IV 단독 투여군 대비 <strong class="text-blue-700 underline underline-offset-4">통계적으로 유의미하게 높은 임상적 관해율</strong>을 달성했습니다.
+      </p>
+    </div>
+  </div>
+</div>
     `
   },
+//
   {
     title: "맞춤형 치료 전략: 듀얼 포뮬레이션 (Dual Formulation)",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-gray-500 leading-relaxed mb-6 word-keep">
-          렘시마는 세계 최초로 동일 성분(Infliximab)에 대해 정맥주사(IV)와 피하주사(SC) 두 가지 제형을 모두 갖춘 <strong>듀얼 포뮬레이션(Dual Formulation)</strong> 전략을 완성했습니다.
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-10 word-keep">
+    렘시마는 세계 최초로 동일 성분(Infliximab)에 대해 정맥주사(IV)와 피하주사(SC) 두 가지 제형을 모두 갖춘 <strong class="text-blue-600 text-[1.2rem]">듀얼 포뮬레이션(Dual Formulation)</strong> 전략을 완성했습니다.
+  </p>
+
+  <div class="flex flex-col md:flex-row items-stretch justify-center gap-6 mb-10 py-8 bg-gray-50 rounded-2xl border border-gray-100">
+    
+    <div class="text-center w-full md:w-[45%] px-6 flex flex-col items-center">
+      <div class="w-20 h-20 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-4xl mb-4 shadow-sm border-4 border-white">🏥</div>
+      <h5 class="font-bold text-gray-800 text-[1.2rem] mb-2">초기 유도 요법 (Loading)</h5>
+      <p class="text-[1rem] text-gray-600 leading-snug">
+        <strong class="text-blue-700">IV 제형 투여</strong><br>
+        체내 약물 농도를 신속하게 끌어올려<br>강력하고 빠른 초기 증상 제어
+      </p>
+    </div>
+    
+    <div class="flex flex-col items-center justify-center py-4">
+  <div class="hidden md:flex flex-col items-center">
+    <span class="text-blue-500 text-3xl font-bold">▶</span>
+    <span class="text-[0.75rem] font-bold text-blue-400 mt-2 bg-white px-3 py-1 rounded-full border border-blue-100 shadow-sm whitespace-nowrap">
+      Lock-in 전략
+    </span>
+  </div>
+  <div class="md:hidden text-blue-500 text-3xl font-bold">▼</div>
+</div>
+
+    <div class="text-center w-full md:w-[45%] px-6 flex flex-col items-center">
+      <div class="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center text-4xl mb-4 shadow-sm border-4 border-white">🏡</div>
+      <h5 class="font-bold text-emerald-700 text-[1.2rem] mb-2">유지 요법 (Maintenance)</h5>
+      <p class="text-[1rem] text-emerald-800 leading-snug">
+        <strong class="text-emerald-700">SC 제형 자가투여</strong><br>
+        안정적인 혈중 농도 유지 및<br>환자의 병원 방문 최소화(일상 복귀)
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-auto p-8 bg-blue-600 text-white rounded-2xl relative overflow-hidden shadow-md">
+    <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white opacity-10 rounded-full blur-3xl"></div>
+    <div class="flex flex-col md:flex-row items-center gap-8 relative z-10">
+      <div class="flex-shrink-0 text-6xl">🇺🇸</div>
+      <div>
+        <h5 class="text-[1.4rem] font-bold mb-2">미국 시장 개척: 짐펜트라 (Zymfentra)</h5>
+        <p class="text-[1.05rem] opacity-95 leading-relaxed word-keep">
+          렘시마 SC는 단순 시밀러를 넘어 <strong>'바이오베터(Biobetter)'</strong>로서의 혁신성을 인정받아, 2023년 미국 FDA로부터 <strong>독립적인 신약(New Drug) 지위</strong>인 '짐펜트라'라는 이름으로 승인 및 출시되었습니다.
         </p>
-
-        <!-- 치료 여정(Patient Journey) 플로우 차트 -->
-        <div class="flex flex-col md:flex-row items-center justify-center gap-4 mb-8 py-6 bg-gray-50 rounded-2xl border border-gray-100">
-          <div class="text-center w-full md:w-2/5 px-4">
-            <div class="w-14 h-14 mx-auto bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-2xl mb-3 shadow-sm">🏥</div>
-            <h5 class="font-bold text-gray-800 text-sm">초기 유도 요법 (Loading)</h5>
-            <p class="text-[0.7rem] text-gray-500 mt-2"><strong>IV 제형 투여</strong><br>체내 약물 농도를 신속하게 끌어올려 강력하고 빠른 초기 증상 제어</p>
-          </div>
-          
-          <div class="hidden md:flex flex-col items-center">
-            <span class="text-brand text-xl font-bold">➔</span>
-            <span class="text-[0.6rem] font-bold text-gray-400 mt-1">Lock-in 전략</span>
-          </div>
-          <div class="md:hidden text-brand text-xl font-bold my-2">⬇</div>
-
-          <div class="text-center w-full md:w-2/5 px-4">
-            <div class="w-14 h-14 mx-auto bg-brand-light text-brand rounded-full flex items-center justify-center text-2xl mb-3 shadow-sm">🏡</div>
-            <h5 class="font-bold text-brand text-sm">유지 요법 (Maintenance)</h5>
-            <p class="text-[0.7rem] text-gray-500 mt-2"><strong>SC 제형 자가투여</strong><br>안정적인 혈중 농도 유지 및 환자의 병원 방문 최소화(일상 복귀)</p>
-          </div>
-        </div>
-
-        <div class="mt-auto p-6 bg-brand text-white rounded-2xl relative overflow-hidden shadow-md">
-          <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white opacity-10 rounded-full blur-2xl"></div>
-          <div class="flex flex-col md:flex-row items-center gap-5 relative z-10">
-            <div class="flex-shrink-0 text-4xl">🇺🇸</div>
-            <div>
-              <h5 class="text-lg font-bold mb-1">미국 시장 개척: 짐펜트라 (Zymfentra)</h5>
-              <p class="text-[0.75rem] opacity-90 leading-relaxed word-keep">
-                렘시마 SC는 단순한 시밀러를 넘어 <strong>'바이오베터(Biobetter)'</strong>로서의 혁신성을 미국 FDA로부터 인정받아, 2023년 <strong>독립적인 신약(New Drug) 지위</strong>인 '짐펜트라'라는 이름으로 승인 및 출시되어 빠르게 시장을 점유하고 있습니다.
-              </p>
-            </div>
-          </div>
-        </div>
-        
       </div>
+    </div>
+  </div>
+</div>
     `
   },
       //  공정 로드맵
       {
     title: "Remsima 생산 로드맵 (Overview)",
     desc: `
-      <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-gray-500 leading-relaxed mb-6">오리지널 의약품과 완벽한 물리화학적·생물학적 동등성을 확보하기 위한 인플릭시맙(Infliximab) 바이오시밀러의 cGMP 기반 전주기 제조 공정 로드맵입니다.</p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-brand transition duration-300">
-            <div class="text-4xl mb-3">🧫</div>
-            <h4 class="font-bold text-gray-800 mb-2">1. Upstream</h4>
-            <span class="bg-brand-light text-brand px-2 py-0.5 rounded text-[0.7rem] font-bold mb-2">세포 배양 공정</span>
-            <p class="text-xs text-gray-500 leading-relaxed word-keep">CHO 세포주 기반 MCB/WCB 구축 및 엄격한 CPP 제어를 통한 대규모 유가배양(Fed-batch)</p>
-          </div>
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-brand transition duration-300">
-            <div class="text-4xl mb-3">⚗️</div>
-            <h4 class="font-bold text-gray-800 mb-2">2. Downstream</h4>
-            <span class="bg-brand-light text-brand px-2 py-0.5 rounded text-[0.7rem] font-bold mb-2">단백질 정제 공정</span>
-            <p class="text-xs text-gray-500 leading-relaxed word-keep">Protein A, IEX 크로마토그래피 및 나노 여과를 통한 불순물/바이러스 완벽 제거</p>
-          </div>
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-brand transition duration-300">
-            <div class="text-4xl mb-3">💉</div>
-            <h4 class="font-bold text-gray-800 mb-2">3. Fill & Finish</h4>
-            <span class="bg-brand-light text-brand px-2 py-0.5 rounded text-[0.7rem] font-bold mb-2">제형 및 완제 공정</span>
-            <p class="text-xs text-gray-500 leading-relaxed word-keep">단백질 응집 최소화를 위한 안정화제 처방(Formulation) 및 무균 충전/동결건조</p>
-          </div>
-        </div>
+      <div class="bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100 shadow-inner w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-10 word-keep">
+    오리지널 의약품과 완벽한 물리화학적·생물학적 동등성을 확보하기 위한 인플릭시맙(Infliximab) 바이오시밀러의 <strong class="text-blue-600">cGMP 기반 전주기 제조 공정 로드맵</strong>입니다.
+  </p>
+  
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    
+    <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-blue-500 hover:shadow-md transition duration-300 group">
+      <div class="text-5xl mb-5 group-hover:scale-110 transition-transform">🧫</div>
+      <h4 class="text-[1.3rem] font-bold text-gray-800 mb-3">1. Upstream</h4>
+      <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-[0.85rem] font-bold mb-4 border border-blue-100">세포 배양 공정</span>
+      <p class="text-[0.95rem] text-gray-500 leading-relaxed word-keep">
+        CHO 세포주 기반 MCB/WCB 구축 및 엄격한 CPP 제어를 통한 대규모 유가배양(Fed-batch)
+      </p>
+    </div>
 
-        <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col gap-3">
-          <a href="generalprocess.html" class="w-full py-3 bg-white border border-brand text-brand rounded-xl font-bold text-xs text-center hover:bg-brand-light transition-all flex items-center justify-center gap-2 shadow-sm">
-            제조 공정 상세 가이드라인 보기
-            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
-          </a>
-          <div class="flex flex-wrap gap-2">
-            <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Bioprocessing</span>
-            <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Scale_Up</span>
-            <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#cGMP</span>
-          </div>
-        </div>
-      </div>
+    <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-blue-500 hover:shadow-md transition duration-300 group">
+      <div class="text-5xl mb-5 group-hover:scale-110 transition-transform">⚗️</div>
+      <h4 class="text-[1.3rem] font-bold text-gray-800 mb-3">2. Downstream</h4>
+      <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-[0.85rem] font-bold mb-4 border border-blue-100">단백질 정제 공정</span>
+      <p class="text-[0.95rem] text-gray-500 leading-relaxed word-keep">
+        Protein A, IEX 크로마토그래피 및 나노 여과를 통한 불순물/바이러스 완벽 제거
+      </p>
+    </div>
+
+    <div class="bg-white p-7 rounded-2xl border border-gray-200 shadow-sm flex flex-col items-center text-center hover:border-blue-500 hover:shadow-md transition duration-300 group">
+      <div class="text-5xl mb-5 group-hover:scale-110 transition-transform">💉</div>
+      <h4 class="text-[1.3rem] font-bold text-gray-800 mb-3">3. Fill & Finish</h4>
+      <span class="bg-blue-50 text-blue-600 px-3 py-1 rounded-full text-[0.85rem] font-bold mb-4 border border-blue-100">제형 및 완제 공정</span>
+      <p class="text-[0.95rem] text-gray-500 leading-relaxed word-keep">
+        단백질 응집 최소화를 위한 안정화제 처방(Formulation) 및 무균 충전/동결건조
+      </p>
+    </div>
+  </div>
+
+  <div class="mt-auto pt-6 border-t border-gray-200 flex flex-col gap-5">
+    <a href="generalprocess.html" class="w-full py-4 bg-white border-2 border-blue-500 text-blue-600 rounded-2xl font-bold text-[1rem] text-center hover:bg-blue-50 transition-all flex items-center justify-center gap-3 shadow-sm">
+      제조 공정 상세 가이드라인 보기
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7-7 7M5 5l7 7-7 7"></path></svg>
+    </a>
+    <div class="flex flex-wrap gap-3">
+      <span class="px-4 py-1.5 bg-blue-100 text-blue-700 text-[0.85rem] font-bold rounded-full">#Bioprocessing</span>
+      <span class="px-4 py-1.5 bg-blue-100 text-blue-700 text-[0.85rem] font-bold rounded-full">#Scale_Up</span>
+      <span class="px-4 py-1.5 bg-blue-100 text-blue-700 text-[0.85rem] font-bold rounded-full">#cGMP</span>
+    </div>
+  </div>
+</div>
     `
   },
   {
     title: "생산 공정 및 품질: 고도의 유사성을 보장하는 플랫폼",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-gray-500 leading-relaxed mb-6 word-keep">
-          바이오의약품은 살아있는 세포를 이용하여 생산되므로, 오리지널과의 완전한 복제는 불가능합니다. 따라서 초기 세포주 개발부터 철저히 통제된 시스템을 통해 <strong>'고도의 유사성(Highly Similar)'</strong>을 확보하는 것이 핵심입니다.
-        </p>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-10 word-keep">
+    바이오의약품은 살아있는 세포를 이용하여 생산되므로, 오리지널과의 완전한 복제는 불가능합니다. 따라서 초기 세포주 개발부터 철저히 통제된 시스템을 통해 <strong class="text-blue-600 text-[1.2rem]">'고도의 유사성(Highly Similar)'</strong>을 확보하는 것이 핵심입니다.
+  </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <span class="text-xl">🧬</span> CHO 세포주 기반 시스템
-            </h5>
-            <p class="text-[0.75rem] text-gray-600 leading-relaxed mb-3">
-              렘시마는 FDA 및 EMA에서 안전성이 검증된 <strong>CHO(Chinese Hamster Ovary)</strong> 세포주를 이용해 생산됩니다. 인간과 매우 유사한 <strong>N-linked glycosylation(당화) 패턴</strong>을 형성하고, 단백질 접힘(Folding) 및 이황화결합 안정성이 우수합니다.
-            </p>
-          </div>
-          
-          <div class="p-5 rounded-2xl bg-blue-50 border border-blue-100">
-            <h5 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
-              <span class="text-xl">🏦</span> 2-Tier Cell Banking
-            </h5>
-            <p class="text-[0.75rem] text-gray-700 leading-relaxed mb-3">
-              유전자 재조합으로 선별된 고발현 클론을 기반으로 <strong>MCB(Master Cell Bank)</strong>와 <strong>WCB(Working Cell Bank)</strong>를 구축합니다. 이는 계대 배양에 따른 유전적 변이를 차단하고 일관된 생산성을 보장하는 가장 중요한 출발점입니다.
-            </p>
-          </div>
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+    
+    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col transition-all hover:bg-white hover:border-blue-200">
+      <h5 class="text-[1.3rem] font-bold text-gray-800 mb-5 flex items-center gap-3">
+  <span class="text-2xl">🧬</span> Sp2/0 세포주 기반 생산 시스템
+</h5>
+<p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+  인플릭시맙 계열 항체의약품은 <strong>Sp2/0 마우스 마일로마(Myeloma) 세포주</strong>를 기반으로 생산됩니다.
+  이 세포주는 항체 발현능이 높고, 안정적인 생산 특성을 지녀 상업적 생산에 오랫동안 활용되어 왔습니다.
+</p>
+    </div>
+    
+    <div class="p-8 rounded-2xl bg-blue-50 border border-blue-100 shadow-sm flex flex-col transition-all hover:bg-white hover:border-blue-300">
+      <h5 class="text-[1.3rem] font-bold text-blue-900 mb-5 flex items-center gap-3">
+        <span class="text-2xl">🏦</span> 2-Tier Cell Banking
+      </h5>
+      <p class="text-[1rem] text-blue-800 leading-relaxed word-keep">
+        고발현 클론을 기반으로 <strong>MCB(Master Cell Bank)</strong>와 <strong>WCB(Working Cell Bank)</strong>를 구축합니다. 이는 계대 배양에 따른 유전적 변이를 차단하고 일관된 생산성을 보장하는 가장 중요한 출발점입니다.
+      </p>
+    </div>
+  </div>
 
-        <div class="mt-auto p-5 bg-brand-light border border-brand/20 rounded-xl flex items-start gap-3">
-          <span class="text-brand font-bold">💡</span>
-          <p class="text-[0.75rem] text-[#084d4f] leading-relaxed">
-            바이오시밀러는 단순히 아미노산 서열(Sequence)만 일치시키는 것이 아니라, 세포 내에서 합성된 후 추가로 구조가 변하는 <strong>Post-translational Modification(번역 후 변형, 주로 당화)</strong>까지 오리지널과 동일하게 맞추는 정밀 공학이 요구됩니다.
-          </p>
-        </div>
-      </div>
+  <div class="mt-auto p-8 bg-emerald-50 border-l-4 border-emerald-500 rounded-r-2xl flex items-start gap-5 shadow-sm">
+    <span class="text-emerald-600 font-bold text-3xl mt-1">💡</span>
+    <div>
+      <p class="text-[1.05rem] text-emerald-900 leading-relaxed word-keep">
+  바이오시밀러는 1차 구조(아미노산 서열)뿐 아니라, 생산 세포주와 배양 조건에 따라 달라질 수 있는 
+  <strong>Post-translational Modification(번역 후 변형, 특히 당쇄 패턴)</strong>을 
+  오리지널과 <strong>동등한 범위</strong>로 맞추는 정밀 공학이 요구됩니다. 
+  미세한 차이(Micro-heterogeneity)는 존재하지만, 이는 <strong>규제 허용 범위 내에서 통제</strong>되며 
+  임상적 동등성을 충족합니다.
+</p>
+    </div>
+  </div>
+</div>
     `
   },
   {
     title: "본 배양 (Upstream): 고수율 Fed-batch 및 CPP 제어",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          수천 리터(L) 규모의 대형 생물반응기(Bioreactor)에서 진행되는 <strong>유가배양(Fed-batch)</strong> 공정으로, 세포 성장과 단백질 발현을 극대화하기 위한 주요 공정 파라미터(CPP) 정밀 관리가 수반됩니다.
-        </p>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-8 border-b border-gray-100 pb-6 word-keep">
+    수천 리터(L) 규모의 대형 생물반응기(Bioreactor)에서 진행되는 <strong>유가배양(Fed-batch)</strong> 공정으로, 세포 성장과 단백질 발현을 극대화하기 위한 <strong class="text-blue-600">주요 공정 파라미터(CPP) 정밀 관리</strong>가 수반됩니다.
+  </p>
 
-        <h5 class="font-bold text-gray-800 text-lg mb-4 flex items-center gap-2">
-          <span class="text-brand">🎛️</span> 주요 공정 파라미터 (CPP) 실시간 제어
-        </h5>
-        
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center shadow-sm">
-            <span class="block text-xl mb-1">🌡️</span>
-            <p class="text-[0.7rem] font-bold text-gray-500 mb-1">Temperature Shift</p>
-            <p class="text-sm font-extrabold text-brand">37℃ ➔ 33~35℃</p>
-            <p class="text-[0.6rem] text-gray-400 mt-1">생산기 전환시 온도 하향</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center shadow-sm">
-            <span class="block text-xl mb-1">💧</span>
-            <p class="text-[0.7rem] font-bold text-gray-500 mb-1">pH Control</p>
-            <p class="text-sm font-extrabold text-brand">6.8 ~ 7.2</p>
-            <p class="text-[0.6rem] text-gray-400 mt-1">최적 효소 활성 구간</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center shadow-sm">
-            <span class="block text-xl mb-1">💨</span>
-            <p class="text-[0.7rem] font-bold text-gray-500 mb-1">DO (용존산소량)</p>
-            <p class="text-sm font-extrabold text-brand">30 ~ 50%</p>
-            <p class="text-[0.6rem] text-gray-400 mt-1">Sparger 및 교반 제어</p>
-          </div>
-          <div class="bg-gray-50 p-4 rounded-xl border border-gray-200 text-center shadow-sm">
-            <span class="block text-xl mb-1">🍬</span>
-            <p class="text-[0.7rem] font-bold text-gray-500 mb-1">Metabolite</p>
-            <p class="text-sm font-extrabold text-brand">Lactate 관리</p>
-            <p class="text-[0.6rem] text-gray-400 mt-1">Glucose 농도 정밀 피딩</p>
-          </div>
-        </div>
-
-        <div class="mt-auto flex flex-wrap gap-2">
-          <span class="px-2 py-1 bg-brand-light text-brand text-[0.65rem] font-bold rounded">#Fed_batch</span>
-          <span class="px-2 py-1 bg-brand-light text-brand text-[0.65rem] font-bold rounded">#Critical_Process_Parameter</span>
-          <span class="px-2 py-1 bg-brand-light text-brand text-[0.65rem] font-bold rounded">#Temperature_Shift</span>
-        </div>
+  <h5 class="text-[1.3rem] font-bold text-gray-800 mb-6 flex items-center gap-3">
+    <span class="text-blue-600 text-2xl">🎛️</span> 주요 공정 파라미터 (CPP) 실시간 제어
+  </h5>
+  
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+    
+    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-center shadow-sm hover:border-blue-300 transition-colors flex flex-col justify-between">
+      <div>
+        <span class="block text-3xl mb-3">🌡️</span>
+        <p class="text-[0.9rem] font-bold text-gray-500 mb-2">Temperature Shift</p>
+        <p class="text-[1.2rem] font-extrabold text-blue-600">37℃ ➔ 33~35℃</p>
       </div>
+      <p class="text-[0.8rem] text-gray-400 mt-3 font-medium">생산기 전환시 온도 하향</p>
+    </div>
+
+    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-center shadow-sm hover:border-blue-300 transition-colors flex flex-col justify-between">
+      <div>
+        <span class="block text-3xl mb-3">💧</span>
+        <p class="text-[0.9rem] font-bold text-gray-500 mb-2">pH Control</p>
+        <p class="text-[1.2rem] font-extrabold text-blue-600">6.8 ~ 7.2</p>
+      </div>
+      <p class="text-[0.8rem] text-gray-400 mt-3 font-medium">최적 효소 활성 구간</p>
+    </div>
+
+    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-center shadow-sm hover:border-blue-300 transition-colors flex flex-col justify-between">
+      <div>
+        <span class="block text-3xl mb-3">💨</span>
+        <p class="text-[0.9rem] font-bold text-gray-500 mb-2">DO (용존산소량)</p>
+        <p class="text-[1.2rem] font-extrabold text-blue-600">30 ~ 50%</p>
+      </div>
+      <p class="text-[0.8rem] text-gray-400 mt-3 font-medium">Sparger 및 교반 제어</p>
+    </div>
+
+    <div class="bg-gray-50 p-6 rounded-2xl border border-gray-200 text-center shadow-sm hover:border-blue-300 transition-colors flex flex-col justify-between">
+      <div>
+        <span class="block text-3xl mb-3">🍬</span>
+        <p class="text-[0.9rem] font-bold text-gray-500 mb-2">Metabolite</p>
+        <p class="text-[1.2rem] font-extrabold text-blue-600">Lactate 관리</p>
+      </div>
+      <p class="text-[0.8rem] text-gray-400 mt-3 font-medium">Glucose 농도 정밀 피딩</p>
+    </div>
+  </div>
+
+  <div class="mt-auto flex flex-wrap gap-3">
+    <span class="px-4 py-2 bg-blue-50 text-blue-600 text-[0.85rem] font-bold rounded-lg border border-blue-100">#Fed_batch</span>
+    <span class="px-4 py-2 bg-blue-50 text-blue-600 text-[0.85rem] font-bold rounded-lg border border-blue-100">#Critical_Process_Parameter</span>
+    <span class="px-4 py-2 bg-blue-50 text-blue-600 text-[0.85rem] font-bold rounded-lg border border-blue-100">#Temperature_Shift</span>
+  </div>
+</div>
     `
   },
   {
     title: "정제 공정 (Downstream): 고순도 항체 확보",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-5 word-keep">
-          배양액 내 존재하는 타겟 항체 외의 <strong>숙주세포 단백질(HCP), DNA, 배지 성분, 응집체(Aggregate)</strong> 등 불순물을 완벽하게 제거하여 99% 이상의 고순도를 달성하는 핵심 단계입니다.
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-8 border-b border-gray-100 pb-6 word-keep">
+    배양액 내 존재하는 타겟 항체 외의 <strong>숙주세포 단백질(HCP), DNA, 배지 성분, 응집체(Aggregate)</strong> 등 불순물을 완벽하게 제거하여 <strong class="text-blue-600">99% 이상의 고순도</strong>를 달성하는 핵심 단계입니다.
+  </p>
+
+  <div class="space-y-6">
+    
+    <div class="p-6 rounded-2xl bg-gray-50 border border-gray-200 flex gap-6 items-start transition-all hover:shadow-md">
+      <div class="bg-blue-600 text-white text-[0.85rem] font-bold px-3 py-1.5 rounded-lg shadow-sm whitespace-nowrap">Step 1</div>
+      <div>
+        <h5 class="font-bold text-gray-800 text-[1.2rem] mb-2">Protein A Affinity Chromatography (친화성 크로마토그래피)</h5>
+        <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+          항체의 Fc 영역에만 특이적으로 결합하는 Protein A 리간드를 활용하여 항체만을 선택적으로 <strong>포획(Capture)</strong>합니다. 1차 정제만으로도 압도적인 순도를 확보합니다.
         </p>
-
-        <div class="space-y-4">
-          <!-- Capture Step -->
-          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 flex gap-4 items-start">
-            <div class="bg-brand text-white text-xs font-bold px-2 py-1 rounded mt-0.5 whitespace-nowrap">Step 1</div>
-            <div>
-              <h5 class="font-bold text-gray-800 text-sm mb-1">Protein A Affinity Chromatography (친화성 크로마토그래피)</h5>
-              <p class="text-[0.75rem] text-gray-600 leading-relaxed">
-                항체의 Fc 영역에만 강하고 특이적으로 결합하는 Protein A 리간드를 활용하여 항체만을 선택적으로 포획(Capture)합니다. 1차 정제만으로도 고도의 순도를 확보합니다.
-              </p>
-            </div>
-          </div>
-          
-          <!-- Polishing Step -->
-          <div class="p-4 rounded-xl bg-gray-50 border border-gray-200 flex gap-4 items-start">
-            <div class="bg-brand text-white text-xs font-bold px-2 py-1 rounded mt-0.5 whitespace-nowrap">Step 2</div>
-            <div>
-              <h5 class="font-bold text-gray-800 text-sm mb-1">Ion Exchange Chromatography (이온교환 크로마토그래피)</h5>
-              <p class="text-[0.75rem] text-gray-600 leading-relaxed">
-                단백질의 미세한 전하(Charge) 차이를 이용하여 정제합니다. 오리지널과 일치하지 않는 Charge Variant(전하 이형질체)를 제어하고 미세 구조 차이를 최소화합니다.
-              </p>
-            </div>
-          </div>
-
-          <!-- Viral Clearance Step -->
-          <div class="p-4 rounded-xl bg-rose-50 border border-rose-100 flex gap-4 items-start">
-            <div class="bg-rose-500 text-white text-xs font-bold px-2 py-1 rounded mt-0.5 whitespace-nowrap">Step 3</div>
-            <div>
-              <h5 class="font-bold text-rose-900 text-sm mb-1">Virus Removal & Inactivation (바이러스 불활화 및 여과)</h5>
-              <p class="text-[0.75rem] text-rose-700 leading-relaxed">
-                Low pH 처리를 통해 지질 피막성 바이러스를 불활화(Inactivation)하고, 미세한 나노 필터(Nanofiltration)를 통해 잔존 바이러스를 물리적으로 완벽히 차단하여 안전성을 확보합니다.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
+    
+    <div class="p-6 rounded-2xl bg-gray-50 border border-gray-200 flex gap-6 items-start transition-all hover:shadow-md">
+      <div class="bg-blue-600 text-white text-[0.85rem] font-bold px-3 py-1.5 rounded-lg shadow-sm whitespace-nowrap">Step 2</div>
+      <div>
+        <h5 class="font-bold text-gray-800 text-[1.2rem] mb-2">Ion Exchange Chromatography (이온교환 크로마토그래피)</h5>
+        <p class="text-[1rem] text-gray-600 leading-relaxed word-keep">
+          단백질의 미세한 <strong>전하(Charge) 차이</strong>를 이용하여 정제합니다. 오리지널과 일치하지 않는 전하 이형질체(Charge Variant)를 정밀 제어하여 미세 구조 차이를 최소화합니다.
+        </p>
+      </div>
+    </div>
+
+    <div class="p-6 rounded-2xl bg-rose-50 border border-rose-100 flex gap-6 items-start transition-all hover:shadow-md">
+      <div class="bg-rose-500 text-white text-[0.85rem] font-bold px-3 py-1.5 rounded-lg shadow-sm whitespace-nowrap">Step 3</div>
+      <div>
+        <h5 class="font-bold text-rose-900 text-[1.2rem] mb-2">Virus Removal & Inactivation (바이러스 불활화 및 여과)</h5>
+        <p class="text-[1rem] text-rose-700 leading-relaxed word-keep">
+          <strong>Low pH 처리</strong>를 통해 바이러스를 불활화하고, 미세한 <strong>나노 필터(Nanofiltration)</strong>를 통해 잔존 바이러스를 물리적으로 완벽히 차단하여 최종 안전성을 확보합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
     `
   },
   {
     title: "제형(Formulation) 설계 및 단백질 안정화 전략",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-5 border-b border-gray-100 pb-4 word-keep">
-          Infliximab은 약 150 kDa의 거대한 단백질로 온도 상승, 물리적 진동, pH 변화 등에 매우 민감하여 쉽게 변성(Denaturation)되거나 응집(Aggregation)됩니다. 이를 방지하기 위한 최적의 제형 설계가 필수적입니다.
-        </p>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-8 border-b border-gray-100 pb-6 word-keep">
+    Infliximab은 약 150 kDa의 거대한 단백질로 온도, 진동, pH 변화에 매우 민감하여 쉽게 <strong class="text-red-500 text-[1.15rem]">변성(Denaturation)</strong>되거나 <strong class="text-red-500 text-[1.15rem]">응집(Aggregation)</strong>됩니다. 이를 방지하기 위한 최적의 제형 설계가 필수적입니다.
+  </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div class="p-5 rounded-2xl bg-blue-50 border border-blue-100">
-            <h5 class="font-bold text-blue-900 mb-3 flex items-center gap-2">
-              <span class="text-lg">🧪</span> 안정화제 첨가 기술
-            </h5>
-            <ul class="text-[0.7rem] text-gray-700 space-y-3">
-              <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✔️</span> <span><strong>Sucrose (자당):</strong> 수화층을 형성하여 항체의 3차 구조를 보호하고 안정화.</span></li>
-              <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✔️</span> <span><strong>Polysorbate 80:</strong> 공기-액체 계면 흡착을 방지하여 단백질 응집(Aggregation) 최소화.</span></li>
-              <li class="flex items-start gap-2"><span class="text-blue-600 font-bold">✔️</span> <span><strong>Buffer System:</strong> 최적의 pH 유지를 위한 완충액 시스템 구축.</span></li>
-            </ul>
-          </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+    
+    <div class="p-8 rounded-2xl bg-blue-50 border border-blue-100 shadow-sm flex flex-col">
+      <h5 class="text-[1.3rem] font-bold text-blue-900 mb-5 flex items-center gap-3">
+        <span class="text-2xl">🧪</span> 안정화제 첨가 기술
+      </h5>
+      <ul class="text-[1rem] text-blue-800/80 space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 mt-1.5 font-extrabold">✓</span>
+          <span><strong>Sucrose (자당):</strong> 수화층을 형성하여 항체의 3차 구조 보호 및 안정화</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 mt-1.5 font-extrabold">✓</span>
+          <span><strong>Polysorbate 80:</strong> 공기-액체 계면 흡착을 방지하여 응집 최소화</span>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="text-blue-500 mt-1.5 font-extrabold">✓</span>
+          <span><strong>Buffer System:</strong> 최적의 pH 유지를 위한 완충액 시스템 구축</span>
+        </li>
+      </ul>
+    </div>
 
-          <div class="p-5 rounded-2xl bg-gray-50 border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">
-              <span class="text-lg">❄️</span> 동결건조 (Lyophilization)
-            </h5>
-            <p class="text-[0.7rem] text-gray-600 leading-relaxed mb-3">
-              액체 상태보다 안정성을 극대화하기 위해 수분을 제거하여 화학적 분해를 최소화하는 기술입니다. 장기 저장 안정성을 확보할 수 있습니다.
-            </p>
-            <span class="inline-block bg-gray-200 text-gray-700 text-[0.65rem] font-bold px-2 py-1 rounded">목표: 3차 구조 유지 + 응집 최소화 + 생물학적 활성 유지</span>
-          </div>
-        </div>
-
-        <div class="mt-auto p-4 bg-[#F0F7F7] border border-brand/20 rounded-xl">
-          <p class="text-[0.75rem] text-[#084d4f] font-bold text-center">
-            💡 단백질 응집은 환자 투여 시 '면역원성(Immunogenicity) 증가'라는 치명적 위험을 유발할 수 있으므로 제형 설계는 매우 중요합니다.
-          </p>
-        </div>
+    <div class="p-8 rounded-2xl bg-gray-50 border border-gray-200 shadow-sm flex flex-col">
+      <h5 class="text-[1.3rem] font-bold text-gray-800 mb-5 flex items-center gap-3">
+        <span class="text-2xl">❄️</span> 동결건조 (Lyophilization)
+      </h5>
+      <p class="text-[1rem] text-gray-600 leading-relaxed mb-6 word-keep">
+        액체 상태보다 안정성을 극대화하기 위해 수분을 제거하여 <strong>화학적 분해를 최소화</strong>하는 기술입니다. 장기 저장 안정성을 확보할 수 있습니다.
+      </p>
+      <div class="mt-auto bg-white px-4 py-3 rounded-xl border border-gray-100 text-center">
+        <span class="text-[0.85rem] font-bold text-gray-500">목표: 3차 구조 유지 + 생물학적 활성 보존</span>
       </div>
+    </div>
+  </div>
+
+  <div class="mt-auto p-8 bg-emerald-50 border-2 border-emerald-100 rounded-2xl shadow-sm">
+    <div class="flex items-center gap-5">
+      <span class="text-3xl">💡</span>
+      <p class="text-[1.05rem] text-emerald-900 font-bold leading-relaxed word-keep">
+        단백질 응집은 환자 투여 시 <span class="text-emerald-700 underline underline-offset-4">'면역원성(Immunogenicity) 증가'</span>라는 치명적 위험을 유발할 수 있으므로, 정교한 제형 설계는 의약품의 안전성과 직결됩니다.
+      </p>
+    </div>
+  </div>
+</div>
     `
   },
-  {
-    title: "제형의 혁신: IV 동결건조에서 SC 액상 제형으로",
-    desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-5 word-keep">
-          초기 정맥주사(IV, 동결건조 분말) 제형에서 출발하여, <strong>고농도 안정화 기술</strong>을 적용해 환자 스스로 주사할 수 있는 피하주사(SC, 고농도 액상) 제형으로 기술적 혁신을 이뤄냈습니다.
-        </p>
+{
+  title: "제형의 혁신: IV 동결건조에서 SC 액상 제형으로",
+  desc: `
+    <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 mb-8 pb-6 border-b border-gray-100">
+    <p class="text-[1.1rem] text-gray-600 word-keep flex-1 leading-relaxed">
+      초기 정맥주사(IV, 동결건조 분말) 제형에서 출발하여, <strong class="text-blue-600">고농도 안정화 기술</strong>을 적용해 환자 스스로 주사할 수 있는 피하주사(SC, 고농도 액상) 제형으로 기술적 혁신을 이뤄냈습니다.
+    </p>
+    
+    <button onclick="window.openDensityModal()" 
+            class="shrink-0 flex items-center justify-center gap-3 bg-blue-50 text-blue-700 border-2 border-blue-100 px-6 py-4 rounded-2xl text-[1rem] font-bold hover:bg-blue-100 hover:shadow-md transition-all focus:outline-none">
+      <span class="text-2xl">🔬</span> 동일 볼륨 내 단백질 밀도 비교
+    </button>
+  </div>
 
-        <!-- 제형 비교 테이블 -->
-        <div class="overflow-x-auto rounded-xl border border-gray-200 mb-6">
-          <table class="w-full text-[0.7rem] md:text-[0.75rem] text-center">
-            <thead class="bg-gray-100 text-gray-700 font-bold border-b border-gray-200">
-              <tr>
-                <th class="px-3 py-3 border-r border-gray-200">구분</th>
-                <th class="px-3 py-3 border-r border-gray-200 text-blue-700">렘시마 IV (초기 제형)</th>
-                <th class="px-3 py-3 text-brand">렘시마 SC (확장 제형)</th>
-              </tr>
-            </thead>
-            <tbody class="text-gray-600">
-              <tr class="border-b border-gray-100 hover:bg-gray-50">
-                <td class="px-3 py-3 border-r border-gray-200 font-bold bg-gray-50">제형 형태</td>
-                <td class="px-3 py-3 border-r border-gray-200">동결건조 분말</td>
-                <td class="px-3 py-3 font-bold text-brand bg-brand-light/30">고농도 액상 제형</td>
-              </tr>
-              <tr class="border-b border-gray-100 hover:bg-gray-50">
-                <td class="px-3 py-3 border-r border-gray-200 font-bold bg-gray-50">단백질 농도</td>
-                <td class="px-3 py-3 border-r border-gray-200">비교적 낮음</td>
-                <td class="px-3 py-3 font-bold text-brand bg-brand-light/30">매우 높음 (응집 위험 제어 기술 필요)</td>
-              </tr>
-              <tr class="hover:bg-gray-50">
-                <td class="px-3 py-3 border-r border-gray-200 font-bold bg-gray-50">보관/유통</td>
-                <td class="px-3 py-3 border-r border-gray-200">2~8℃ 콜드체인</td>
-                <td class="px-3 py-3 text-gray-700 bg-brand-light/30">고농도 액상이므로 온도 관리에 더욱 민감</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="overflow-x-auto rounded-2xl border border-gray-200 mb-10 shadow-sm">
+    <table class="w-full text-[1rem] text-center border-collapse">
+      <thead class="bg-gray-100 text-gray-700 font-bold border-b-2 border-gray-200">
+        <tr>
+          <th class="px-6 py-5 border-r border-gray-200 bg-gray-50/50">구분</th>
+          <th class="px-6 py-5 border-r border-gray-200 text-blue-700">렘시마 IV (초기 제형)</th>
+          <th class="px-6 py-5 text-blue-600 bg-blue-50/30">렘시마 SC (확장 제형)</th>
+        </tr>
+      </thead>
+      <tbody class="text-gray-600">
+        <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+          <td class="px-6 py-6 border-r border-gray-200 font-bold bg-gray-50/80 text-gray-700">제형 형태</td>
+          <td class="px-6 py-6 border-r border-gray-200 text-[1.05rem]">동결건조 분말 (Vial)</td>
+          <td class="px-6 py-6 font-extrabold text-blue-700 bg-blue-50/50 text-[1.1rem]">고농도 액상 제형 (PFS)</td>
+        </tr>
+        <tr class="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
+          <td class="px-6 py-6 border-r border-gray-200 font-bold bg-gray-50/80 text-gray-700">단백질 농도</td>
+          <td class="px-6 py-6 border-r border-gray-200 text-[1.05rem]">표준 농도</td>
+          <td class="px-6 py-6 font-extrabold text-blue-700 bg-blue-50/50 text-[1.1rem]">매우 높음 (응집 제어 필요)</td>
+        </tr>
+        <tr class="hover:bg-gray-50/50 transition-colors">
+          <td class="px-6 py-6 border-r border-gray-200 font-bold bg-gray-50/80 text-gray-700">보관/유통</td>
+          <td class="px-6 py-6 border-r border-gray-200 text-[1.05rem]">2~8℃ 콜드체인</td>
+          <td class="px-6 py-6 text-gray-700 bg-blue-50/50 font-medium text-[1.05rem]">온도 변화에 더욱 민감 관리</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-        <div class="mt-auto p-5 bg-brand text-white rounded-2xl flex items-center justify-between shadow-md">
-          <div>
-            <h5 class="font-bold text-sm mb-1">콜드체인(Cold-chain) 시스템의 중요성</h5>
-            <p class="text-[0.7rem] opacity-90 word-keep">생산 ➔ 운송 ➔ 병원 ➔ 환자까지 데이터 로깅 기반 실시간 온도 추적. 온도 이탈 시 폐기 기준을 엄격히 적용하여 "제조 품질"뿐만 아니라 "유통 품질"까지 완성합니다.</p>
-          </div>
-          <div class="text-3xl opacity-80 pl-4 hidden md:block">🚚</div>
-        </div>
-      </div>
-    `
-  },
-  {
+  <div class="mt-auto p-8 bg-blue-600 text-white rounded-3xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl relative overflow-hidden">
+    <div class="absolute -left-10 -top-10 w-32 h-32 bg-white opacity-5 rounded-full blur-2xl"></div>
+    <div class="flex-1 relative z-10">
+      <h5 class="text-[1.3rem] font-bold mb-2 flex items-center gap-2">
+        <span class="text-2xl">🚛</span> 콜드체인(Cold-chain) 시스템의 중요성
+      </h5>
+      <p class="text-[1.05rem] opacity-90 leading-relaxed word-keep">
+        생산에서 환자 투여까지 데이터 로깅 기반 <strong>실시간 온도 추적</strong>을 수행합니다. 온도 이탈 시 엄격한 폐기 기준을 적용하여 제조부터 유통까지 "무결점 품질"을 완성합니다.
+      </p>
+    </div>
+    <button onclick="window.openColdChainModal()" 
+            class="shrink-0 flex items-center justify-center gap-3 bg-white text-blue-600 px-7 py-4 rounded-2xl text-[1rem] font-bold hover:bg-gray-100 hover:shadow-lg transition-all focus:outline-none group relative z-10">
+      <span class="text-2xl group-hover:scale-110 transition-transform">🌍</span> 실시간 물류 추적
+    </button>
+  </div>
+</div>
+  `
+},
+{
     title: "품질관리 기준 (CQA) 및 핵심 분석 기법",
     desc: `
-      <div class="bg-white rounded-3xl p-6 md:p-8 border border-gray-100 shadow-sm w-full flex flex-col h-full overflow-y-auto">
-        <p class="text-[0.8rem] text-gray-500 mb-6 border-b border-gray-100 pb-4">
-          바이오시밀러 승인의 성패는 <strong>'고도의 유사성(Highly Similar)'</strong> 입증에 달려 있습니다. 이를 위해 첨단 분석 기법을 동원하여 다각도로 중요품질특성(CQA)을 평가합니다.
-        </p>
+      <div class="bg-white rounded-3xl p-8 md:p-12 border border-gray-100 shadow-lg w-full flex flex-col h-full overflow-y-auto min-h-[600px]">
+  
+  <p class="text-[1.1rem] text-gray-600 leading-relaxed mb-10 border-b border-gray-100 pb-6 word-keep">
+    바이오시밀러 승인의 성패는 <strong>'고도의 유사성(Highly Similar)'</strong> 입증에 달려 있습니다. 첨단 분석 기법을 동원하여 다각도로 <strong class="text-blue-600">중요품질특성(CQA)</strong>을 정밀하게 평가합니다.
+  </p>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-          <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200">
-            <h5 class="font-bold text-brand mb-3 flex items-center gap-2">🎯 주요 CQA 항목</h5>
-            <ul class="text-[0.75rem] text-gray-600 space-y-2.5">
-              <li class="flex items-center gap-2"><span class="text-brand font-bold">✔️</span> Glycosylation profile (당화 패턴)</li>
-              <li class="flex items-center gap-2"><span class="text-brand font-bold">✔️</span> Aggregate level (응집체 수준)</li>
-              <li class="flex items-center gap-2"><span class="text-brand font-bold">✔️</span> Purity (> 99% 유지 여부)</li>
-              <li class="flex items-center gap-2"><span class="text-brand font-bold">✔️</span> TNF-α binding affinity (결합력)</li>
-              <li class="flex items-center gap-2"><span class="text-brand font-bold">✔️</span> Biological potency assay (생물학적 활성)</li>
-            </ul>
-          </div>
-          
-          <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200">
-            <h5 class="font-bold text-gray-800 mb-3 flex items-center gap-2">🔬 사용 분석 기법</h5>
-            <ul class="text-[0.75rem] text-gray-600 space-y-2.5">
-              <li class="flex items-start gap-2"><span class="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded font-bold text-[0.65rem]">SEC-HPLC</span> <span>크기 배제 크로마토그래피 (응집체 분석)</span></li>
-              <li class="flex items-start gap-2"><span class="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded font-bold text-[0.65rem]">MS</span> <span>질량 분석기 (1차 서열 및 당쇄 정밀 구조 분석)</span></li>
-              <li class="flex items-start gap-2"><span class="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded font-bold text-[0.65rem]">CE</span> <span>모세관 전기영동 (전하 이형질체 분석)</span></li>
-              <li class="flex items-start gap-2"><span class="bg-gray-200 text-gray-700 px-1.5 py-0.5 rounded font-bold text-[0.65rem]">ELISA</span> <span>항원-항체 반응 기반 TNF 결합 활성 테스트</span></li>
-            </ul>
-          </div>
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+    
+    <div class="bg-blue-50/50 p-8 rounded-2xl border border-blue-100 shadow-sm transition-all hover:bg-white hover:border-blue-300">
+      <h5 class="text-[1.3rem] font-bold text-blue-700 mb-6 flex items-center gap-3">
+        <span class="text-2xl">🎯</span> 주요 CQA 항목
+      </h5>
+      <ul class="text-[1.05rem] text-gray-700 space-y-4">
+        <li class="flex items-center gap-3">
+          <span class="text-blue-500 font-extrabold">✓</span> 
+          <span><strong>Glycosylation:</strong> 당화 패턴 유사성</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-blue-500 font-extrabold">✓</span> 
+          <span><strong>Aggregate:</strong> 응집체 형성 수준</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-blue-500 font-extrabold">✓</span> 
+          <span><strong>Purity:</strong> 99% 이상의 고순도 유지</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-blue-500 font-extrabold">✓</span> 
+          <span><strong>Binding Affinity:</strong> TNF-α 결합력</span>
+        </li>
+        <li class="flex items-center gap-3">
+          <span class="text-blue-500 font-extrabold">✓</span> 
+          <span><strong>Potency Assay:</strong> 생물학적 활성도</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="bg-gray-50 p-8 rounded-2xl border border-gray-200 shadow-sm transition-all hover:bg-white hover:border-blue-300 group">
+      <h5 class="text-[1.3rem] font-bold text-gray-800 mb-6 flex items-center gap-3">
+        <span class="text-2xl">🔬</span> 핵심 분석 기법
+      </h5>
+      <div class="space-y-4">
+        <div class="flex items-start gap-4">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[0.8rem] mt-1 shadow-sm">SEC-HPLC</span>
+          <p class="text-[0.95rem] text-gray-600 leading-snug">크기 배제 크로마토그래피<br><span class="text-[0.85rem] text-blue-500 font-medium">(응집체/고분자 분석)</span></p>
         </div>
-
-        <div class="mt-auto text-center pt-2">
-          <a href="ra-qc-archive.html" class="inline-flex items-center justify-center px-8 py-3.5 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2">
-            전문가 전용 품질 규제(QA) 아카이브 확인
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </a>
+        <div class="flex items-start gap-4">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[0.8rem] mt-1 shadow-sm">LC-MS/MS</span>
+          <p class="text-[0.95rem] text-gray-600 leading-snug">질량 분석기<br><span class="text-[0.85rem] text-blue-500 font-medium">(1차 서열 및 당쇄 정밀 구조)</span></p>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[0.8rem] mt-1 shadow-sm">icIEF/CE</span>
+          <p class="text-[0.95rem] text-gray-600 leading-snug">모세관 전기영동<br><span class="text-[0.85rem] text-blue-500 font-medium">(전하 이형질체 분석)</span></p>
+        </div>
+        <div class="flex items-start gap-4">
+          <span class="bg-blue-600 text-white px-3 py-1 rounded-lg font-bold text-[0.8rem] mt-1 shadow-sm">ELISA</span>
+          <p class="text-[0.95rem] text-gray-600 leading-snug">면역 흡착 분석<br><span class="text-[0.85rem] text-blue-500 font-medium">(TNF 결합 및 활성도 테스트)</span></p>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="mt-auto text-center pt-4">
+    <a href="ra-qc-archive.html" class="inline-flex items-center justify-center px-10 py-5 bg-blue-600 text-white text-[1.1rem] font-bold rounded-2xl hover:bg-blue-700 transition-all shadow-xl hover:-translate-y-1 gap-3">
+      전문가 전용 품질 규제(QA) 아카이브 확인
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+    </a>
+  </div>
+</div>
     `
   },
 
 ];
 
-    let currentIdx = 0;
-    const viewport = document.getElementById('detail-content-viewport');
-    const curNum = document.getElementById('current-page-num');
-    const totNum = document.getElementById('total-page-num');
-    const pBtn = document.getElementById('prev-page');
-    const nBtn = document.getElementById('next-page');
-    const dotsContainer = document.getElementById('page-dots-container');
-/* =========================================================
-       💊 [환자 가이드] 복약 정보 팝업 슬라이드 데이터 및 제어 로직
-       ========================================================= */
+ // =========================================================
+    // 🔬 동일 부피 내 밀도 비교 팝업(모달) 애니메이션 제어
+    // =========================================================
+    window.openDensityModal = function() {
+      const modal = document.getElementById('modal-density');
+      const box = document.getElementById('modal-density-box');
+      if(!modal || !box) return;
 
+      // 1. 디스플레이 켬
+      modal.classList.remove('hidden');
+      
+      // 2. 애니메이션 실행 (부드러운 크기 확대 및 페이드인)
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        box.classList.remove('scale-95');
+        box.classList.add('scale-100');
+      });
+      document.body.style.overflow = 'hidden'; // 배경 스크롤 방지
+    };
+
+    window.closeDensityModal = function() {
+      const modal = document.getElementById('modal-density');
+      const box = document.getElementById('modal-density-box');
+      if(!modal || !box) return;
+
+      // 1. 애니메이션 실행 (부드러운 크기 축소 및 페이드아웃)
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-100');
+      box.classList.add('scale-95');
+      document.body.style.overflow = 'auto'; // 배경 스크롤 복구
+
+      // 2. 애니메이션이 끝난 후(300ms) 디스플레이 완전히 끔
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    };
+
+
+    // =========================================================
+    // 💊 [환자 가이드] 복약 정보 팝업 슬라이드 데이터 및 제어 로직
+    // =========================================================
     const patientSlideData =[
       {
         title: "렘시마는 어떤 약인가요?",
@@ -1979,7 +2431,7 @@ const slideData = [
                 </div>
                 <p class="text-sm text-gray-700 leading-relaxed mb-4">고농축된 약물을 피부 아래 지방층에 주사합니다. 체내 약물 농도가 널뛰지 않고 <strong>일정하게 유지</strong>되어 약효 공백이 적습니다.</p>
                 <ul class="text-sm text-gray-600 space-y-3 mt-auto bg-white p-4 rounded-xl border border-brand/10 shadow-sm">
-                  <li class="flex items-center gap-2"><strong class="text-brand">⚡ 소요시간:</strong> 집에서 환자 본인이 약 10초 내외로 자가 투여</li>
+                  <li class="flex items-center gap-2"><strong class="text-brand">⚡소요시간:</strong> 집에서 환자 직접 약 10초 내외로 자가 투여</li>
                   <li class="flex items-center gap-2"><strong class="text-brand">📅 투여주기:</strong> 보통 2주 간격 (정해진 용량 120mg 투여)</li>
                 </ul>
               </div>
@@ -2014,8 +2466,8 @@ const slideData = [
             <div class="bg-amber-50 border-l-4 border-amber-400 p-5 rounded-r-2xl mt-2">
               <h5 class="font-bold text-amber-900 text-sm mb-2 flex items-center gap-2"><span class="text-lg">🌡️</span> 외출이나 여행 시 실온 보관은 어떻게 하나요?</h5>
               <p class="text-[0.8rem] text-amber-800 leading-relaxed">
-                렘시마 SC는 냉장고에서 꺼낸 후 <strong>최대 25℃ 이하의 실온에서 최장 28일간 보관</strong>이 가능합니다.<br>
-                <strong class="text-red-600 underline">주의:</strong> 한 번 실온에 꺼내 둔 약은 다시 냉장고에 넣지 말고, 28일이 지나면 반드시 폐기해야 합니다.
+                렘시마 SC는 냉장고에서 꺼낸 후 <strong>최대 25℃ 이하의 실온에서 최장 14일간 보관</strong>이 가능합니다.<br>
+                <strong class="text-red-600 underline">주의:</strong> 한 번 실온에 꺼내 둔 약은 다시 냉장고에 넣지 말고, 14일이 지나면 반드시 폐기해야 합니다.
               </p>
             </div>
           </div>
@@ -2101,20 +2553,17 @@ const slideData = [
       }
     ];
 
-    // 변수명 충돌 방지를 위해 patient를 붙였습니다.
     let currentPatientIdx = 0;
     const patientViewport = document.getElementById('patient-slide-viewport');
     const patientPrevBtn = document.getElementById('patient-prev-page');
     const patientNextBtn = document.getElementById('patient-next-page');
     const patientDotsContainer = document.getElementById('patient-dots-container');
 
-    // 전역 함수로 등록하여 HTML의 onclick 이벤트에서 켤 때 초기화가 가능하게 합니다.
     window.renderPatientSlide = function(index) {
       if(!patientViewport) return;
       currentPatientIdx = index;
       const data = patientSlideData[index];
 
-      // 1. 화면 내용 그리기
       patientViewport.innerHTML = `
         <div class="animate-fade-in transition-opacity duration-300 h-full flex flex-col">
           <h3 class="text-xl md:text-2xl font-bold text-gray-800 mb-6 border-b border-gray-100 pb-4 shrink-0">
@@ -2125,24 +2574,20 @@ const slideData = [
       `;
       patientViewport.scrollTop = 0;
 
-      // 2. 하단 이전/다음 버튼 상태 변경
       if(patientPrevBtn) patientPrevBtn.disabled = (index === 0);
       
       if(patientNextBtn) {
         if (index === patientSlideData.length - 1) {
-          // 마지막 페이지일 경우 '완료 닫기' 로 변경
           patientNextBtn.innerHTML = '완료 닫기 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
           patientNextBtn.classList.add('bg-rose-500', 'text-white', 'hover:bg-rose-600', 'border-rose-500');
           patientNextBtn.classList.remove('text-gray-500', 'bg-transparent', 'border-gray-200');
         } else {
-          // 일반 '다음' 버튼
           patientNextBtn.innerHTML = '다음 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
           patientNextBtn.classList.remove('bg-rose-500', 'text-white', 'hover:bg-rose-600', 'border-rose-500');
           patientNextBtn.classList.add('text-gray-500', 'bg-transparent', 'border-gray-200');
         }
       }
 
-      // 3. 도트(점) 인디케이터 그리기 및 활성화
       if(patientDotsContainer) {
         patientDotsContainer.innerHTML = '';
         for (let i = 0; i < patientSlideData.length; i++) {
@@ -2154,31 +2599,38 @@ const slideData = [
       }
     };
 
-    // 이전 버튼 클릭
     if(patientPrevBtn) {
       patientPrevBtn.addEventListener('click', () => {
         if (currentPatientIdx > 0) window.renderPatientSlide(currentPatientIdx - 1);
       });
     }
 
-    // 다음 버튼 클릭 (마지막이면 창 닫기)
     if(patientNextBtn) {
       patientNextBtn.addEventListener('click', () => {
         if (currentPatientIdx < patientSlideData.length - 1) {
           window.renderPatientSlide(currentPatientIdx + 1);
         } else {
-          // 팝업 닫고 초기화
           document.getElementById('modal-patient').classList.add('hidden');
           document.body.style.overflow = 'auto';
-          setTimeout(() => window.renderPatientSlide(0), 300); // 다음에 켤때 1페이지부터 나오도록
+          setTimeout(() => window.renderPatientSlide(0), 300);
         }
       });
     }
 
-    // 문서 로드 시 1페이지 렌더링 해두기
     window.renderPatientSlide(0);
 
-    // 💡 1. 슬라이드 개수에 맞춰 하단 도트 동적 생성
+
+    // =========================================================
+    // 🧬 전문가용 메인 슬라이더 제어 로직 (통합 및 정렬 완료)
+    // =========================================================
+    let currentIdx = 0;
+    const viewport = document.getElementById('detail-content-viewport');
+    const curNum = document.getElementById('current-page-num');
+    const totNum = document.getElementById('total-page-num');
+    const pBtn = document.getElementById('prev-page');
+    const nBtn = document.getElementById('next-page');
+    const dotsContainer = document.getElementById('page-dots-container');
+
     function generateDots() {
       if (!dotsContainer) return;
       dotsContainer.innerHTML = ''; 
@@ -2196,12 +2648,10 @@ const slideData = [
       }
     }
 
-    // 💡 2. 슬라이드 화면 렌더링 로직
     function updateSlide() {
       if(!viewport) return;
       const currentData = slideData[currentIdx];
       
-      // [환자를 위한 복약 정보] 팝업 버튼 동적 생성 로직
       let patientBtnHtml = '';
       if (currentData.hasPatientBtn) {
         patientBtnHtml = `
@@ -2213,7 +2663,6 @@ const slideData = [
         `;
       }
 
-      // 화면에 내용 삽입 (isCentered 여부에 따라 다르게 표시)
       if(currentData.isCentered) {
         viewport.innerHTML = `<div class="w-full h-full animate-fade-in">${currentData.desc}</div>`;
       } else {
@@ -2222,31 +2671,27 @@ const slideData = [
             <div class="flex flex-wrap items-center gap-3 mb-6 border-b border-gray-100 pb-4 w-full">
               <span class="text-3xl md:text-4xl text-brand">📑</span>
               <h3 class="text-2xl md:text-3xl font-bold text-gray-800 tracking-tight">${currentData.title}</h3>
-              ${patientBtnHtml} <!-- 여기에 팝업 버튼이 들어갑니다 -->
+              ${patientBtnHtml}
             </div>
             <div class="w-full flex-grow flex flex-col h-full">${currentData.desc}</div>
           </div>
         `;
       }
       
-      // 스크롤 맨 위로 올리기
       viewport.scrollTop = 0;
 
-      // 페이지 번호 업데이트
       if(curNum) curNum.textContent = currentIdx + 1;
       if(totNum) totNum.textContent = slideData.length;
 
-      // 이전/다음 버튼 활성화 상태 업데이트
       if(pBtn) pBtn.disabled = (currentIdx === 0);
       if(nBtn) nBtn.disabled = (currentIdx === slideData.length - 1);
 
-      // 도트 활성화 디자인 업데이트
       if(dotsContainer) {
         const dots = dotsContainer.querySelectorAll('.page-dot');
         dots.forEach((dot, idx) => {
           if(idx === currentIdx) {
             dot.classList.replace('bg-gray-200', 'bg-brand');
-            dot.classList.add('w-5'); // 선택된 도트를 길게
+            dot.classList.add('w-5');
           } else {
             dot.classList.replace('bg-brand', 'bg-gray-200');
             dot.classList.remove('w-5');
@@ -2255,8 +2700,7 @@ const slideData = [
       }
     }
 
-    // 💡 3. 초기화 및 버튼 이벤트 연결
-    if (slideData && slideData.length > 0) {
+    if (typeof slideData !== 'undefined' && slideData.length > 0) {
       generateDots();
       
       if(pBtn && nBtn) {
@@ -2268,10 +2712,265 @@ const slideData = [
         });
       }
       
-      // 처음 접속 시 1페이지 띄우기
-      updateSlide();
+     updateSlide();
     }
-  </script>
+  </script> <!-- 💡 여기서 기존 스크립트를 한 번 닫아줍니다. -->
 
+
+ <!-- ============================================== -->
+  <!-- 🌍 [Advanced] 글로벌 콜드체인 커맨드 센터 모달 -->
+  <!-- ============================================== -->
+  
+  <style>
+    /* 1. 선 흐름 애니메이션 (더 빠르고 역동적으로) */
+    @keyframes lineFlow {
+      from { stroke-dashoffset: 100; }
+      to { stroke-dashoffset: 0; }
+    }
+    .path-glow {
+      stroke-dasharray: 10 5;
+      animation: lineFlow 3s linear infinite;
+    }
+    
+    /* 2. 실시간 로그 텍스트 애니메이션 */
+    @keyframes blinkText {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    .live-status { animation: blinkText 1.5s infinite; }
+
+    /* 3. 지도 위 네온 안개 효과 (Glassmorphism) */
+    .glass-panel {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+
+  <div id="modal-coldchain" class="fixed inset-0 z-[130] hidden flex items-center justify-center p-4 transition-opacity duration-500 opacity-0 pointer-events-none">
+    
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-md" onclick="window.closeColdChainModal()"></div>
+    
+    <!-- 메인 커맨드 센터 박스 -->
+    <div id="modal-coldchain-box" class="relative bg-[#0b1120] border border-slate-700 rounded-[2.5rem] shadow-[0_0_100px_rgba(16,185,129,0.2)] w-full max-w-6xl overflow-hidden transform scale-95 translate-y-4 transition-all duration-500 ease-out flex flex-col">
+      
+      <!-- 윗단: 실시간 모니터링 헤더 -->
+      <div class="flex justify-between items-center p-6 border-b border-slate-800 bg-slate-900/40 z-20">
+        <div class="flex items-center gap-4">
+          <div class="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/30">
+            <svg class="w-6 h-6 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          </div>
+          <div>
+            <h2 class="text-xl font-black text-white tracking-tighter uppercase flex items-center gap-2">
+              Integrated Global Logistics Command
+              <span class="bg-emerald-500 text-[10px] text-slate-900 px-2 py-0.5 rounded-full live-status">LIVE</span>
+            </h2>
+            <p class="text-slate-500 text-[10px] font-bold tracking-[0.2em]">TRANS-GLOBAL BIOLOGICS COLD CHAIN SYSTEM v4.2</p>
+          </div>
+        </div>
+        <button onclick="window.closeColdChainModal()" class="text-slate-500 hover:text-white transition-colors">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      
+      <!-- 중간: 비주얼 맵 & 사이드 바 -->
+      <div class="relative w-full h-[500px] flex overflow-hidden">
+        
+        <!-- 🗺️ 월드 맵 (Left 75%) -->
+        <div class="relative flex-grow h-full bg-[#020617]">
+          <img src="map.png" alt="World Map" class="absolute inset-0 w-full h-full object-cover opacity-40 invert contrast-150 brightness-75 select-none pointer-events-none" />
+          
+          <svg class="absolute inset-0 w-full h-full pointer-events-none z-10" viewBox="0 0 1000 500" preserveAspectRatio="none">
+            <!-- Glow Filters -->
+            <defs>
+              <filter id="neon" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- 1. EU Route (Emerald) -->
+            <path class="path-glow opacity-80" stroke="#10b981" stroke-width="1.5" fill="none" filter="url(#neon)" d="M 820 180 Q 650 30, 500 130" />
+            <!-- 2. US Route (Blue) -->
+            <path class="path-glow opacity-60" stroke="#3b82f6" stroke-width="1.5" fill="none" filter="url(#neon)" style="animation-duration: 4s;" d="M 820 180 C 950 180, 50 100, 250 160" />
+            <!-- 3. ASEAN Route (Amber) -->
+            <path class="path-glow opacity-70" stroke="#f59e0b" stroke-width="1.5" fill="none" filter="url(#neon)" style="animation-duration: 2s;" d="M 820 180 Q 800 240, 780 320" />
+          </svg>
+
+          <!-- 📍 Nodes (Songdo HQ) -->
+          <div class="absolute left-[82%] top-[36%] -translate-x-1/2 -translate-y-1/2 z-20 group">
+            <div class="relative flex items-center justify-center">
+              <span class="absolute w-12 h-12 rounded-full bg-emerald-500/10 animate-ping"></span>
+              <div class="w-4 h-4 bg-white rounded-full border-4 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,1)]"></div>
+            </div>
+            <p class="absolute top-6 left-1/2 -translate-x-1/2 text-[9px] font-black text-emerald-400 whitespace-nowrap bg-slate-900/80 px-2 py-0.5 rounded border border-emerald-500/30">KR: SONGDO</p>
+          </div>
+
+          <!-- 📍 Nodes (Frankfurt EU) -->
+          <div class="absolute left-[50%] top-[26%] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+            <div class="w-3 h-3 bg-emerald-400 rounded-full border border-slate-900 group-hover:scale-150 transition-transform"></div>
+            <div class="absolute bottom-4 left-4 glass-panel p-3 rounded-xl shadow-2xl w-48 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+               <div class="flex justify-between items-center mb-1">
+                 <span class="text-[9px] font-black text-emerald-400">EU-104-HUB</span>
+                 <span class="text-[9px] text-slate-400">ETA: 4h 20m</span>
+               </div>
+               <p class="text-xs font-bold text-white mb-2">Frankfurt, DE</p>
+               <div class="flex gap-2">
+                 <div class="flex-1 bg-slate-950 p-1.5 rounded-md border border-slate-700">
+                    <p class="text-[8px] text-slate-500 uppercase">Temp</p>
+                    <p class="text-[10px] font-bold text-white">4.2°C</p>
+                 </div>
+                 <div class="flex-1 bg-slate-950 p-1.5 rounded-md border border-slate-700">
+                    <p class="text-[8px] text-slate-500 uppercase">Humid</p>
+                    <p class="text-[10px] font-bold text-white">45%</p>
+                 </div>
+               </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 📟 오른쪽 실시간 데이터 로그 사이드바 (25%) -->
+        <div class="hidden md:flex w-72 h-full bg-slate-900/80 border-l border-slate-800 flex-col p-5 z-20">
+          <h3 class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Real-time Telemetry</h3>
+          <div class="flex-grow space-y-3 overflow-hidden font-mono">
+            <div class="text-[10px] text-emerald-400 flex items-start gap-2">
+              <span class="opacity-50">09:21:04</span>
+              <p>[SYS] Connection to #K-802 Established.</p>
+            </div>
+            <div class="text-[10px] text-slate-300 flex items-start gap-2">
+              <span class="opacity-50">09:21:02</span>
+              <p>[TRK] Flight KE541 over Central Asia.</p>
+            </div>
+            <div class="text-[10px] text-blue-400 flex items-start gap-2">
+              <span class="opacity-50">09:20:55</span>
+              <p>[SNS] US-Node Temp Sensor: 4.5°C.</p>
+            </div>
+            <div class="text-[10px] text-slate-300 flex items-start gap-2">
+              <span class="opacity-50">09:20:41</span>
+              <p>[SYS] Dual-Validation Auth Completed.</p>
+            </div>
+            <div class="text-[10px] text-emerald-400 flex items-start gap-2">
+              <span class="opacity-50">09:20:33</span>
+              <p>[SNS] ASEAN-Node: Stable at 5.1°C.</p>
+            </div>
+          </div>
+          <div class="mt-auto pt-4 border-t border-slate-800">
+             <div class="flex justify-between items-end">
+               <div>
+                 <p class="text-[8px] text-slate-500 uppercase">System Integrity</p>
+                 <p class="text-xs font-bold text-emerald-400">99.98% OPTIMAL</p>
+               </div>
+               <div class="flex gap-1">
+                 <div class="w-1 h-4 bg-emerald-500 rounded-full"></div>
+                 <div class="w-1 h-3 bg-emerald-500/60 rounded-full"></div>
+                 <div class="w-1 h-5 bg-emerald-500 rounded-full"></div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하단 정보 패널 (4-Column Metrics) -->
+      <div class="p-6 bg-slate-900 border-t border-slate-800 grid grid-cols-2 md:grid-cols-4 gap-6 shrink-0 z-20">
+        <div class="flex flex-col gap-1">
+          <p class="text-slate-500 text-[9px] font-black uppercase tracking-wider">Active Global Nodes</p>
+          <div class="flex items-baseline gap-2">
+            <span class="text-2xl font-black text-white">42</span>
+            <span class="text-[10px] text-emerald-500 font-bold">▲ 3.4%</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <p class="text-slate-500 text-[9px] font-black uppercase tracking-wider">Fleet Stability</p>
+          <div class="flex items-baseline gap-2">
+            <span class="text-2xl font-black text-emerald-400">NOMINAL</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <p class="text-slate-500 text-[9px] font-black uppercase tracking-wider">Risk Level Index</p>
+          <div class="flex items-center gap-2">
+            <div class="flex-grow bg-slate-800 h-1.5 rounded-full overflow-hidden">
+               <div class="bg-emerald-500 h-full w-[12%]"></div>
+            </div>
+            <span class="text-xs font-bold text-white">LOW</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1 text-right">
+          <p class="text-slate-500 text-[9px] font-black uppercase tracking-wider">Current Monitoring Time</p>
+          <p id="live-timer" class="text-xl font-mono font-bold text-slate-300">00:00:00:00</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // 1. [고농도 밀도 팝업 제어]
+    window.openDensityModal = function() {
+      const modal = document.getElementById('modal-density');
+      const box = document.getElementById('modal-density-box');
+      if(!modal || !box) return;
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        box.classList.remove('scale-95', 'translate-y-4');
+        box.classList.add('scale-100', 'translate-y-0');
+      });
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeDensityModal = function() {
+      const modal = document.getElementById('modal-density');
+      const box = document.getElementById('modal-density-box');
+      if(!modal || !box) return;
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-100', 'translate-y-0');
+      box.classList.add('scale-95', 'translate-y-4');
+      document.body.style.overflow = 'auto';
+      setTimeout(() => { modal.classList.add('hidden'); }, 400);
+    };
+
+    // 2. [Advanced 콜드체인 모달 제어]
+    let timerInterval;
+    window.openColdChainModal = function() {
+      const modal = document.getElementById('modal-coldchain');
+      const box = document.getElementById('modal-coldchain-box');
+      if(!modal || !box) return;
+
+      modal.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        modal.classList.remove('opacity-0', 'pointer-events-none');
+        box.classList.remove('scale-95', 'translate-y-4');
+        box.classList.add('scale-100', 'translate-y-0');
+      });
+      document.body.style.overflow = 'hidden';
+
+      // 하단 밀리세컨드 타이머 작동
+      const timerElement = document.getElementById('live-timer');
+      const start = Date.now();
+      timerInterval = setInterval(() => {
+        const delta = Date.now() - start;
+        const h = Math.floor(delta / 3600000).toString().padStart(2, '0');
+        const m = Math.floor((delta % 3600000) / 60000).toString().padStart(2, '0');
+        const s = Math.floor((delta % 60000) / 1000).toString().padStart(2, '0');
+        const ms = Math.floor((delta % 1000) / 10).toString().padStart(2, '0');
+        timerElement.textContent = `${h}:${m}:${s}:${ms}`;
+      }, 10);
+    };
+
+    window.closeColdChainModal = function() {
+      const modal = document.getElementById('modal-coldchain');
+      const box = document.getElementById('modal-coldchain-box');
+      if(!modal || !box) return;
+
+      modal.classList.add('opacity-0', 'pointer-events-none');
+      box.classList.remove('scale-100', 'translate-y-0');
+      box.classList.add('scale-95', 'translate-y-4');
+      document.body.style.overflow = 'auto';
+      clearInterval(timerInterval);
+
+      setTimeout(() => { modal.classList.add('hidden'); }, 500);
+    };
+
+        </script>
 </body>
 </html>

@@ -182,8 +182,8 @@
         <span class="inline-block bg-[#F0F7F7] border border-brand/20 text-brand px-3 py-1 rounded-full text-xs font-bold mb-3 tracking-wide">
           Regulatory Affairs & Quality Control
         </span>
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 tracking-tight leading-tight">Global Pharmaceutical Quality Standards Archive</h1>
-        <p class="text-gray-500 mt-4 leading-relaxed">
+        <h1 class="text-3xl md:text-3xl font-bold text-gray-800 tracking-tight leading-tight">Global Pharmaceutical Quality Standards Archive</h1>
+        <p class="text-gray-500 text-lg mt-4 leading-relaxed">
           바이오시밀러 개발 및 제조 공정에 필수적인 글로벌 품질 규제 가이드라인을 체계적으로 제공합니다.<br class="hidden md:block" />
           ICH, cGMP 법령 및 바이오시밀러 특화 동등성 평가 지침에 대한 핵심 요약 데이터를 확인하세요.
         </p>
@@ -763,255 +763,328 @@ const slideData =[
     title: "ICH Q8: 품질 설계 기반 개발 (QbD Framework)",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-        <p class="text-gray-500 leading-relaxed mb-6">의약품 개발 초기 단계부터 목표 제품 품질 프로파일(QTPP)을 설정하고, 제품에 대한 과학적 이해와 품질 위험 관리(QRM)를 바탕으로 제조 공정을 확립하는 체계적인 접근법입니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          의약품 개발 초기 단계부터 목표 제품 품질 프로파일(QTPP)을 설정하고, 제품에 대한 과학적 이해와 품질 위험 관리(QRM)를 바탕으로 제조 공정을 확립하는 체계적인 접근법입니다.
+        </p>
         
-        <div class="space-y-4 mb-8">
-          <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4">
-            <div class="bg-brand-light text-brand font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">CQA 정의</div>
-            <p class="text-sm text-gray-500 leading-relaxed mt-0.5">제품의 안전성 및 유효성을 보장하기 위해 적절한 한도, 범위 내에 있어야 하는 물리적, 화학적, 생물학적 <span class="font-bold text-gray-700">중요품질특성(Critical Quality Attributes)</span> 식별.</p>
+        <div class="space-y-5 mb-10">
+          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center gap-5">
+            <div class="bg-brand-light text-brand font-bold px-4 py-2 rounded-lg text-base whitespace-nowrap min-w-[100px] text-center">CQA 정의</div>
+            <p class="text-base text-gray-600 leading-relaxed">
+              제품 안전성 및 유효성 보장을 위해 적절 한도 내에 있어야 하는 물리적, 화학적, 생물학적 <span class="font-bold text-gray-800">중요품질특성(Critical Quality Attributes)</span> 식별.
+            </p>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4">
-            <div class="bg-brand-light text-brand font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">CPP 도출</div>
-            <p class="text-sm text-gray-500 leading-relaxed mt-0.5">CQA에 결정적인 영향을 미치는 <span class="font-bold text-gray-700">중요공정변수(Critical Process Parameters)</span>를 식별하고 허용 기준(Specification) 설정.</p>
+
+          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center gap-5">
+            <div class="bg-brand-light text-brand font-bold px-4 py-2 rounded-lg text-base whitespace-nowrap min-w-[100px] text-center">CPP 도출</div>
+            <p class="text-base text-gray-600 leading-relaxed">
+              CQA에 결정적인 영향을 미치는 <span class="font-bold text-gray-800">중요공정변수(Critical Process Parameters)</span>를 식별하고 허용 기준(Specification) 설정.
+            </p>
           </div>
-          <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4">
-            <div class="bg-brand-light text-brand font-bold px-3 py-1.5 rounded-lg text-sm whitespace-nowrap">Design Space</div>
-            <p class="text-sm text-gray-500 leading-relaxed mt-0.5">공정 변수와 원자재 속성이 품질에 미치는 상호작용을 입증한 다차원적 조합 및 영역 구축 (이 범위 내의 변경은 규제기관 사전 승인 면제 가능).</p>
+
+          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex items-center gap-5">
+            <div class="bg-brand-light text-brand font-bold px-4 py-2 rounded-lg text-base whitespace-nowrap min-w-[100px] text-center">Design Space</div>
+            <p class="text-base text-gray-600 leading-relaxed">
+              공정 변수와 원자재 속성이 품질에 미치는 상호작용을 입증한 다차원적 조합 및 영역 구축 (이 범위 내 변경은 규제기관 승인 면제 가능).
+            </p>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2.5 py-1 bg-brand/10 text-brand text-xs font-bold rounded-md">#QTPP</span>
-          <span class="px-2.5 py-1 bg-brand/10 text-brand text-xs font-bold rounded-md">#CQA</span>
-          <span class="px-2.5 py-1 bg-brand/10 text-brand text-xs font-bold rounded-md">#CPP</span>
-          <span class="px-2.5 py-1 bg-brand/10 text-brand text-xs font-bold rounded-md">#Design_Space</span>
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-3 py-1.5 bg-brand/10 text-brand text-sm font-bold rounded-md">#QTPP</span>
+          <span class="px-3 py-1.5 bg-brand/10 text-brand text-sm font-bold rounded-md">#CQA</span>
+          <span class="px-3 py-1.5 bg-brand/10 text-brand text-sm font-bold rounded-md">#CPP</span>
+          <span class="px-3 py-1.5 bg-brand/10 text-brand text-sm font-bold rounded-md">#Design_Space</span>
         </div>
 
         <div class="flex justify-start mt-auto">
-          <a href="https://database.ich.org/sites/default/files/Q8%28R2%29%20Guideline.pdf" target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
+          <a href="https://database.ich.org/sites/default/files/Q8%28R2%29%20Guideline.pdf" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white text-base font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
             QbD 요소 및 가이드라인 확인
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
           </a>
         </div>
       </div>
     `
-  },
+},
   {
     title: "ICH Q9 & Q10: 품질 위험 관리 및 시스템",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-        <p class="text-gray-500 leading-relaxed mb-6">전주기적 관점에서의 제약 품질 시스템(PQS) 구축 및 FMEA, PHA 등의 도구를 활용한 선제적인 품질 위험 관리 체계입니다. <br>일탈(OOS/OOT) 발생 시 체계적인 원인 규명과 시정예방조치(CAPA)가 필수적입니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          전주기적 관점에서의 제약 품질 시스템(PQS) 구축 및 FMEA, PHA 등의 도구를 활용한 선제적인 품질 위험 관리 체계입니다. <br class="hidden md:block">
+          일탈(OOS/OOT) 발생 시 체계적인 원인 규명과 시정예방조치(CAPA)가 필수적입니다.
+        </p>
 
-        <!-- 3단계 요약 테이블 -->
-        <div class="overflow-x-auto mb-6 bg-white rounded-xl border border-gray-200 shadow-sm">
-          <table class="w-full text-sm text-left text-gray-500">
-            <thead class="text-xs text-gray-700 bg-gray-100 uppercase">
+        <div class="overflow-x-auto mb-8 bg-white rounded-xl border border-gray-200 shadow-sm">
+          <table class="w-full text-base text-left text-gray-600">
+            <thead class="text-sm text-gray-700 bg-gray-100/80 uppercase">
               <tr>
-                <th scope="col" class="px-6 py-4">단계</th>
-                <th scope="col" class="px-6 py-4">핵심 활동</th>
-                <th scope="col" class="px-6 py-4">적용 도구 및 용어</th>
+                <th scope="col" class="px-6 py-5">단계</th>
+                <th scope="col" class="px-6 py-5">핵심 활동</th>
+                <th scope="col" class="px-6 py-5">적용 도구 및 용어</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="border-b">
-                <td class="px-6 py-4 font-bold text-brand whitespace-nowrap">1. Risk Assessment</td>
-                <td class="px-6 py-4 leading-relaxed">위험 식별, 분석 및 평가 (잠재적 위해 요인 도출)</td>
-                <td class="px-6 py-4"><span class="bg-brand-light text-brand px-2 py-0.5 rounded font-bold">FMEA</span>, PHA, HAZOP</td>
-              </tr>
-              <tr class="border-b">
-                <td class="px-6 py-4 font-bold text-brand whitespace-nowrap">2. Risk Control</td>
-                <td class="px-6 py-4 leading-relaxed">위험 수용 한도 설정 및 완화 전략 수립</td>
-                <td class="px-6 py-4"><span class="bg-brand-light text-brand px-2 py-0.5 rounded font-bold">CAPA</span>, OOS/OOT Control</td>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="px-6 py-5 font-bold text-brand whitespace-nowrap">1. Risk Assessment</td>
+                <td class="px-6 py-5 leading-relaxed">위험 식별, 분석 및 평가<br>(잠재적 위해 요인 도출)</td>
+                <td class="px-6 py-5">
+                  <span class="bg-brand-light text-brand px-2.5 py-1 rounded-md font-bold text-sm">FMEA</span>
+                  <span class="text-sm ml-1">PHA, HAZOP</span>
+                </td>
               </tr>
               <tr>
-                <td class="px-6 py-4 font-bold text-brand whitespace-nowrap">3. Risk Review</td>
-                <td class="px-6 py-4 leading-relaxed">새로운 지식 및 경험을 바탕으로 한 지속적 검토</td>
-                <td class="px-6 py-4"><span class="bg-brand-light text-brand px-2 py-0.5 rounded font-bold">PQR</span> (Product Quality Review)</td>
+                <td class="px-6 py-5 font-bold text-brand whitespace-nowrap">2. Risk Control</td>
+                <td class="px-6 py-5 leading-relaxed">위험 수용 한도 설정 및<br>완화 전략 수립</td>
+                <td class="px-6 py-5">
+                  <span class="bg-brand-light text-brand px-2.5 py-1 rounded-md font-bold text-sm">CAPA</span>
+                  <span class="text-sm ml-1">OOS/OOT Control</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-5 font-bold text-brand whitespace-nowrap border-b-0">3. Risk Review</td>
+                <td class="px-6 py-5 leading-relaxed border-b-0">새로운 지식 및 경험을 바탕으로 한 지속적 검토</td>
+                <td class="px-6 py-5 border-b-0">
+                  <span class="bg-brand-light text-brand px-2.5 py-1 rounded-md font-bold text-sm">PQR</span>
+                  <span class="text-sm ml-1">(Product Quality Review)</span>
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
 
         <div class="flex justify-start mt-auto pt-4">
-          <a href="lounge-coming.html" class="inline-flex items-center justify-center px-6 py-3.5 bg-white border border-gray-300 text-gray-700 text-sm font-bold rounded-xl hover:bg-gray-50 hover:text-brand hover:border-brand transition-all shadow-sm hover:-translate-y-0.5 gap-2 w-full md:w-auto">
+          <a href="lounge-coming.html" class="inline-flex items-center justify-center px-8 py-4 bg-white border border-gray-300 text-gray-700 text-base font-bold rounded-xl hover:bg-gray-50 hover:text-brand hover:border-brand transition-all shadow-sm hover:-translate-y-0.5 gap-2 w-full md:w-auto">
             시밀리라운지 - CAPA 사례 토론 보기
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
           </a>
         </div>
       </div>
     `
-  },
+},
   {
     title: "글로벌 GMP 체계 및 규제 (MFDS vs FDA vs EMA)",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-        <p class="text-gray-500 leading-relaxed mb-6">제조소 및 제조 공정의 적합성을 보증하는 기준으로, 각국 규제 기관은 데이터 완전성(Data Integrity)과 실시간 제조기록서(Batch Record)의 추적성을 매우 엄격하게 심사합니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          제조소 및 제조 공정의 적합성을 보증하는 기준으로, 각국 규제 기관은 데이터 완전성(Data Integrity)과 실시간 제조기록서(Batch Record)의 추적성을 매우 엄격히 심사합니다.
+        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition">
-            <h4 class="font-bold text-brand mb-2 flex items-center gap-1.5"><span class="text-lg">🇺🇸</span> FDA cGMP</h4>
-            <p class="text-sm text-gray-600 leading-relaxed"><span class="font-semibold text-gray-800">21 CFR Part 211</span> 기반. Audit Trail 및 전자기록(Part 11) 관리, 일탈 시 철저한 Change Control 요구.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition flex flex-col">
+            <h4 class="font-bold text-brand text-xl mb-3 flex items-center gap-2">
+              <span class="text-2xl">🇺🇸</span> FDA cGMP
+            </h4>
+            <p class="text-base text-gray-600 leading-relaxed">
+              <span class="font-semibold text-gray-800">21 CFR Part 211</span> 기반. Audit Trail 및 전자기록(Part 11) 관리, 일탈 시 철저한 Change Control 요구.
+            </p>
           </div>
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition">
-            <h4 class="font-bold text-brand mb-2 flex items-center gap-1.5"><span class="text-lg">🇪🇺</span> EMA EU-GMP</h4>
-            <p class="text-sm text-gray-600 leading-relaxed"><span class="font-semibold text-gray-800">EudraLex Vol 4</span> 기반. QP(Qualified Person) 승인 필수, 교차오염 방지 및 무균 공정(Annex 1) 강조.</p>
+
+          <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition flex flex-col">
+            <h4 class="font-bold text-brand text-xl mb-3 flex items-center gap-2">
+              <span class="text-2xl">🇪🇺</span> EMA EU-GMP
+            </h4>
+            <p class="text-base text-gray-600 leading-relaxed">
+              <span class="font-semibold text-gray-800">EudraLex Vol 4</span> 기반. QP(Qualified Person) 승인 필수, 교차오염 방지 및 무균 공정(Annex 1) 강조.
+            </p>
           </div>
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition">
-            <h4 class="font-bold text-brand mb-2 flex items-center gap-1.5"><span class="text-lg">🇰🇷</span> MFDS KGMP</h4>
-            <p class="text-sm text-gray-600 leading-relaxed"><span class="font-semibold text-gray-800">PIC/S 가입국</span>으로서 글로벌 스탠다드 부합. 밸리데이션(Validation) 및 정기적 자율 점검 규정 강화.</p>
+
+          <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:border-brand transition flex flex-col">
+            <h4 class="font-bold text-brand text-xl mb-3 flex items-center gap-2">
+              <span class="text-2xl">🇰🇷</span> MFDS KGMP
+            </h4>
+            <p class="text-base text-gray-600 leading-relaxed">
+              <span class="font-semibold text-gray-800">PIC/S 가입국</span>으로서 글로벌 스탠다드 부합. 밸리데이션(Validation) 및 정기적 자율 점검 규정 강화.
+            </p>
           </div>
         </div>
 
-        <div class="flex flex-wrap gap-2 mb-6">
-          <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Data_Integrity</span>
-          <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Batch_Record</span>
-          <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Change_Control</span>
-          <span class="px-2.5 py-1 bg-brand-light text-brand text-xs font-bold rounded-md">#Audit_Trail</span>
+        <div class="flex flex-wrap gap-3 mb-8">
+          <span class="px-3 py-1.5 bg-brand-light text-brand text-sm font-bold rounded-md">#Data_Integrity</span>
+          <span class="px-3 py-1.5 bg-brand-light text-brand text-sm font-bold rounded-md">#Batch_Record</span>
+          <span class="px-3 py-1.5 bg-brand-light text-brand text-sm font-bold rounded-md">#Change_Control</span>
+          <span class="px-3 py-1.5 bg-brand-light text-brand text-sm font-bold rounded-md">#Audit_Trail</span>
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-3 justify-start mt-auto pt-2">
-          <a href="https://www.fda.gov/drugs/pharmaceutical-quality-resources/current-good-manufacturing-practice-cgmp-regulations" target="_blank" class="inline-flex items-center justify-center px-4 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-bold rounded-lg hover:bg-blue-100 transition shadow-sm">FDA 규정 열람</a>
-          <a href="https://www.ema.europa.eu/en/human-regulatory/research-development/compliance/good-manufacturing-practice" target="_blank" class="inline-flex items-center justify-center px-4 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-bold rounded-lg hover:bg-blue-100 transition shadow-sm">EMA 규정 열람</a>
-  <a href="https://www.law.go.kr/LSW/lsSc.do?section=&menuId=1&subMenuId=15&tabMenuId=81&eventGubun=060101&query=%EC%9D%98%EC%95%BD%ED%92%88+%EB%93%B1%EC%9D%98+%EC%95%88%EC%A0%84%EC%97%90+%EA%B4%80%ED%95%9C+%EA%B7%9C%EC%B9%99#J18000675" target="_blank" class="inline-flex items-center justify-center px-4 py-2.5 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-bold rounded-lg hover:bg-blue-100 transition shadow-sm">KGMP 규정 열람</a>
-
+        <div class="flex flex-col sm:flex-row gap-4 justify-start mt-auto pt-2">
+          <a href="https://www.fda.gov/drugs/pharmaceutical-quality-resources/current-good-manufacturing-practice-cgmp-regulations" target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 bg-blue-50 border border-blue-200 text-blue-700 text-base font-bold rounded-xl hover:bg-blue-100 transition shadow-sm">FDA 규정 열람</a>
+          <a href="https://www.ema.europa.eu/en/human-regulatory/research-development/compliance/good-manufacturing-practice" target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 bg-blue-50 border border-blue-200 text-blue-700 text-base font-bold rounded-xl hover:bg-blue-100 transition shadow-sm">EMA 규정 열람</a>
+          <a href="https://www.law.go.kr/LSW/lsSc.do?section=&menuId=1&subMenuId=15&tabMenuId=81&eventGubun=060101&query=%EC%9D%98%EC%95%BD%ED%92%88+%EB%93%B1%EC%9D%98+%EC%95%88%EC%A0%84%EC%97%90+%EA%B4%80%ED%95%9C+%EA%B7%9C%EC%B9%99#J18000675" target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 bg-blue-50 border border-blue-200 text-blue-700 text-base font-bold rounded-xl hover:bg-blue-100 transition shadow-sm">KGMP 규정 열람</a>
         </div>
       </div>
     `
-  },
-  {
+},
+ {
     title: "바이오시밀러 동등성 평가 (Comparability Exercise)",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-        <p class="text-gray-500 leading-relaxed mb-6">바이오시밀러 개발의 핵심으로, 오리지널 대조약과의 Totality of Evidence(근거의 총체성)를 입증해야 합니다. <br>구조 분석부터 역가(Potency) 확인까지 일관성 있는 허용 기준(Specification) 내에 들어야 합니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          바이오시밀러 개발의 핵심으로, 오리지널 대조약과의 Totality of Evidence(근거의 총체성)를 입증해야 합니다. <br class="hidden md:block">
+          구조 분석부터 역가(Potency) 확인까지 일관성 있는 허용 기준(Specification) 내에 들어야 합니다.
+        </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xl">🧪</span>
-              <h4 class="font-bold text-gray-800">물리화학적 특성 (Physicochemical)</h4>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl">🧪</span>
+              <h4 class="font-bold text-gray-800 text-xl">물리화학적 특성 (Physicochemical)</h4>
             </div>
-            <ul class="text-sm text-gray-500 space-y-2">
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">1차/고차 구조:</span> 질량분석(LC-MS), CD, NMR</li>
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">순도 및 불순물:</span> SE-HPLC, CE-SDS, Host Cell Protein(HCP) 잔류량 측정</li>
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">당화 프로파일:</span> Glycan Map 동등성 비교</li>
+            <ul class="text-base text-gray-600 space-y-4">
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">1차/고차 구조:</span> 질량분석(LC-MS), CD, NMR</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">순도 및 불순물:</span> SE-HPLC, CE-SDS, HCP 잔류량</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">당화 프로파일:</span> Glycan Map 동등성 비교</span>
+              </li>
             </ul>
           </div>
-          <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm">
-            <div class="flex items-center gap-2 mb-3">
-              <span class="text-xl">🦠</span>
-              <h4 class="font-bold text-gray-800">생물학적 활성 (Biological Activity)</h4>
+
+          <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="text-2xl">🦠</span>
+              <h4 class="font-bold text-gray-800 text-xl">생물학적 활성 (Biological Activity)</h4>
             </div>
-            <ul class="text-sm text-gray-500 space-y-2">
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">역가(Potency):</span> in vitro Cell-based Assay</li>
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">수용체 결합력:</span> SPR, ELISA를 활용한 결합 친화도(Affinity) 분석</li>
-              <li>• <span class="bg-brand-light text-brand font-semibold px-1 rounded">작용 기전(MoA):</span> ADCC, CDC 활성 등 대조약과 통계적 동등성 입증</li>
+            <ul class="text-base text-gray-600 space-y-4">
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">역가(Potency):</span> in vitro Cell-based Assay</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">수용체 결합력:</span> SPR, ELISA 친화도 분석</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="mt-1.5 w-1.5 h-1.5 bg-brand rounded-full shrink-0"></span>
+                <span><span class="font-bold text-gray-800">작용 기전(MoA):</span> ADCC, CDC 활성 동등성</span>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div class="flex justify-start mt-auto">
-          <a href="insight-coming.html" class="inline-flex items-center justify-center px-6 py-3.5 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
+        <div class="flex justify-start mt-auto pt-4">
+          <a href="insight-coming.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white text-base font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
             바이오시밀러 비교 임상 데이터 조회
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
           </a>
         </div>
       </div>
     `
-  },
-  {
+},
+ {
     title: "ICH Q2: 분석법 밸리데이션 (Method Validation)",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-        <p class="text-gray-500 leading-relaxed mb-6">의약품 품질 평가에 사용되는 시험 방법이 의도한 목적에 적합한지 증명하는 과정입니다.<br> 모든 분석법은 규제 기관 제출 전 철저한 밸리데이션(Validation) 프로토콜을 통과해야 합니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          의약품 품질 평가에 사용되는 시험 방법이 의도한 목적에 적합한지 증명하는 과정입니다.<br class="hidden md:block">
+          모든 분석법은 규제 기관 제출 전 철저한 밸리데이션(Validation) 프로토콜을 통과해야 합니다.
+        </p>
 
-        <h5 class="text-sm font-bold text-gray-800 mb-3">📊 필수 밸리데이션 파라미터 (Validation Parameters)</h5>
-        <div class="flex flex-wrap gap-3 mb-8">
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">🎯 특이성 (Specificity)</span>
+        <h5 class="text-base font-bold text-gray-800 mb-5 flex items-center gap-2">
+          📊 필수 밸리데이션 파라미터 (Validation Parameters)
+        </h5>
+
+        <div class="flex flex-wrap gap-4 mb-10">
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <span class="text-brand font-bold text-base">🎯 특이성 (Specificity)</span>
           </div>
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">📏 정확성 (Accuracy)</span>
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <span class="text-brand font-bold text-base">📏 정확성 (Accuracy)</span>
           </div>
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">⏱️ 정밀성 (Precision)</span>
-            <span class="text-[0.7rem] text-gray-400 ml-1">반복성/재현성</span>
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <div class="flex flex-col">
+              <span class="text-brand font-bold text-base">⏱️ 정밀성 (Precision)</span>
+              <span class="text-[0.75rem] text-gray-400 font-medium">반복성 / 재현성</span>
+            </div>
           </div>
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">📈 직선성 (Linearity)</span>
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <span class="text-brand font-bold text-base">📈 직선성 (Linearity)</span>
           </div>
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">🔍 한계 (LOD/LOQ)</span>
-            <span class="text-[0.7rem] text-gray-400 ml-1">검출/정량 한계</span>
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <div class="flex flex-col">
+              <span class="text-brand font-bold text-base">🔍 한계 (LOD/LOQ)</span>
+              <span class="text-[0.75rem] text-gray-400 font-medium">검출 및 정량 한계</span>
+            </div>
           </div>
-          <div class="flex items-center gap-1.5 px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-sm">
-            <span class="text-brand font-bold">🛡️ 완건성 (Robustness)</span>
+          <div class="flex items-center gap-2 px-4 py-3 bg-white border border-gray-200 rounded-xl shadow-sm hover:border-brand transition-colors">
+            <span class="text-brand font-bold text-base">🛡️ 완건성 (Robustness)</span>
           </div>
         </div>
 
-        <div class="flex justify-start mt-auto">
-          <a href="https://database.ich.org/sites/default/files/Q2%28R1%29%20Guideline.pdf" target="_blank" class="inline-flex items-center justify-center px-6 py-3.5 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
+        <div class="flex justify-start mt-auto pt-4">
+          <a href="https://database.ich.org/sites/default/files/Q2%28R1%29%20Guideline.pdf" target="_blank" class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white text-base font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
             ICH Q2 원문 PDF 열람
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
           </a>
         </div>
       </div>
     `
-  },
+},
   {
     title: "안정성 시험 및 무균 공정 (ICH Q1 & Annex 1)",
     desc: `
       <div class="bg-gray-50 rounded-2xl p-6 md:p-8 border border-gray-100 shadow-inner w-full flex flex-col h-full">
-  <p class="text-gray-500 leading-relaxed mb-6 text-sm">의약품의 유효기간(Expiration Date) 산정을 위한 안정성 시험(ICH Q1) 규정과, 생물학적 제제의 무균성(Sterility)을 보장하기 위한 무균 제조 공정 가이드라인(EU-GMP Annex 1)입니다.</p>
+        <p class="text-gray-600 text-lg leading-relaxed mb-8">
+          의약품의 유효기간(Expiration Date) 산정을 위한 안정성 시험(ICH Q1) 규정과, 생물학적 제제의 무균성(Sterility)을 보장하기 위한 무균 제조 공정 가이드라인(EU-GMP Annex 1)입니다.
+        </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-    
-    <div class="flex flex-col space-y-3">
-      <h4 class="font-bold text-gray-800 border-l-4 border-brand pl-2 h-6 flex items-center">안정성 시험 조건 요약</h4>
-      <div class="bg-white rounded-xl border border-gray-200 overflow-hidden text-sm flex-1 flex flex-col">
-        <div class="grid grid-cols-2 bg-gray-100 font-bold text-gray-700 p-4 border-b border-gray-200">
-          <div>구분</div><div>온도 / 습도</div>
-        </div>
-        <div class="grid grid-cols-2 p-4 border-b border-gray-100 flex-1 items-center">
-          <div class="font-semibold text-brand">장기 보존 (Long-term)</div><div class="text-gray-600">25°C ± 2°C / 60% ± 5% RH</div>
-        </div>
-        <div class="grid grid-cols-2 p-4 flex-1 items-center">
-          <div class="font-semibold text-red-600">가속 시험 (Accelerated)</div><div class="text-gray-600">40°C ± 2°C / 75% ± 5% RH</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex flex-col space-y-3">
-      <h4 class="font-bold text-gray-800 border-l-4 border-brand pl-2 h-6 flex items-center">무균 작업대 관리 (Annex 1)</h4>
-      <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm flex-1 flex flex-col justify-center">
-        <ul class="text-[15px] text-gray-600 space-y-5 leading-relaxed">
-          <li class="flex items-start">
-            <span class="bg-brand-light text-brand font-bold px-2 py-0.5 rounded text-xs mt-1 mr-3 shrink-0">Grade A</span>
-            <span>고위험 작업 구역 (무균 충전). 층류 유지 필수.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="bg-gray-200 text-gray-700 font-bold px-2 py-0.5 rounded text-xs mt-1 mr-3 shrink-0">Grade B</span>
-            <span>Grade A의 직접적인 배경 구역.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="bg-gray-100 text-gray-600 font-bold px-2 py-0.5 rounded text-xs mt-1 mr-3 shrink-0">Grade C/D</span>
-            <span>덜 핵심적인 제조 단계 수행 구역.</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-    
-  </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch mb-10">
+          
+          <div class="flex flex-col space-y-4">
+            <h4 class="font-bold text-gray-800 text-lg border-l-4 border-brand pl-3 h-7 flex items-center">안정성 시험 조건 요약</h4>
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden text-base flex-1 flex flex-col shadow-sm">
+              <div class="grid grid-cols-2 bg-gray-100/80 font-bold text-gray-700 p-5 border-b border-gray-200">
+                <div>구분</div><div>온도 / 습도</div>
+              </div>
+               <div class="grid grid-cols-2 p-5 border-b border-gray-100 flex-1 items-center">
+  <div class="font-bold text-brand">장기 보존 (Long-term)</div>
+  <div class="text-gray-600">5°C ± 3°C</div>
 </div>
 
-        <div class="flex justify-start mt-auto">
-          <a href="insight-coming.html" class="inline-flex items-center justify-center px-6 py-3.5 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
+<div class="grid grid-cols-2 p-5 flex-1 items-center">
+  <div class="font-bold text-red-600">가속 시험 (Accelerated)</div>
+  <div class="text-gray-600">25°C ± 2°C /<br>60% ± 5% RH</div>
+</div>
+
+            </div>
+          </div>
+
+          <div class="flex flex-col space-y-4">
+            <h4 class="font-bold text-gray-800 text-lg border-l-4 border-brand pl-3 h-7 flex items-center">무균 작업대 관리 (Annex 1)</h4>
+            <div class="bg-white rounded-xl border border-gray-200 p-6 shadow-sm flex-1 flex flex-col justify-center">
+              <ul class="text-base text-gray-600 space-y-6 leading-relaxed">
+                <li class="flex items-start">
+                  <span class="bg-brand-light text-brand font-bold px-3 py-1 rounded-md text-sm mt-1 mr-4 shrink-0">Grade A</span>
+                  <span><strong class="text-gray-800">고위험 작업 구역 (무균 충전).</strong><br>단방향 기류(층류) 유지 필수.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-gray-200 text-gray-700 font-bold px-3 py-1 rounded-md text-sm mt-1 mr-4 shrink-0">Grade B</span>
+                  <span>Grade A의 직접적인 배경 구역.</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="bg-gray-100 text-gray-600 font-bold px-3 py-1 rounded-md text-sm mt-1 mr-4 shrink-0">Grade C/D</span>
+                  <span>덜 핵심적인 제조 단계 수행 구역.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+        </div>
+
+        <div class="flex justify-start mt-auto pt-4">
+          <a href="insight-coming.html" class="inline-flex items-center justify-center px-8 py-4 bg-brand text-white text-base font-bold rounded-xl hover:bg-brand-dark transition-all shadow-md hover:-translate-y-0.5 gap-2 w-full md:w-auto">
             인증 전문가 전용 환경 모니터링 데이터
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
           </a>
         </div>
       </div>
     `
-  }
+}
 ];
 
 let currentIdx = 0;
