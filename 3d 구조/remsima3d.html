@@ -77,7 +77,7 @@
         {
             title: "01. 렘시마(Infliximab) 항체 구조",
             text: `본 모델은 렘시마 항체의 전체 Y자 구조 중 항원과 직접 결합하는 <strong>Fab 단편(팔 부분 하나)</strong>을 정밀 시각화한 결과입니다.<br><br>
-            항원 결합 부위(Paratope)를 형성하는 두 가닥의 체인을 분석할 수 있습니다.<br>
+            항원 결합 부위를 형성하는 두 가닥의 체인을 분석할 수 있습니다.<br>
             <div class="highlight-box">
                 <span class="color-dot" style="background:#005596;"></span><strong>짙은 파란색(중쇄, Heavy Chain):</strong> 항체의 골격을 형성하고 결합력을 결정짓는 핵심 영역입니다.<br>
                 <span class="color-dot" style="background:#87CEEB;"></span><strong>하늘색(경쇄, Light Chain):</strong> 중쇄와 협동하여 항원을 입체적으로 인식하는 구조를 완성합니다.
@@ -89,15 +89,16 @@
             title: "02. 표적 단백질: TNF-α 삼량체",
             text: `자가면역질환의 핵심 염증 유발 인자인 <strong>TNF-α(종양괴사인자-알파)</strong>입니다.<br><br>
             세 개의 동일한 단위체가 결합된 <strong>삼량체(Trimer)</strong> 구조를 띄고 있으며, 각 단위체 사이의 결합 부위가 렘시마의 주요 타겟이 됩니다.<br><br>
-            Surface 모드에서는 삼량체 특유의 원기둥 형태를, Stick 모드에서는 중심부의 소수성 결합 구조를 관찰할 수 있습니다.`,
+            Surface 모드에서는 삼량체 특유의 원기둥 형태를, Stick 모드에서는 단백질 내부를 구성하는 복잡한 아미노산 사슬들이 어떻게 얽혀 있는지 자세히 관찰할 수 있습니다.`,
             surface: "tnf_surface.glb",
             stick: "tnf_stick.glb"
         },
         {
             title: "03. 복합체 결합 (Lattice Formation)",
-            text: `렘시마 Fab 단편과 TNF-α 삼량체가 결합한 <strong>중화 복합체</strong> 시뮬레이션입니다.<br><br>
-            중쇄와 경쇄가 협동하여 삼량체의 측면 에피토프(Epitope)를 에워싸며, 수용체와의 결합을 물리적으로 차단(Steric hindrance)합니다.<br><br>
-            이러한 결합은 체내에서 거대한 <strong>그물 구조(Lattice Structure)</strong>를 형성하여 염증 인자를 효과적으로 무력화합니다. <br><em>(Ref: PLANETAS Study, 2013)</em>`,
+            text: `렘시마 Fab 단편과 TNF-α 삼량체가 결합한 <strong>중화 복합체</strong> 모델입니다.<br><br>
+            렘시마의 중쇄와 경쇄가 협동하여 TNF-α 삼량체의 특정 결합 부위(Epitope)를 에워싸는 모습을 확인할 수 있습니다.<br><br>
+            이러한 정밀한 결합 구조는 TNF-α가 체내 수용체(TNFR)와 접촉하는 경로를 <strong>입체적으로 차단함</strong>으로써, 염증 신호가 세포 내부로 전달되는 과정을 근본적으로 억제합니다.<br><br>
+            결과적으로 하나의 항체가 가진 두 개의 팔이 각각 다른 삼량체를 붙잡는 특성 덕분에, 수많은 항원과 항체가 서로 엮인 거대한 <strong>그물망 구조</strong>를 형성하게 됩니다.`,
             surface: "4G3Y_surface.glb",
             stick: "4G3Y_stick.glb"
         }
