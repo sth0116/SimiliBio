@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Remsima 3D Analysis Platform</title>
+    <title>Remsima 3D Analysis Platform | Biologics Insight</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary-color: #005596; --bg-color: #ffffff; --side-bg: #f8f9fa; }
+        :root { --primary-color: #005596; --bg-color: #ffffff; --side-bg: #f8f9fa; --accent-blue: #007bff; --accent-sky: #87CEEB; }
         body, html { margin: 0; padding: 0; height: 100%; font-family: 'Noto Sans KR', sans-serif; overflow: hidden; }
         .main-wrapper { display: flex; width: 100vw; height: 100vh; }
 
@@ -16,23 +16,29 @@
         /* 오른쪽 3D 패널 */
         .right-panel { width: 65%; height: 100%; display: flex; flex-direction: column; background: #eee; }
 
-        h1 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 5px; }
-        .tab-menu { display: flex; flex-direction: column; gap: 10px; margin: 20px 0; }
+        h1 { color: var(--primary-color); font-size: 1.6rem; margin-bottom: 5px; letter-spacing: -0.5px; }
+        .subtitle { font-size: 0.9rem; color: #666; margin-bottom: 25px; border-left: 3px solid var(--primary-color); padding-left: 10px; }
+        
+        .tab-menu { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
         
         /* 버튼 스타일 */
-        .tab-btn { padding: 15px; border: 1px solid #ddd; background: #fff; text-align: left; border-radius: 8px; cursor: pointer; font-size: 0.95rem; transition: 0.3s; }
-        .tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); font-weight: bold; }
+        .tab-btn { padding: 16px; border: 1px solid #e0e0e0; background: #fff; text-align: left; border-radius: 10px; cursor: pointer; font-size: 0.95rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+        .tab-btn:hover { border-color: var(--primary-color); background: #f0f7ff; }
+        .tab-btn.active { background: var(--primary-color); color: #fff; border-color: var(--primary-color); font-weight: bold; transform: translateX(5px); box-shadow: 4px 4px 15px rgba(0,85,150,0.2); }
 
         /* 설명창 스타일 */
-        .description-area { background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); flex-grow: 1; }
-        .description-text { font-size: 0.95rem; line-height: 1.8; color: #444; white-space: pre-line; }
+        .description-area { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); flex-grow: 1; border: 1px solid #eee; }
+        .description-text { font-size: 0.95rem; line-height: 1.8; color: #444; }
+        .highlight-box { margin-top: 15px; padding: 12px; background: #f1f3f5; border-radius: 8px; font-size: 0.85rem; }
+        .color-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 5px; }
 
         /* 우측 상단 스타일 선택 바 */
-        .style-bar { height: 50px; background: #fff; border-bottom: 1px solid #ddd; display: flex; align-items: center; padding: 0 20px; gap: 10px; }
-        .style-btn { padding: 6px 14px; border: 1px solid #ccc; background: #fff; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
+        .style-bar { height: 60px; background: #fff; border-bottom: 1px solid #ddd; display: flex; align-items: center; padding: 0 25px; gap: 15px; z-index: 10; }
+        .style-btn { padding: 8px 18px; border: 1.5px solid #ddd; background: #fff; border-radius: 25px; cursor: pointer; font-size: 0.85rem; font-weight: 500; transition: 0.2s; }
+        .style-btn:hover { background: #f8f9fa; }
         .style-btn.active { background: #333; color: #fff; border-color: #333; }
 
-        model-viewer { width: 100%; height: calc(100% - 50px); background: #f0f0f0; }
+        model-viewer { width: 100%; height: calc(100% - 60px); background: #f5f5f5; --progress-bar-color: var(--primary-color); }
     </style>
 </head>
 <body>
@@ -40,94 +46,94 @@
 <div class="main-wrapper">
     <div class="left-panel">
         <h1>Remsima Platform</h1>
-        <p style="font-size: 0.85rem; color: #777; margin-bottom: 20px;">바이오산업 실무: 3D 모델 분석</p>
+        <p class="subtitle">바이오산업 실무: 분자 구조 분석 시뮬레이션</p>
 
         <div class="tab-menu">
-            <button class="tab-btn active" onclick="changeCategory(0)">01. 렘시마 항체 구조</button>
-            <button class="tab-btn" onclick="changeCategory(1)">02. TNF-&alpha; 단백질 구조</button>
-            <button class="tab-btn" onclick="changeCategory(2)">03. 복합체 결합 시뮬레이션</button>
+            <button class="tab-btn active" onclick="changeCategory(0)">01. 렘시마 항체 구조 분석</button>
+            <button class="tab-btn" onclick="changeCategory(1)">02. 표적 단백질(TNF-&alpha;) 구조</button>
+            <button class="tab-btn" onclick="changeCategory(2)">03. 항원-항체 결합 복합체</button>
         </div>
 
         <div class="description-area">
-            <h3 id="desc-title" style="margin-top:0; color:var(--primary-color);">데이터 로딩 중...</h3>
-            <p id="desc-content" class="description-text">버튼을 클릭하여 데이터를 확인하세요.</p>
+            <h3 id="desc-title" style="margin-top:0; color:var(--primary-color); font-size:1.2rem;">데이터 로딩 중...</h3>
+            <div id="desc-content" class="description-text">버튼을 클릭하여 분석 데이터를 확인하세요.</div>
         </div>
     </div>
 
     <div class="right-panel">
         <div class="style-bar">
-            <span style="font-weight:bold; font-size:0.85rem;">VIEW:</span>
-            <button class="style-btn active" onclick="changeStyle('surface')">덩어리(Surface)</button>
-            <button class="style-btn" onclick="changeStyle('stick')">분자(Stick)</button>
+            <span style="font-weight:700; font-size:0.85rem; color:#555;">RENDER VIEW:</span>
+            <button class="style-btn active" onclick="changeStyle('surface')">Surface (표면 구조)</button>
+            <button class="style-btn" onclick="changeStyle('stick')">Stick (원자 결합)</button>
         </div>
-        <model-viewer id="main-viewer" src="" auto-rotate camera-controls shadow-intensity="1">
-            <div slot="poster" style="padding: 20px; text-align: center;">3D 모델 로딩 대기 중...</div>
+        <model-viewer id="main-viewer" src="" auto-rotate camera-controls shadow-intensity="1" exposure="1">
+            <div slot="poster" style="padding: 20px; text-align: center; color:#999;">3D 분자 모델 로딩 중...</div>
         </model-viewer>
     </div>
 </div>
 
 <script>
-    // 1. 데이터 정의 (이 부분을 자바스크립트가 읽어야 함)
     const contentData = [
         {
-            title: "01. 렘시마(Infliximab) 항체",
-            text: "이 모델은 셀트리온 렘시마 항체의 단독 구조를 보여줍니다.\n\nSurface 모드에서는 항체의 전체적인 부피감과 표면 전하 분포를 확인하기 좋으며, Stick 모드에서는 아미노산 서열 구조를 상세히 관찰할 수 있습니다.",
+            title: "01. 렘시마(Infliximab) 항체 구조",
+            text: `본 모델은 렘시마 항체의 전체 Y자 구조 중 항원과 직접 결합하는 <strong>Fab 단편(팔 부분 하나)</strong>을 정밀 시각화한 결과입니다.<br><br>
+            항원 결합 부위(Paratope)를 형성하는 두 가닥의 체인을 분석할 수 있습니다.<br>
+            <div class="highlight-box">
+                <span class="color-dot" style="background:#005596;"></span><strong>짙은 파란색(중쇄, Heavy Chain):</strong> 항체의 골격을 형성하고 결합력을 결정짓는 핵심 영역입니다.<br>
+                <span class="color-dot" style="background:#87CEEB;"></span><strong>하늘색(경쇄, Light Chain):</strong> 중쇄와 협동하여 항원을 입체적으로 인식하는 구조를 완성합니다.
+            </div>`,
             surface: "remsima_surface.glb",
             stick: "remsima_stick.glb"
         },
         {
-            title: "02. TNF-&alpha; 염증 단백질",
-            text: "자가면역 질환을 일으키는 주요 항원인 TNF-α입니다.\n\n세 개의 동일한 단백질이 결합한 Trimer 구조를 가지고 있으며, 렘시마가 결합하여 차단해야 할 타겟 부위를 확인하세요.",
+            title: "02. 표적 단백질: TNF-α 삼량체",
+            text: `자가면역질환의 핵심 염증 유발 인자인 <strong>TNF-α(종양괴사인자-알파)</strong>입니다.<br><br>
+            세 개의 동일한 단위체가 결합된 <strong>삼량체(Trimer)</strong> 구조를 띄고 있으며, 각 단위체 사이의 결합 부위가 렘시마의 주요 타겟이 됩니다.<br><br>
+            Surface 모드에서는 삼량체 특유의 원기둥 형태를, Stick 모드에서는 중심부의 소수성 결합 구조를 관찰할 수 있습니다.`,
             surface: "tnf_surface.glb",
             stick: "tnf_stick.glb"
         },
         {
-            title: "03. 복합체 결합 (PDB 4G3Y)",
-            text: "렘시마와 TNF-α가 결합한 최종 상태입니다.\n\n어떤 아미노산 잔기가 서로 상호작용하는지 Stick 모드에서 확인하고, 항체가 항원을 어떻게 물리적으로 덮는지 Surface 모드에서 분석하십시오.",
+            title: "03. 복합체 결합 (Lattice Formation)",
+            text: `렘시마 Fab 단편과 TNF-α 삼량체가 결합한 <strong>중화 복합체</strong> 시뮬레이션입니다.<br><br>
+            중쇄와 경쇄가 협동하여 삼량체의 측면 에피토프(Epitope)를 에워싸며, 수용체와의 결합을 물리적으로 차단(Steric hindrance)합니다.<br><br>
+            이러한 결합은 체내에서 거대한 <strong>그물 구조(Lattice Structure)</strong>를 형성하여 염증 인자를 효과적으로 무력화합니다. <br><em>(Ref: PLANETAS Study, 2013)</em>`,
             surface: "4G3Y_surface.glb",
             stick: "4G3Y_stick.glb"
         }
     ];
 
-    let currentIdx = 0; // 현재 선택된 단계 (0, 1, 2)
-    let currentStyle = 'surface'; // 현재 선택된 스타일 (surface, stick)
+    let currentIdx = 0;
+    let currentStyle = 'surface';
 
-    // 2. 화면 업데이트 함수
     function updateDisplay() {
         const item = contentData[currentIdx];
         
-        // 텍스트 교체
         document.getElementById('desc-title').innerText = item.title;
-        document.getElementById('desc-content').innerText = item.text;
+        document.getElementById('desc-content').innerHTML = item.text; // HTML 태그 허용을 위해 innerHTML 사용
         
-        // 3D 모델 교체
         const viewer = document.getElementById('main-viewer');
-        viewer.src = item[currentStyle]; // surface 또는 stick 파일 로드
+        viewer.src = item[currentStyle];
         
-        // 버튼 스타일 업데이트 (왼쪽 메뉴)
         const tabBtns = document.getElementsByClassName('tab-btn');
         for(let btn of tabBtns) btn.classList.remove('active');
         tabBtns[currentIdx].classList.add('active');
 
-        // 버튼 스타일 업데이트 (상단 뷰 옵션)
         const styleBtns = document.getElementsByClassName('style-btn');
         styleBtns[0].classList.toggle('active', currentStyle === 'surface');
         styleBtns[1].classList.toggle('active', currentStyle === 'stick');
     }
 
-    // 3. 카테고리 변경 함수
     function changeCategory(idx) {
         currentIdx = idx;
         updateDisplay();
     }
 
-    // 4. 스타일 변경 함수
     function changeStyle(style) {
         currentStyle = style;
         updateDisplay();
     }
 
-    // 5. 페이지 시작하자마자 첫 번째 데이터 강제 로드
     window.onload = function() {
         updateDisplay();
     };
@@ -137,7 +143,5 @@
 
 </body>
 </html>
-
-
 
 
